@@ -1,0 +1,6 @@
+My i3 configuration requires the following:
+    i3-gaps
+    rofi
+    i3 status
+    i3 bar
+    picom

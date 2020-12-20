@@ -1,0 +1,10 @@
+alias gi="git init"
+alias gs="git status -sbu"
+alias gco="git checkout"
+alias gp="git push"
+alias gm="git merge"
+alias ga="git add"
+alias gcm="git commit -m"
+alias gcr='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
+alias gb="git branch"
+alias gpl="git pull"

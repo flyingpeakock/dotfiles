@@ -1,0 +1,7 @@
+configuration {
+    modi: "run,window,drun,ssh,combi,emoji,calc";
+    theme: "~/.config/rofi/breeze-dark.rasi";
+    font: "hack 10";
+    combi-modi: "run,ssh,window,emoji";
+    fake-transparency: true;
+}
