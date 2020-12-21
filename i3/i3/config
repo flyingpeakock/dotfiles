@@ -68,7 +68,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+# bindsym $mod+z focus child
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -84,9 +84,6 @@ bindsym Ctrl+$mod+Shift+z gaps inner current minus 5
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-# bindsym $mod+ä focus mode_toggle
 
 # Start applications
 ###############################################
@@ -211,7 +208,7 @@ bindsym $mod+r mode "resize"
 ##########################################
 exec --no-startup-id greenclip daemon
 exec --no-startup-id nm-applet
-exec picom -b --experimental-backends
+exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id i3lock -u -c 000000
 
 # reload restart exit
