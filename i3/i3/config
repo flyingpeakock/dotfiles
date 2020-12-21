@@ -222,17 +222,17 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 font pango:DejaVu Sans Mono, fontAwesome 8
 bar {
         strip_workspace_numbers yes
+        workspace_min_width 21
 		position bottom
         i3bar_command i3bar -t
         status_command i3status 
         font pango:DejaVu Sans Mono, fontAwesome 8
 	    colors {
-        	#background #282C347A
             background #00000000
 			# workspace border, background, text
-			focused_workspace #282C3400 #282C34E3 #FFFFFF
-			inactive_workspace #282C3400 #282C340F #999999
-			urgent_workspace #FFFFFF #282C347A #999999
+			focused_workspace #2e344000 #2e3440 #FFFFFF
+			inactive_workspace #2e344000 #282C340F #999999
+			urgent_workspace #FFFFFF #2e34407A #999999
     	}
 }
 
