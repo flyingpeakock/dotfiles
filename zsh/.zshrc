@@ -10,7 +10,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 CASE_SENSITIVE="false"
 setopt nocasematch
 autoload -Uz add-zsh-hook
-autoload -U compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
+autoload -Uz compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
 compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
 export PATH
 

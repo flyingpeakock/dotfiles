@@ -1,6 +1,5 @@
 #!/bin/bash
 
-~/.dotfiles/keyboard/setup.sh
 
 pacapps=(
     zsh     # Default shell
@@ -94,6 +93,7 @@ yay --noconfirm -S ${yayapps[*]}
 
 echo "Done installing applications, moving config files"
 
+~/.dotfiles/keyboard/setup.sh
 ~/.dotfiles/alacritty-setup.sh
 ~/.dotfiles/i3/movei3.sh
 ~/.dotfiles/tmux/movetmux.sh
