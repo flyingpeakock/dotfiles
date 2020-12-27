@@ -93,8 +93,8 @@ yay --noconfirm -S ${yayapps[*]}
 
 echo "Done installing applications, moving config files"
 
-~/.dotfiles/keyboard/setup.sh
-~/.dotfiles/alacritty-setup.sh
+sudo ln -sf ~/.dotfiles/keyboard/se_cm /usr/share/X11/xkb/symbols/ || echo "Could no create keymap simlink"
+ln -sf ~/.dotfiles/alacritty ~/.config/ || echo "could not move alacritty"
 ~/.dotfiles/i3/movei3.sh
 ~/.dotfiles/tmux/movetmux.sh
 ~/.dotfiles/zsh/movezsh.sh
