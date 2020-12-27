@@ -77,7 +77,7 @@ yayapps=(
 # Change this if in a different location
 sudo pacman --noconfirm -S reflector
 sudo reflector --country Sweden --country Norway --country Denmark --country Finland --sort rate --connection-timeout 2 --download-timeout 2 --age 24 --save /etc/pacman.d/mirrorlist
-systemctl enable reflector.service
+sudo systemctl enable reflector.service
 
 # Install yay
 sudo pacman --noconfirm -S base-devel   # Making sure base-devel is installed
