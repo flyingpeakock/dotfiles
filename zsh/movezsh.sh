@@ -12,6 +12,7 @@ which zsh > /dev/null 2>&1
     fi
 
 ln -sf ~/.dotfiles/zsh/.zshrc ~/ || echo "could not move .zshrc"
+ln -sf ~/.dotfiles/zsh/.zprofile ~/ || echo "could not move .zprofile"
 if [[ -f ~/.zcompdump* ]]; then
     mv -i ~/.zcompdump* ~/.dotfiles/zsh/
 fi
