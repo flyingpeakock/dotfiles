@@ -10,9 +10,6 @@
 [submodule "vim/.vim/plugged/vimtex"]
 	path = vim/.vim/plugged/vimtex
 	url = https://github.com/lervag/vimtex.git
-[submodule "tmux/.tmux/plugins/tmux"]
-	path = tmux/.tmux/plugins/tmux
-	url = https://github.com/dracula/tmux.git
 [submodule "vim/.vim/plugged/YouCompleteMe"]
 	path = vim/.vim/plugged/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
@@ -52,3 +49,6 @@
 [submodule "zsh/plugins/zsh-completions"]
 	path = zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "tmux/.tmux/plugins/nord-tmux"]
+	path = tmux/.tmux/plugins/nord-tmux
+	url = https://github.com/arcticicestudio/nord-tmux.git
