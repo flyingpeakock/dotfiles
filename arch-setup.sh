@@ -8,9 +8,8 @@ pacapps=(
 
     cmake
 
-    xorg-server
+    xorg
     xorg-xinit
-    xorg-xrandr
     xterm
     xsel
     xclip
