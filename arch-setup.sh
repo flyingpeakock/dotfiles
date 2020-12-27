@@ -7,6 +7,8 @@ pacapps=(
     tmux    # terminal multiplexer
     openssh
 
+    cmake
+
     xorg-server
     xorg-xinit
     xorg-xrandr
