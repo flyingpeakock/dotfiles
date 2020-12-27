@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 pacapps=(
     zsh     # Default shell
     vim     # Text editor
@@ -78,6 +77,8 @@ yayapps=(
 sudo pacman --noconfirm -S reflector
 sudo reflector --country Sweden --country Norway --country Denmark --country Finland --sort rate --connection-timeout 2 --download-timeout 2 --age 24 --save /etc/pacman.d/mirrorlist
 sudo systemctl enable reflector.service
+echo "reflector enabled"
+wait 1
 
 # Install yay
 sudo pacman --noconfirm -S base-devel   # Making sure base-devel is installed
@@ -86,19 +87,50 @@ pushd yay
 makepkg -si
 popd
 rm yay
+echo "yay installed"
+wait 1
 
 # update system with yay
 yay ---noconfirm Syu
+echo "system updated"
+wait 1
 
 sudo pacman --noconfirm -S ${pacapps[*]}
+echo "pacman apps installed"
+wait 1
+
 yay --noconfirm -S ${yayapps[*]}
+echo "yay apps installed"
+wait 1
 
 echo "Done installing applications, moving config files"
 
 sudo ln -sf ~/.dotfiles/keyboard/se_cm /usr/share/X11/xkb/symbols/ || echo "Could no create keymap simlink"
+echo "keyboard files linked"
+wait 1
+
 ln -sf ~/.dotfiles/alacritty ~/.config/ || echo "could not move alacritty"
+echo "alacritty config linked"
+wait 1
+
+if [ ! -d ~/.local ]; then
+    mkdir ~/.local
+fi
+if [ ! -d ~/.local/bin ]; then
+    mkdir ~/.local/bin
+fi
+
 ~/.dotfiles/i3/movei3.sh
+wait 1
+
 ~/.dotfiles/tmux/movetmux.sh
+wait 1
+
 ~/.dotfiles/zsh/movezsh.sh
+wait 1
+
 ~/.dotfiles/vim/movevim.sh
+wait 1
+
+echo "arch setup script completed"
 

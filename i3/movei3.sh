@@ -1,15 +1,9 @@
 #!/bin/bash
 
-echo """
-#####################################
-#Setting up i3 and misc config files#
-#####################################
-""";
+ln -sf ~/.dotfiles/i3/i3/ ~/.config/ || echo "could not move i3 config"
+ln -sf ~/.dotfiles/i3/i3status/ ~/.config/ || echo "could not move i3status"
+ln -sf ~/.dotfiles/i3/picom.conf ~/.config/ || echo "could not move picom conf"
+ln -sf ~/.dotfiles/i3/rofi/ ~/.config/ || echo "could not move rofi conf"
+ln -sf ~/.dotfiles/i3/.xinitrc ~/ || echo "could not move xinitrc"
 
-sudo ln -sf ~/.dotfiles/i3/i3/ ~/.config/
-ln -sf ~/.dotfiles/i3/i3status/ ~/.config/
-ln -sf ~/.dotfiles/i3/picom.conf ~/.config/
-ln -sf ~/.dotfiles/i3/rofi/ ~/.config/
-ln -sf ~/.dotfiles/i3/.xinitrc ~/
-
-echo "completed"
+echo "linked i3 files"

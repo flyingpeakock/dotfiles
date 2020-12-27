@@ -1,9 +1,4 @@
 #!/bin/bash
-echo """
-#####################################
-#Setting up zsh dotfiles and plugins#
-#####################################
-""";
 
 which zsh > /dev/null 2>&1
     if [[ ! "$?" -eq "0" ]]; then
@@ -17,4 +12,4 @@ if [[ -f ~/.zcompdump* ]]; then
     mv -i ~/.zcompdump* ~/.dotfiles/zsh/
 fi
 chsh -s /bin/zsh
-echo "completed"
+echo "zsh config files linked"
