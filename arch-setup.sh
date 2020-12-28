@@ -36,7 +36,6 @@ pacapps=(
     ttf-dejavu
     ttf-font-awesome
     papirus-icon-theme
-    xcursor-breeze
 
     rofi-calc
 
@@ -44,7 +43,6 @@ pacapps=(
     lolcat
 
     discord
-    zoom
     teamspeak3 
 
     firefox
@@ -76,6 +74,8 @@ yayapps=(
     rofi-emoji
     rofi-greenclip
     ttf-font-awesome-4
+    xcursor-breeze
+    zoom
 )
 
 # Run reflector for faster downloads
