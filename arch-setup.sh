@@ -1,18 +1,23 @@
 #!/bin/bash
 
 pacapps=(
-    zsh     # Default shell
-    vim     # Text editor
-    tmux    # terminal multiplexer
+    zsh
+    vim
+    tmux
     openssh
 
     cmake
+    go
+    python
+    python-pip
 
     xorg
     xorg-xinit
+    arandr
     xterm
     xsel
     xclip
+    alacritty
 
     i3-gaps
     i3lock
@@ -23,6 +28,7 @@ pacapps=(
 
     pulseaudio
     pavucontrol
+    vlc
 
     noto-fonts
     noto-fonts-emoji
@@ -37,25 +43,26 @@ pacapps=(
     neofetch
     lolcat
 
-    alacritty   # Terminal
-    firefox     # Web browser
-    teamspeak3 
     discord
+    zoom
+    teamspeak3 
+
+    firefox
+    torbrowser-launcher
+
+    thunar
     flameshot
+
     glances
-    go
     ncdu
     networkmanager
     firewalld
-    zoom
-    python
-    python-pip
-    redshift
-    thunar
-    torbrowser-launcher
     trash-cli
-    vlc
+    redshift
     sqlite
+
+    zathura
+    zathura-pdf-mupdf
 )
 
 yayapps=( 
@@ -68,7 +75,7 @@ yayapps=(
     otf-font-awesome
     rofi-emoji
     rofi-greenclip
-    ttf-tonf-awesome-4
+    ttf-font-awesome-4
 )
 
 # Run reflector for faster downloads
