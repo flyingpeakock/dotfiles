@@ -12,6 +12,8 @@ pacapps=(
     python
     python-pip
 
+    laptop-mode-tools
+
     xorg
     xorg-xinit
     arandr
