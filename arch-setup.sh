@@ -5,6 +5,7 @@ pacapps=(
     vim
     tmux
     openssh
+    sshfs
 
     cmake
     go
