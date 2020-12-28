@@ -11,6 +11,7 @@ pacapps=(
     go
     python
     python-pip
+    gdb
     gdb-common
 
     xorg
