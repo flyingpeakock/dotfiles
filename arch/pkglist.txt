@@ -62,4 +62,6 @@ xorg-xinit
 xorg-xrandr
 xsel
 xterm
+zathura
+zathura-pdf-mupdf
 zsh
