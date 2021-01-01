@@ -2,12 +2,12 @@
 
 # Run reflector for faster downloads
 # Change this if in a different location
-sudo pacman --noconfirm -S reflector || echo "error installing reflector" && sleep 1
+sudo pacman --noconfirm -S --needed reflector || echo "error installing reflector" && sleep 1
 
 sudo reflector --country Sweden --country Norway --country Denmark --country Finland --sort rate --connection-timeout 2 --download-timeout 2 --age 24 --save /etc/pacman.d/mirrorlist && echo "mirrorlist updated" || echo "could not update mirrorlist" && sleep 1
 
 # Install yay
-sudo pacman --noconfirm -S base-devel || echo "could not install base-devel group" && sleep 1   # Making sure base-devel is installed
+sudo pacman --noconfirm -S --needed base-devel || echo "could not install base-devel group" && sleep 1   # Making sure base-devel is installed
 
 git clone https://aur.archlinux.org/yay.git || echo "could not clone yay" && sleep 1
 
@@ -20,10 +20,10 @@ rm -r yay || echo "could not remove yay directory" && sleep 1
 sudo pacman --noconfirm Syu && echo "Update completed." || echo "error updating" && sleep 1
 
 # Installing packages from pkglist
-sudo pacman --noconfirm -S --needed < ~/.dotfiles/arch/pkglist.txt && echo "pacman packages installed" || echo "error installing pacman packages" && sleep 1
+sudo pacman --noconfirm -S --needed - < ~/.dotfiles/arch/pkglist.txt && echo "pacman packages installed" || echo "error installing pacman packages" && sleep 1
 
 # Installing packages from pkglist_AUR
-yay --noconfirm -S --needed < ~/.dotfiles/arch/pkglist_aur.txt && echo "yay packages installed" || echo "error installing aur packages" && sleep 1
+yay --noconfirm -S --needed - < ~/.dotfiles/arch/pkglist_aur.txt && echo "yay packages installed" || echo "error installing aur packages" && sleep 1
 
 # Moving config files
 
