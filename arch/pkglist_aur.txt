@@ -1,7 +1,6 @@
 bitwarden-cli
 cli-visualizer
 console_sudoku
-laptop-mode-tools
 latex-mk
 ncspot
 nordic-theme-git
