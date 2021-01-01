@@ -1,9 +1,9 @@
 alacritty
+arandr
 awesome-terminal-fonts
 cmake
 discord
 feh
-fftw
 firefox
 firewalld
 flameshot
@@ -45,6 +45,8 @@ rofi-calc
 rsync
 rust
 sshfs
+steam
+teamspeak3
 thunar
 tmux
 torbrowser-launcher
@@ -54,9 +56,12 @@ ttf-font-awesome
 vim
 vlc
 xclip
+xf86-video-amdgpu
 xorg-server
 xorg-xinit
 xorg-xrandr
 xsel
 xterm
+zathura
+zathura-pdf-mupdf
 zsh
