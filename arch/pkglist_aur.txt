@@ -5,6 +5,7 @@ laptop-mode-tools
 latex-mk
 ncspot
 nordic-theme-git
+pacman-cleanup-hook
 picom-git
 rofi-emoji
 rofi-greenclip
