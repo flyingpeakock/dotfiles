@@ -1,0 +1,13 @@
+bitwarden-cli
+cli-visualizer
+console_sudoku
+latex-mk
+ncspot
+nordic-theme-git
+picom-git
+rofi-emoji
+rofi-greenclip
+ttf-font-awesome-4
+visual-studio-code-bin
+xcursor-breeze
+zoom
