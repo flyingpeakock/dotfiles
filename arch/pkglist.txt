@@ -1,5 +1,6 @@
 alacritty
 awesome-terminal-fonts
+broadcom-wl
 cmake
 discord
 feh
@@ -17,6 +18,8 @@ i3-gaps
 i3lock
 i3status
 imagemagick
+iw
+iwd
 java-environment-common
 jre-openjdk
 lolcat
@@ -30,7 +33,6 @@ noto-fonts
 noto-fonts-emoji
 npm
 openssh
-otf-font-awesome
 pacman-contrib
 papirus-icon-theme
 pavucontrol
