@@ -59,4 +59,6 @@ xorg-xinit
 xorg-xrandr
 xsel
 xterm
+zathura
+zathura-mupd-pdf
 zsh
