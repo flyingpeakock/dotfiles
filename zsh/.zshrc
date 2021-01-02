@@ -9,10 +9,10 @@ COMPLETION_WAITING_DOTS="true"
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 CASE_SENSITIVE="false"
 setopt nocasematch
+setopt autocd autopushd
 autoload -Uz add-zsh-hook
-autoload -Uz compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
+autoload -U compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
 compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
-export PATH
 
 # Plugins
 source ~/.dotfiles/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
