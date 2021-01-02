@@ -11,7 +11,7 @@ CASE_SENSITIVE="false"
 setopt nocasematch
 setopt autocd autopushd
 autoload -Uz add-zsh-hook
-autoload -Uz compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
+autoload -U compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
 compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
 
 # Plugins
