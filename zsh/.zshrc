@@ -6,13 +6,20 @@ export EDITOR='vim'
 export VISUAL='vim'
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 CASE_SENSITIVE="false"
 setopt nocasematch
+setopt autocd autopushd
 autoload -Uz add-zsh-hook
-autoload -Uz compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
+
+
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+autoload -U compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
 compinit -d ~/.dotfiles/zsh/zcompdump-$ZSH_VERSION
-export PATH
 
 # Plugins
 source ~/.dotfiles/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
