@@ -50,6 +50,7 @@ torbrowser-launcher
 trash-cli
 ttf-dejavu
 ttf-font-awesome
+vifm
 vim
 vlc
 xclip
