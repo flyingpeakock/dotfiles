@@ -3,6 +3,7 @@ cli-visualizer
 console_sudoku
 latex-mk
 ncspot
+nnn-icons
 nordic-theme-git
 pacman-cleanup-hook
 picom-git
