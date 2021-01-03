@@ -17,6 +17,8 @@ i3-gaps
 i3lock
 i3status
 imagemagick
+iw
+iwd
 java-environment-common
 jre-openjdk
 lolcat
