@@ -48,7 +48,6 @@ rofi-calc
 rsync
 rust
 sshfs
-thunar
 tmux
 torbrowser-launcher
 trash-cli
