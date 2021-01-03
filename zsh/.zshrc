@@ -9,6 +9,8 @@ setopt nocasematch
 setopt autocd autopushd
 autoload -Uz add-zsh-hook
 
+export EDITOR='vim'
+export VISUAL='vim'
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ''

@@ -1,6 +1,3 @@
-export EDITOR='vim'
-export VISUAL='vim'
-
 TERMINAL=alacritty; export TERMINAL
 
 path+=('/home/philipj/.local/bin')
