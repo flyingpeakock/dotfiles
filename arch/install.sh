@@ -14,7 +14,7 @@ git clone https://aur.archlinux.org/yay.git || echo "could not clone yay" && sle
 pushd yay
 makepkg -si && echo "yay installed" || echo "could not install yay" && sleep 1
 popd
-rm -r yay || echo "could not remove yay directory" && sleep 1
+rm -rf yay || echo "could not remove yay directory" && sleep 1
 
 # Update
 sudo pacman --noconfirm Syu && echo "Update completed." || echo "error updating" && sleep 1
