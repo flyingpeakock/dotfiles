@@ -34,6 +34,9 @@ sudo ln -sf ~/.dotfiles/keyboard/se_cm /usr/share/X11/xkb/symbols/ && echo "xkb 
 ln -sf /.dotfiles/alacritty ~/.config/ && echo "Alacritty config linked" || echo "could not link alacritty config"
 l
 
+# Setup nnn config and plugins
+ln -sf /.dotfiles/nnn ~/.config/ && echo "nnn config linked" || echo "could not link nnn config"
+
 # Creating user bin directory if it doesn't exist
 if [ ! -d ~/.local ]; then
     mkdir ~/.local
