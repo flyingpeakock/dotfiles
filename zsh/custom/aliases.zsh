@@ -5,10 +5,10 @@ alias open=xdg-open
 alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
 alias please='sudo $(fc -ln -1)'
 alias rm='echo "Are you sure you want to use this command? Did you mean trash-put?"; echo "If you meant to use rm type \\\\rm"; false'
-alias pc="ssh philipj@192.168.0.21"
-alias laptop="ssh philipj@192.168.0.43"
-alias rasp="TERM=xterm-256color ssh -X pi@192.168.0.46"
-alias phone="ssh 192.168.0.18 -p 8022"
+alias pc="ssh -X philipj@desktop.lan"
+alias laptop="ssh -X philipj@laptop.lan"
+alias rasp="TERM=xterm-256color ssh -X pi@pi.lan"
+alias phone="TERM=xterm-256color ssh localhost@phone.lan -p 8022"
 alias python="python3"
 alias pip="pip3"
 alias co="cd ~/Documents/Code/"
