@@ -1,8 +1,0 @@
-configuration {
-    modi: "run,window,drun,ssh,combi,emoji,calc";
-    theme: "~/.config/rofi/nord.rasi";
-    font: "hack 10";
-    combi-modi: "ssh,run,window,emoji";
-    fake-transparency: true;
-    show-icons: true;
-}
