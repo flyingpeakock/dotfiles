@@ -11,8 +11,4 @@ ln -sf ~/.dotfiles/vim/.vimrc ~/ || echo "could not move .vimrc"
 
 [[ -f ~/.viminfo ]] && mv ~/.viminfo ~/.dotfiles/vim/viminfo
 
-read -p "Run YouCompleteMe install? (y/N) " yn
-case $yn in
-    [Yy]* ) ~/.dotfiles/vim/.vim/plugged/YouCompleteMe/install.py --all;
-esac
 echo "vim config files linked"
