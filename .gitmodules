@@ -7,9 +7,6 @@
 [submodule "vim/.vim/plugged/nerdtree"]
 	path = vim/.vim/plugged/nerdtree
 	url = https://github.com/preservim/nerdtree.git
-[submodule "vim/.vim/plugged/vimtex"]
-	path = vim/.vim/plugged/vimtex
-	url = https://github.com/lervag/vimtex.git
 [submodule "vim/.vim/plugged/YouCompleteMe"]
 	path = vim/.vim/plugged/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
