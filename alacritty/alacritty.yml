@@ -1,5 +1,14 @@
 font:
   size: 8
+  normal:
+    family: Hack
+    style: regular
+  bold:
+    family: Hack
+    style: Bold
+  italic:
+    family: Hack
+    style: Italic
 
 background_opacity: 0.85
 
