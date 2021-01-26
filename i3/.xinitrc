@@ -38,6 +38,9 @@ fi
 if [ -x /usr/bin/redshift ]; then
     redshift&
 fi
+if [ -x /usr/bin/dunst ]; then
+    dunst&
+fi
 
 setxkbmap se_cm&
 exec i3
