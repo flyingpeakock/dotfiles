@@ -39,6 +39,5 @@ if [ -x /usr/bin/redshift ]; then
     redshift&
 fi
 
-twm &
 setxkbmap se_cm&
 exec i3
