@@ -15,6 +15,9 @@ background_opacity: 0.85
 window:
   dynamic_title: true
 
+selection:
+  save_to_clipboard: true
+
 colors:
   primary:
     background: '#2e3440'
