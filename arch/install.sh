@@ -9,7 +9,7 @@ sudo reflector --country Sweden --country Norway --country Denmark --country Fin
 # Install paru
 sudo pacman --noconfirm -S --needed base-devel || echo "could not install base-devel group" && sleep 1   # Making sure base-devel is installed
 
-git clone https://aur.archlinux.org/paru.git || echo "could not clone paru" && sleep 1
+git clone https://aur.archlinux.org/paru-bin.git || echo "could not clone paru" && sleep 1
 
 pushd paru
 makepkg -si && echo "paru installed" || echo "could not install paru" && sleep 1
