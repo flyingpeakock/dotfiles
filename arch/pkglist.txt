@@ -1,5 +1,6 @@
 alacritty
 awesome-terminal-fonts
+broadcom-wl-dkms
 cmake
 discord
 feh
@@ -21,6 +22,7 @@ iw
 iwd
 java-environment-common
 jre-openjdk
+linux-headers
 lolcat
 lxappearance
 man-db
