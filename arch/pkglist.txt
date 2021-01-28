@@ -52,11 +52,13 @@ torbrowser-launcher
 trash-cli
 ttf-dejavu
 ttf-font-awesome
+ttf-hack
 vifm
 vim
 vlc
 xclip
 xorg-server
+xorg-xhost
 xorg-xinit
 xorg-xrandr
 xsel
