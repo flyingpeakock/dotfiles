@@ -14,7 +14,7 @@ git clone https://aur.archlinux.org/paru.git || echo "could not clone paru" && s
 pushd paru
 makepkg -si && echo "paru installed" || echo "could not install paru" && sleep 1
 popd
-rm -r paru || echo "could not remove paru directory" && sleep 1
+rm -rf paru || echo "could not remove paru directory" && sleep 1
 
 # Update
 sudo pacman --noconfirm Syu && echo "Update completed." || echo "error updating" && sleep 1
