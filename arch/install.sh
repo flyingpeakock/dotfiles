@@ -40,6 +40,7 @@ sudo chmod a+wr /opt/spotify/Apps -R
 spicetify
 spicetify backup apply enable-devtool
 spicetify config current_theme Nord
+spicetify update
 echo "Spotify nord theme applied"
 
 # Creating user bin directory if it doesn't exist
