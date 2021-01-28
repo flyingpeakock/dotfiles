@@ -34,6 +34,14 @@ sudo ln -sf ~/.dotfiles/keyboard/se_cm /usr/share/X11/xkb/symbols/ && echo "xkb 
 ln -sf /.dotfiles/alacritty ~/.config/ && echo "Alacritty config linked" || echo "could not link alacritty config"
 l
 
+# Themeing spotify
+sudo chmod a+wr /opt/spotify
+sudo chmod a+wr /opt/spotify/Apps -R
+spicetify
+spicetify backup apply enable-devtool
+spicetify config current_theme Nord
+echo "Spotify nord theme applied"
+
 # Creating user bin directory if it doesn't exist
 if [ ! -d ~/.local ]; then
     mkdir ~/.local
