@@ -215,6 +215,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id xset 600
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id pasystray
 
 # reload restart exit
 ##########################################
