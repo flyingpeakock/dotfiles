@@ -6,15 +6,15 @@ sudo pacman --noconfirm -S --needed reflector || echo "error installing reflecto
 
 sudo reflector --country Sweden --country Norway --country Denmark --country Finland --sort rate --connection-timeout 2 --download-timeout 2 --age 24 --save /etc/pacman.d/mirrorlist && echo "mirrorlist updated" || echo "could not update mirrorlist" && sleep 1
 
-# Install yay
+# Install paru
 sudo pacman --noconfirm -S --needed base-devel || echo "could not install base-devel group" && sleep 1   # Making sure base-devel is installed
 
-git clone https://aur.archlinux.org/yay.git || echo "could not clone yay" && sleep 1
+git clone https://aur.archlinux.org/paru.git || echo "could not clone paru" && sleep 1
 
-pushd yay
-makepkg -si && echo "yay installed" || echo "could not install yay" && sleep 1
+pushd paru
+makepkg -si && echo "paru installed" || echo "could not install paru" && sleep 1
 popd
-rm -rf yay || echo "could not remove yay directory" && sleep 1
+rm -rf paru || echo "could not remove paru directory" && sleep 1
 
 # Update
 sudo pacman --noconfirm Syu && echo "Update completed." || echo "error updating" && sleep 1
@@ -23,7 +23,7 @@ sudo pacman --noconfirm Syu && echo "Update completed." || echo "error updating"
 sudo pacman --noconfirm -S --needed - < ~/.dotfiles/arch/pkglist.txt && echo "pacman packages installed" || echo "error installing pacman packages" && sleep 1
 
 # Installing packages from pkglist_AUR
-yay --noconfirm -S --needed - < ~/.dotfiles/arch/pkglist_aur.txt && echo "yay packages installed" || echo "error installing aur packages" && sleep 1
+paru --noconfirm -S --needed - < ~/.dotfiles/arch/pkglist_aur.txt && echo "AUR packages installed" || echo "error installing aur packages" && sleep 1
 
 # Moving config files
 
@@ -33,9 +33,6 @@ sudo ln -sf ~/.dotfiles/keyboard/se_cm /usr/share/X11/xkb/symbols/ && echo "xkb 
 # Alacritty terminal
 ln -sf /.dotfiles/alacritty ~/.config/ && echo "Alacritty config linked" || echo "could not link alacritty config"
 l
-
-# Setup nnn config and plugins
-ln -sf /.dotfiles/nnn ~/.config/ && echo "nnn config linked" || echo "could not link nnn config"
 
 # Creating user bin directory if it doesn't exist
 if [ ! -d ~/.local ]; then
