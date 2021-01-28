@@ -1,13 +1,14 @@
 bitwarden-cli
-cli-visualizer
 console_sudoku
 latex-mk
-ncspot
 nordic-theme-git
 pacman-cleanup-hook
 picom-git
+realvnc-vnc-viewer
 rofi-emoji
 rofi-greenclip
+spicetify-themes-git
+spotify
 ttf-font-awesome-4
 visual-studio-code-bin
 xcursor-breeze
