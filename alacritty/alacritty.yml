@@ -1,10 +1,22 @@
 font:
-  size: 9
+  size: 8
+  normal:
+    family: Hack
+    style: regular
+  bold:
+    family: Hack
+    style: Bold
+  italic:
+    family: Hack
+    style: Italic
 
 background_opacity: 0.85
 
 window:
   dynamic_title: true
+
+selection:
+  save_to_clipboard: true
 
 colors:
   primary:

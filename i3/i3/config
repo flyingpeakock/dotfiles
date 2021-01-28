@@ -225,14 +225,14 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # Bar
 ##########################################
-font pango:DejaVu Sans Mono, fontAwesome 8
+font pango: Hack, DejaVu Sans Mono, fontAwesome 8
 bar {
         strip_workspace_numbers yes
         workspace_min_width 21
 		position bottom
         i3bar_command i3bar -t
         status_command i3status 
-        font pango:DejaVu Sans Mono, fontAwesome 8
+        font pango: Hack, DejaVu Sans Mono, fontAwesome 8
 	    colors {
             background #00000000
 			# workspace border, background, text
