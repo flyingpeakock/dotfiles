@@ -8,7 +8,6 @@ which zsh > /dev/null 2>&1
 
 ln -sf ~/.dotfiles/zsh/.zshrc ~/ || echo "could not move .zshrc"
 ln -sf ~/.dotfiles/zsh/.zprofile ~/ || echo "could not move .zprofile"
-ln -sf ~/.dotfiles/.dir_colors ~/ || echo "could not move .dir_colors"
 if [[ -f ~/.zcompdump* ]]; then
     mv -i ~/.zcompdump* ~/.dotfiles/zsh/
 fi
