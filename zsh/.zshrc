@@ -2,6 +2,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 CASE_SENSITIVE="false"
