@@ -39,6 +39,7 @@ endfunction
 inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
 
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
