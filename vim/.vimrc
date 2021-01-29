@@ -3,7 +3,7 @@ set background=dark
 set encoding=utf-8
 syntax on
 set hidden
-set viminfo+=n~/.dotfiles/vim/viminfo
+set viminfo+=~/.dotfiles/vim/viminfo
 set wildmenu
 set showcmd
 set nohlsearch
@@ -46,6 +46,7 @@ Plug 'preservim/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
+let g:airline_porewline_fonts = 1
 let g:tex_flavor='latex'
 let g:vimtex_compiler_latexmk = {
             \'options' : [
