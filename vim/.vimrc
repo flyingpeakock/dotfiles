@@ -39,11 +39,16 @@ endfunction
 inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
 
 call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-fugitive'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
-Plug 'preservim/nerdtree'
+Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline'
+let g:airline_powerline_fonts = 1
 set conceallevel=1
 call plug#end()
+
+colorscheme nord
 
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
