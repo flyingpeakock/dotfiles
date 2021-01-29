@@ -4,9 +4,6 @@
 [submodule "vim/.vim/plugged/lens.vim"]
 	path = vim/.vim/plugged/lens.vim
 	url = https://github.com/camspiers/lens.vim.git
-[submodule "vim/.vim/plugged/nerdtree"]
-	path = vim/.vim/plugged/nerdtree
-	url = https://github.com/preservim/nerdtree.git
 [submodule "vim/.vim/plugged/YouCompleteMe"]
 	path = vim/.vim/plugged/YouCompleteMe
 	url = https://github.com/ycm-core/YouCompleteMe.git
@@ -49,3 +46,12 @@
 [submodule "tmux/.tmux/plugins/nord-tmux"]
 	path = tmux/.tmux/plugins/nord-tmux
 	url = https://github.com/arcticicestudio/nord-tmux.git
+[submodule "vim/.vim/plugged/nord-vim"]
+	path = vim/.vim/plugged/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim.git
+[submodule "vim/.vim/plugged/vim-airline"]
+	path = vim/.vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule "vim/.vim/plugged/vim-fugitive"]
+	path = vim/.vim/plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
