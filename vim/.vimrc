@@ -44,6 +44,7 @@ Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'preservim/nerdtree'
 Plug 'lervag/vimtex'
+Plug 'arcticicestudio/nord-vim'
 let g:tex_flavor='latex'
 let g:vimtex_compiler_latexmk = {
             \'options' : [
@@ -55,6 +56,8 @@ let g:vimtex_quickfix_mode=0
 set conceallevel=1
 let g:tex_conceal='abdmg'
 call plug#end()
+
+colorscheme nord
 
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
