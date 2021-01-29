@@ -46,7 +46,7 @@ Plug 'preservim/nerdtree'
 Plug 'lervag/vimtex'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
-let g:airline_porewline_fonts = 1
+let g:airline_powerline_fonts = 1
 let g:tex_flavor='latex'
 let g:vimtex_compiler_latexmk = {
             \'options' : [
