@@ -27,7 +27,6 @@ source ~/.dotfiles/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath=(~/.dotfiles/zsh/plugins/zsh-completions/src $fpath)
 source ~/.dotfiles/zsh/plugins/zsh-histdb/sqlite-history.zsh
 source ~/.dotfiles/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.dotfiles/zsh/plugins/command-not-found/command-not-found.zsh
 
 _zsh_autosuggest_strategy_histdb_top_here() {
     local query="select commands.argv from

@@ -40,24 +40,12 @@ inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
 
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
-Plug 'preservim/nerdtree'
-Plug 'lervag/vimtex'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
-let g:tex_flavor='latex'
-let g:vimtex_compiler_latexmk = {
-            \'options' : [
-            \   '--shell-escape'
-            \],
-   \}
-let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
 set conceallevel=1
-let g:tex_conceal='abdmg'
 call plug#end()
 
 colorscheme nord

@@ -4,9 +4,6 @@
 [submodule "vim/.vim/plugged/lens.vim"]
 	path = vim/.vim/plugged/lens.vim
 	url = https://github.com/camspiers/lens.vim.git
-[submodule "vim/.vim/plugged/YouCompleteMe"]
-	path = vim/.vim/plugged/YouCompleteMe
-	url = https://github.com/ycm-core/YouCompleteMe.git
 [submodule "tmux/.tmux/plugins/tmux-open"]
 	path = tmux/.tmux/plugins/tmux-open
 	url = https://github.com/tmux-plugins/tmux-open.git
