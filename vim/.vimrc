@@ -3,7 +3,7 @@ set background=dark
 set encoding=utf-8
 syntax on
 set hidden
-set viminfo+=~/.dotfiles/vim/viminfo
+set viminfo+=n~/.dotfiles/vim/viminfo
 set wildmenu
 set showcmd
 set nohlsearch
