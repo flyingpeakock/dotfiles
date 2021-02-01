@@ -30,10 +30,6 @@ paru --noconfirm -S --needed - < ~/.dotfiles/arch/pkglist_aur.txt && echo "AUR p
 # xkb map
 sudo ln -sf ~/.dotfiles/keyboard/se_cm /usr/share/X11/xkb/symbols/ && echo "xkb map linked" || echo "Could not link xkb map"
 
-# Alacritty terminal
-ln -sf /.dotfiles/alacritty ~/.config/ && echo "Alacritty config linked" || echo "could not link alacritty config"
-l
-
 # Themeing spotify
 sudo chmod a+wr /opt/spotify
 sudo chmod a+wr /opt/spotify/Apps -R

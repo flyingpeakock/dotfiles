@@ -1,4 +1,4 @@
-TERMINAL=alacritty; export TERMINAL
+TERMINAL=st; export TERMINAL
 
 path+=('/home/philipj/.local/bin')
 

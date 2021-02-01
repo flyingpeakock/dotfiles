@@ -1,4 +1,3 @@
-alacritty
 awesome-terminal-fonts
 broadcom-wl-dkms
 cmake
