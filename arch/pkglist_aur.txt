@@ -10,6 +10,7 @@ rofi-emoji
 rofi-greenclip
 spicetify-themes-git
 spotify
+st-pajas
 ttf-font-awesome-4
 visual-studio-code-bin
 xcursor-breeze
