@@ -7,5 +7,6 @@ ln -sf ~/.dotfiles/i3/rofi/ ~/.config/ || echo "could not move rofi conf"
 ln -sf ~/.dotfiles/i3/dunst/ ~/.config/ || echo "could not move dunstrc"
 ln -sf ~/.dotfiles/i3/.xinitrc ~/ || echo "could not move xinitrc"
 ln -sf ~/.dotfiles/i3/.Xresources ~/ || echo "could not move Xresources"
+ln -sf ~/.dotfiles/i3/redshift/ ~/.config || echo "could not move redshift conf"
 
 echo "linked i3 files"
