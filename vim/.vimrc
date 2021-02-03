@@ -12,7 +12,7 @@ set ignorecase
 set backspace=indent,eol,start
 set autoindent
 set mouse=a
-set cmdheight=2
+set cmdheight=1
 set number relativenumber
 set shiftwidth=4
 set softtabstop=4
