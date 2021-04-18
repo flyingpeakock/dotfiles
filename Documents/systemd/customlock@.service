@@ -1,0 +1,17 @@
+[Unit]
+Description=Starts i3lock
+Before=suspend.target
+Before=lock.target
+Before=sleep.target
+
+[Service]
+User=philipj
+Type=forking
+Environment=DISPLAY=:0
+ExecStartPre=
+ExecStart=i3lock -u -c 000000
+
+[Install]
+WantedBy=suspend.target
+WantedBy=lock.target
+WantedBy=sleep.target

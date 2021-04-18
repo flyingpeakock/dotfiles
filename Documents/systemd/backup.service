@@ -1,0 +1,8 @@
+[Unit]
+Description=Backup to raspberry pi
+
+[Service]
+Type=simple
+User=root
+ExecStart=/home/philipj/Documents/systemd/backup.sh
+
