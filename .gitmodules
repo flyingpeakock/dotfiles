@@ -16,3 +16,27 @@
 [submodule ".zsh/plugins/zsh-history-substring-search"]
 	path = .zsh/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule ".vim/plugged/animate.vim"]
+	path = .vim/plugged/animate.vim
+	url = https://github.com/camspiers/animate.vim.git
+[submodule ".vim/plugged/nerdtree"]
+	path = .vim/plugged/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule ".vim/plugged/vim-airline"]
+	path = .vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".vim/plugged/vimtex"]
+	path = .vim/plugged/vimtex
+	url = https://github.com/lervag/vimtex.git
+[submodule ".vim/plugged/lens.vim"]
+	path = .vim/plugged/lens.vim
+	url = https://github.com/camspiers/lens.vim.git
+[submodule ".vim/plugged/nord-vim"]
+	path = .vim/plugged/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim.git
+[submodule ".vim/plugged/vim-fugitive"]
+	path = .vim/plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".vim/plugged/YouCompleteMe"]
+	path = .vim/plugged/YouCompleteMe
+	url = https://github.com/ycm-core/YouCompleteMe.git
