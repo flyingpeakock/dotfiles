@@ -1,3 +1,4 @@
+# Setting stuff to move things to xdg config home
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
 set runtimepath+=$XDG_CONFIG_HOME/vim/after
@@ -15,11 +16,6 @@ set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p')
 
 if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
 
-if empty(glob('~/.config/vim/autoload/plug.vim'))
-   silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
-     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
 
 filetype indent plugin on
 set background=dark
@@ -59,6 +55,12 @@ function! Mosh_Tab_Or_Complete()
         return "\<Tab>"
 endfunction
 inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
+
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+   silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
 call plug#begin('~/.config/vim/plugged')
 Plug 'tpope/vim-fugitive'
