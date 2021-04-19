@@ -10,7 +10,7 @@ gitdot() {
 }
 
 setup() {
-    git clone --bare $gitURL $repoDir
+    git clone --bare --branch laptop $gitURL $repoDir
     mkdir -p .config-backup
     gitdot checkout
     if [ $? = 0 ]; then
