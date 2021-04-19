@@ -17,7 +17,7 @@ setup() {
         echo "Checkout out config.";
     else
         echo "Backing up existing dotfiles"
-        gitdot checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{}mv {} .config-backup/{}
+        gitdot checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
     fi;
     gitdot checkout
     gitdot config status.showUntrackedFiles no
