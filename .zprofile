@@ -1,20 +1,27 @@
 TERMINAL=st; export TERMINAL
 
-path+=('/home/philipj/.local/bin')
+path+=("$HOME"/.local/bin)
 
 # XDG Dirs
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_RUNTIME_DIR=/run/user/$UID
+export XDG_CONFIG_HOME="$HOME"/.config
+export XDG_CACHE_HOME="$HOME"/.cache
+export XDG_DATA_HOME="$HOME"/.local/share
+export XDG_RUNTIME_DIR=/run/user/"$UID"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share
 export XDG_CONFIG_DIRS=/etc/xdg
 
-export DOTFILES=$XDG_CONFIG_HOME/repo.git
+# Moving stuff out home home
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export LESSHISTFILE=-
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME"/npm/npmrc
+export NVM_DIR="$XDG_DATA_HOME"/nvm
+export TERMINFO="$XDG_DATA_HOME"/terminfo
+export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 
-export NNN_TRASH=1
-export NNN_COLORS='1234'
-export NNN_OPTS='drx'
+
+
+export DOTFILES="$XDG_CONFIG_HOME"/repo.git
 
 export NNN_TRASH=1
 export NNN_COLORS='1234'
