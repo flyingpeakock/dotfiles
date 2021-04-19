@@ -67,7 +67,6 @@ endif
 
 call plug#begin('~/.config/vim/plugged')
 Plug 'tpope/vim-fugitive'
-Plug 'ycm-core/YouCompleteMe'
 Plug 'camspiers/animate.vim'
 Plug 'camspiers/lens.vim'
 Plug 'preservim/nerdtree'
