@@ -1,4 +1,4 @@
-# Setting stuff to move things to xdg config home
+" Setting stuff to move things to xdg config home
 set runtimepath^=$XDG_CONFIG_HOME/vim
 set runtimepath+=$XDG_DATA_HOME/vim
 set runtimepath+=$XDG_CONFIG_HOME/vim/after
@@ -16,7 +16,7 @@ set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p')
 
 if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
 
-
+" Setting defaults
 filetype indent plugin on
 set background=dark
 set encoding=utf-8
@@ -43,11 +43,13 @@ set scrolloff=3
 set updatecount=100
 set spl=en spell
 set nospell
+" Only spell check some files
 augroup SpellCheck
     autocmd!
     autocmd FileType text,txt,latex,tex,md,markdown setlocal spell
 augroup END
 
+" Cool function when YCM isn't working
 function! Mosh_Tab_Or_Complete()
     if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
         return "\<C-N>"
@@ -56,6 +58,7 @@ function! Mosh_Tab_Or_Complete()
 endfunction
 inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
 
+" Download vim-plug if not present
 if empty(glob('~/.config/vim/autoload/plug.vim'))
    silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -83,6 +86,7 @@ call plug#end()
 
 colorscheme nord
 
+" Setting cursor
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[2 q"
