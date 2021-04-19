@@ -1,9 +1,16 @@
 TERMINAL=st; export TERMINAL
 
 path+=('/home/philipj/.local/bin')
-path+=('/home/philipj/.cargo/bin')
 
-export DOTFILES=$HOME/.config/repo.git
+# XDG Dirs
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_RUNTIME_DIR=/run/user/$UID
+export XDG_DATA_DIRS=/usr/local/share:/usr/share
+export XDG_CONFIG_DIRS=/etc/xdg
+
+export DOTFILES=$XDG_CONFIG_HOME/repo.git
 
 export NNN_TRASH=1
 export NNN_COLORS='1234'
