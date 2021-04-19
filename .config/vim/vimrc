@@ -49,7 +49,6 @@ augroup SpellCheck
     autocmd FileType text,txt,latex,tex,md,markdown setlocal spell
 augroup END
 
-" Cool function when YCM isn't working
 function! Mosh_Tab_Or_Complete()
     if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
         return "\<C-N>"
