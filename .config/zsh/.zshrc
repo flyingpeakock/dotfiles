@@ -19,16 +19,17 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 autoload -U compinit -d ~/.zsh/zcompdump-$ZSH_VERSION
-compinit -d ~/.zsh/zcompdump-$ZSH_VERSION
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 # Plugins
-source ~/.zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fpath=(~/.zsh/plugins/zsh-completions/src $fpath)
-source ~/.zsh/plugins/zsh-histdb/sqlite-history.zsh
-source ~/.zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.zsh/plugins/command-not-found/command-not-found.zsh
+source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
+source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fpath=(~/.conifg/zsh/plugins/zsh-completions/src $fpath)
+source ~/.config/zsh/plugins/zsh-histdb/sqlite-history.zsh
+source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.config/zsh/plugins/command-not-found/command-not-found.zsh
 
 _zsh_autosuggest_strategy_histdb_top_here() {
     local query="select commands.argv from
@@ -47,12 +48,12 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 # User files
-for CUSTOM in `find ~/.zsh/custom`
+for CUSTOM in `find ~/.config/zsh/custom`
 do
     [ -f "$CUSTOM" ] && source "$CUSTOM"
 done
 
-source ~/.zsh/p10k.zsh
+source ~/.config/zsh/p10k.zsh
 
 # Keep this at the end
-source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
