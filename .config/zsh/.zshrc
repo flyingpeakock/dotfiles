@@ -10,9 +10,6 @@ setopt autocd autopushd
 setopt correct
 autoload -Uz add-zsh-hook
 
-export EDITOR='vim'
-export VISUAL='vim'
-
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -20,7 +17,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
-autoload -U compinit -d ~/.zsh/zcompdump-$ZSH_VERSION
+autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 # Plugins

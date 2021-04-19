@@ -12,5 +12,4 @@ alias pip="pip3"
 alias calc="python -i -c 'from math import *; import numpy as np;'"
 alias vimsu="sudo -E vim"
 alias -s pdf=zathura
-alias gitdot="git --git-dir=$DOTFILES --work-tree=$HOME"
 alias gpg2=gpg2 --homedir "$XDG_DATA_HOME"/gnupg

@@ -2,6 +2,9 @@ TERMINAL=st; export TERMINAL
 
 path+=("$HOME"/.local/bin)
 
+export EDITOR='vim'
+export VISUAL='vim'
+
 # XDG Dirs
 export XDG_CONFIG_HOME="$HOME"/.config
 export XDG_CACHE_HOME="$HOME"/.cache
@@ -20,7 +23,7 @@ export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
-export HISTFILE="$XDG_DATA_HOME"/zsh/history
+export HISTDB_FILE="$XDG_DATA_HOME"/zsh/history/zsh-history.db
 
 # Moving vim
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
