@@ -2,6 +2,29 @@
 # This is a currently just a script that links certain things to
 # outside of my home directory
 
+repoDir=$HOME/.config/repo.git
+gitURL="git://philipj.ydns.eu/dotfiles.git"
+
+gitdot() {
+    git --git-dir=$repoDir --work-tree=$HOME $@
+}
+
+setup() {
+    git clone --bare $gitURL $repoDir
+    mkdir -p .config-backup
+    gitdot checkout
+    if [ $? = 0 ]; then
+        echo "Checkout out config.";
+    else
+        echo "Backing up existing dotfiles"
+        gitdot checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{}mv {} .config-backup/{}
+    fi;
+    gitdot checkout
+    gitdot config status.showUntrackedFiles no
+}
+
+[ ! -e $repoDir ] && setup
+
 sudo ln -sf ~/Documents/systemd/backup.timer /etc/systemd/system/ || echo "Could not link backup.timer"
 
 sudo ln -sf ~/Documents/systemd/backup.service /etc/systemd/system/ || echo "Could not link backup.service"
