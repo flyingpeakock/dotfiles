@@ -64,3 +64,6 @@
 [submodule "/home/philipj/config/vim/pack/vendor/start/VimCompletesMe"]
 	path = /home/philipj/config/vim/pack/vendor/start/VimCompletesMe
 	url = git://github.com/ajh17/VimCompletesMe.git
+[submodule "/home/philipj/.config/vim/pack/vendor/start/VimCompletesMe"]
+	path = /home/philipj/.config/vim/pack/vendor/start/VimCompletesMe
+	url = git://github.com/ajh17/VimCompletesMe.git
