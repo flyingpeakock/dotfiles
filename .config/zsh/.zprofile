@@ -22,6 +22,7 @@ export XINITRC="$XDG_CONFIG_HOME"/X11/xinitrc
 export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 export HISTDB_FILE="$XDG_DATA_HOME"/zsh/history/zsh-history.db
 export XAUTHORITY="$XDG_RUNTIME_DIR"/XAuthority
+export TS3_CONFIG_DIR="$XDG_CONFIG_HOME"/ts3client
 
 # Moving vim
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
