@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # Background
-exec --no-startup-id sh ~/.dotfiles/i3/.fehbg
+exec --no-startup-id sh ~/.config/i3/.fehbg
 
 # MOVEMENT KEYS
 #########################################
