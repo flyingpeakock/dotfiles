@@ -9,7 +9,7 @@ User=philipj
 Type=forking
 Environment=DISPLAY=:0
 ExecStartPre=
-ExecStart=i3lock -u -c 000000
+ExecStart=i3lock
 
 [Install]
 WantedBy=suspend.target
