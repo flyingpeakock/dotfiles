@@ -40,8 +40,8 @@ ex ()
 
 please ()
 {
-    if [ -e $# ]; then
-        sudo $#
+    if [ $# -ne 0 ]; then
+        sudo $*
     else
         sudo $(fc -ln -1)
     fi
