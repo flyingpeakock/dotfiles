@@ -5,16 +5,23 @@ fi
 ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 CASE_SENSITIVE="false"
-setopt nocasematch
+setopt alwaystoend
 setopt autocd
+setopt autolist
+setopt autonamedirs
 setopt autopushd
-setopt correct
+setopt cdablevars
+setopt completeinword
+setopt correctall
+setopt histexpiredupsfirst
+setopt histfindnodups
 setopt histignoredups
 setopt histignorespace
-setopt listpacked
-setopt autolist
-setopt histfindnodups
 setopt interactivecomments
+setopt listpacked
+setopt nobeep
+setopt nocasematch
+setopt pushdignoredups
 autoload -Uz add-zsh-hook
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
