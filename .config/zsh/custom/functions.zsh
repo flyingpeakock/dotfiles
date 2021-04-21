@@ -37,3 +37,12 @@ ex ()
         echo "'$1' is not a valid file"
     fi
 }
+
+please ()
+{
+    if [ $# -ne 0 ]; then
+        sudo $*
+    else
+        sudo $(fc -ln -1)
+    fi
+}
