@@ -8,6 +8,7 @@ CASE_SENSITIVE="false"
 setopt alwaystoend
 setopt autocd
 setopt autolist
+setopt automenu
 setopt autonamedirs
 setopt autopushd
 setopt cdablevars
@@ -22,6 +23,7 @@ setopt listpacked
 setopt nobeep
 setopt nocasematch
 setopt pushdignoredups
+setopt sharehistory
 autoload -Uz add-zsh-hook
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
