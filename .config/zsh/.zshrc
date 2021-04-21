@@ -6,8 +6,15 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 CASE_SENSITIVE="false"
 setopt nocasematch
-setopt autocd autopushd
+setopt autocd
+setopt autopushd
 setopt correct
+setopt histignoredups
+setopt histignorespace
+setopt listpacked
+setopt autolist
+setopt histfindnodups
+setopt interactivecomments
 autoload -Uz add-zsh-hook
 
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
