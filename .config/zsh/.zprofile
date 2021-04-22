@@ -16,6 +16,8 @@ export NVM_DIR="$XDG_DATA_HOME"/nvm
 export TERMINFO="$XDG_DATA_HOME"/terminfo
 export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
 export HISTDB_FILE="$XDG_DATA_HOME"/zsh/history/zsh-history.db
+export XAUTHORITY="$XDG_RUNTIME_DIR"/XAuthority
+export SQLITE_HISTORY="$XDG_DATA_HOME"/sqlite_history
 
 # Moving vim
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
