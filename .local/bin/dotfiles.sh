@@ -10,7 +10,7 @@ gitdot() {
 }
 
 setup() {
-    git clone --bare $gitURL $repoDir
+    git clone --bare --branch tty $gitURL $repoDir
     mkdir -p .config-backup
     gitdot checkout
     if [ $? = 0 ]; then
@@ -27,8 +27,5 @@ setup() {
 
 [ ! -e $repoDir ] && setup
 
-sudo ln -sf ~/Documents/systemd/backup.timer /etc/systemd/system/ || echo "Could not link backup.timer"
-sudo ln -sf ~/Documents/systemd/backup.service /etc/systemd/system/ || echo "Could not link backup.service"
-sudo ln -sf ~/Documents/systemd/customlock@.service /etc/systemd/system/ || echo "Could not link custom lock"
 sudo ln -sf ~/.config/xkb/se_cm /usr/share/X11/xkb/symbols/ || echo "Could not link xkb map"
 
