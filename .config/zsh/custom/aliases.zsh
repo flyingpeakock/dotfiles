@@ -12,6 +12,3 @@ alias calc="python -i -c 'from math import *; import numpy as np;'"
 alias vimsu="sudo -E vim"
 alias -s pdf=zathura
 alias gpg2=gpg2 --homedir "$XDG_DATA_HOME"/gnupg
-alias ta="tmux attach -t"
-alias ts="tmux new-session -s"
-alias tl="tmux list-sessions"
