@@ -2,6 +2,10 @@
 # Comment otherwise
 export TERMINAL=st
 
+# Set path
+typeset -U PATH path # No duplicates
+path+=("$HOME"/.local/bin)
+
 # Vim mode
 export EDITOR='vim'
 export VISUAL='vim'
