@@ -1,6 +1,6 @@
 # Setting terminal for i3 sensible terminable
 # Comment otherwise
-TERMINAL=st; export TERMINAL
+export TERMINAL=st
 
 # Vim mode
 export EDITOR='vim'
