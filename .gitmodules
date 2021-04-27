@@ -61,3 +61,6 @@
 [submodule ".config/tmux/plugins/tmux-yank"]
 	path = .config/tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
+[submodule ".config/tmux/plugins/tmux-sessionist"]
+	path = .config/tmux/plugins/tmux-sessionist
+	url = https://github.com/tmux-plugins/tmux-sessionist.git
