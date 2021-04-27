@@ -10,7 +10,7 @@ gitdot() {
 }
 
 setup() {
-    git clone --bare --branch tty $gitURL $repoDir
+    git clone --bare --branch termux $gitURL $repoDir
     mkdir -p .config-backup
     gitdot checkout
     if [ $? = 0 ]; then
