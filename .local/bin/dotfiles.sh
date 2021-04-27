@@ -26,6 +26,3 @@ setup() {
 }
 
 [ ! -e $repoDir ] && setup
-
-sudo ln -sf ~/.config/xkb/se_cm /usr/share/X11/xkb/symbols/ || echo "Could not link xkb map"
-
