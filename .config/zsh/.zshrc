@@ -67,5 +67,8 @@ done
 
 source ~/.config/zsh/p10k.zsh
 
+# try to set xkbmap here for tty
+setxkbmap se_cm
+
 # Keep this at the end
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
