@@ -1,6 +1,6 @@
 # Setting terminal for i3 sensible terminable
 # Comment otherwise
-export TERMINAL=st
+# export TERMINAL=st
 
 # Set path
 typeset -U PATH path # No duplicates
