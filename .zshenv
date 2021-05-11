@@ -10,6 +10,8 @@ path+=("$HOME"/.local/bin)
 export EDITOR='vim'
 export VISUAL='vim'
 
+export PAGER='less'
+
 # Move all other zsh files out of home
 export ZDOTDIR=$HOME/.config/zsh
 
@@ -40,8 +42,3 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 
 # Location of bare dotfile repository if installed with script
 export DOTFILES="$XDG_CONFIG_HOME"/repo.git
-
-# NNN file manager configuration
-export NNN_TRASH=1
-export NNN_COLORS='1234'
-export NNN_OPTS='drx'
