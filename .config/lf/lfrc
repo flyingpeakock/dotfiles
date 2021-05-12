@@ -53,19 +53,6 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
-cmd broot_jump ${{
-  f=$(mktemp)
-  res="$(broot --outcmd $f && cat $f | sed 's/cd //')"
-  rm -f "$f"
-  if [ -f "$res" ]; then
-    cmd="select"
-  elif [ -d "$res" ]; then
-    cmd="cd"
-  fi
-  lf -remote "send $id $cmd \"$res\""
-}}
-
-
 cmd dragon %dragon-drag-and-drop -a -x $fx
 cmd dragon-stay %dragon-drag-and-drop -a $fx
 cmd dragon-individual %dragon-drag-and-drop $fx
@@ -146,7 +133,7 @@ map tc clear_trash
 map tr restore_trash
 
 # Broot Mapping
-map f broot_jump
+map f fzf_jump
 
 # Dragon Mapping
 map dr dragon
