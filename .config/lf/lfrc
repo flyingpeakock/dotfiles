@@ -42,7 +42,6 @@ cmd sudomkfile ${{
   sudo $EDITOR $ans
 }}
 
-cmd setwallpaper %cp "$f" ~/.config/wall.png && xwallpaper --zoom "$f"
 
 cmd fzf_jump ${{
   res="$(find . -maxdepth 3 | fzf --reverse --header='Jump to location')"
@@ -66,9 +65,6 @@ cmd broot_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
-cmd open_config  ${{
-  $EDITOR $(bookmenu -b ~/.config/bookmenu/configs -f fzf -o)
-}}
 
 cmd dragon %dragon-drag-and-drop -a -x $fx
 cmd dragon-stay %dragon-drag-and-drop -a $fx
@@ -172,14 +168,31 @@ map <enter> open
 map mf mkfile
 map mr sudomkfile
 map md mkdir
-map ms $mkscript
 map ch chmod
-map bg setwallpaper
-map o open_config
-map br $vimv $fx
 map r rename
-map H top
-map L bottom
+map K top
+map J bottom
 map R reload
 map C clear
 map U unselect
+
+# Bookmarks
+map bH cd ~/Hv
+map bhe cd ~/Hv/EHD500
+map bha cd ~/Hv/ASC400
+
+map bC cd ~/Code
+map bcc cd ~/Code/Console_sudoku
+map bcd cd ~/Code/dotfiles
+map bcs cd ~/Code/st
+map bcw cd ~/Code/website
+
+map bD cd  ~/Documents
+
+map bW cd ~/Downloads
+
+map bR cd /
+map bE cd /etc
+map bU cd /usr
+map bus cd /usr/share
+
