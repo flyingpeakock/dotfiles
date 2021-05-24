@@ -107,5 +107,5 @@ please ()
 }
 
 parufind () {
-     paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'paru -Si {1}' | cut -d \" \" -f 1 | xargs -ro paru -S
+     paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
