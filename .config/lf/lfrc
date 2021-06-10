@@ -4,7 +4,7 @@ set drawbox true
 set icons true
 set ignorecase true
 
-Custom Functions
+# Custom Functions
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
         text/*|application/json) $EDITOR "$f";;
