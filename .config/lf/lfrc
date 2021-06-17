@@ -169,7 +169,7 @@ map bhe cd ~/Hv/EHD500
 map bha cd ~/Hv/ASC400
 
 map bC cd ~/Code
-map bcc cd ~/Code/Console_sudoku
+map bcc cd ~/Code/tuidoku
 map bcd cd ~/Code/dotfiles
 map bcs cd ~/Code/st
 map bcw cd ~/Code/website
