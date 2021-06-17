@@ -74,7 +74,6 @@ Plug 'lervag/vimtex'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'rust-lang/rust.vim'
-Plug 'neoclide/coc.vim', {'branch':'release'}
 call plug#end()
 
 source ~/.config/vim/cocrc
