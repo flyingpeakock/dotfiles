@@ -76,8 +76,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
-source ~/.config/vim/cocrc
-
 let g:airline_powerline_fonts = 1
 let g:bufferline_echo = 0
 let g:tex_flavor='latex'
