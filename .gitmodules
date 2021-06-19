@@ -1,6 +1,3 @@
-[submodule ".config/tmux/plugins/tmux-sessionist"]
-	path = .config/tmux/plugins/tmux-sessionist
-	url = https://github.com/tmux-plugins/tmux-sessionist.git
 [submodule ".config/vim/plugged/rust.vim"]
 	path = .config/vim/plugged/rust.vim
 	url = https://github.com/rust-lang/rust.vim
