@@ -39,6 +39,7 @@ export SQLITE_HISTORY="$XDG_DATA_HOME"/sqlite_history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
 export SSB_HOME="$XDG_DATA_HOME"/zoom
+export TS3_CONFIG_DIR="$XDG_CONFIG_HOME"/ts3client
 
 # Moving vim
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
