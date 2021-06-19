@@ -22,3 +22,21 @@
 [submodule ".config/vim/plugged/vimtex"]
 	path = .config/vim/plugged/vimtex
 	url = https://github.com/lervag/vimtex
+[submodule ".config/tmux/plugins/nord-tmux"]
+	path = .config/tmux/plugins/nord-tmux
+	url = https://github.com/arcticicestudio/nord-tmux
+[submodule ".config/tmux/plugins/tmux-open"]
+	path = .config/tmux/plugins/tmux-open
+	url = https://github.com/tmux-plugins/tmux-open
+[submodule ".config/tmux/plugins/tmux-sensible"]
+	path = .config/tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible
+[submodule ".config/tmux/plugins/tpm"]
+	path = .config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule ".config/tmux/plugins/tmux-pain-control"]
+	path = .config/tmux/plugins/tmux-pain-control
+	url = https://github.com/tmux-plugins/tmux-pain-control
+[submodule ".config/tmux/plugins/tmux-yank"]
+	path = .config/tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank
