@@ -36,6 +36,9 @@ export XSERVERRC="$XDG_CONFIG_HOME"/X11/xserverrc
 export HISTDB_FILE="$XDG_DATA_HOME"/zsh/history/zsh-history.db
 export XAUTHORITY="$XDG_RUNTIME_DIR"/XAuthority
 export SQLITE_HISTORY="$XDG_DATA_HOME"/sqlite_history
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export SSB_HOME="$XDG_DATA_HOME"/zoom
 
 # Moving vim
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
