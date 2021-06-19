@@ -16,3 +16,12 @@
 [submodule ".config/vim/plugged/lens.vim"]
 	path = .config/vim/plugged/lens.vim
 	url = https://github.com/camspiers/lens.vim
+[submodule ".config/vim/plugged/nord-vim"]
+	path = .config/vim/plugged/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim
+[submodule ".config/vim/plugged/vim-airline"]
+	path = .config/vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline
+[submodule ".config/vim/plugged/vimtex"]
+	path = .config/vim/plugged/vimtex
+	url = https://github.com/lervag/vimtex
