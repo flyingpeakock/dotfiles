@@ -13,3 +13,6 @@
 [submodule ".config/vim/plugged/vim-fugitive"]
 	path = .config/vim/plugged/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
+[submodule ".config/vim/plugged/lens.vim"]
+	path = .config/vim/plugged/lens.vim
+	url = https://github.com/camspiers/lens.vim
