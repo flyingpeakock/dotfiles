@@ -5,9 +5,29 @@ set icons true
 set ignorecase true
 
 # Custom Functions
+cmd recol ${{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}} 
+recol
+
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json) $EDITOR "$f";;
+        text/*|application/json) 
+		if [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; then
+            tmux split-window -h $EDITOR --servername lf --remote-tab-silent "$f"
+            tmux resize-pane -L 35
+			recol
+        else
+            $EDITOR "$f"
+        fi
+        ;;
         *) xdg-open "$f"& ;;
     esac
 }}
@@ -53,12 +73,21 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
+
+cmd fasd_dir ${{
+   res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty | sed 's/\\/\\\\/g;s/"/\\"/g')"
+   if [ -d "$res" ]; then
+      cmd="cd"
+   else
+      cmd="select"
+   fi
+ lf -remote "send $id $cmd \"$res\""
+ }}
+
+
 cmd dragon %dragon-drag-and-drop -a -x $fx
 cmd dragon-stay %dragon-drag-and-drop -a $fx
 cmd dragon-individual %dragon-drag-and-drop $fx
-cmd cpdragon %cpdragon
-cmd mvdragon %mvdragon
-cmd dlfile %dlfile
 
 # Archive bindings
 cmd unarchive ${{
@@ -134,14 +163,12 @@ map tr restore_trash
 
 # Broot Mapping
 map f fzf_jump
+map go fast_dir
 
 # Dragon Mapping
 map dr dragon
 map ds dragon-stay
 map di dragon-individual
-map dm mvdragon
-map dc cpdragon
-map dl dlfile
 
 map ss stripspace
 
