@@ -36,6 +36,8 @@ zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
 autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
+eval "$(fasd --init auto)"
+
 # Plugins
 source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
