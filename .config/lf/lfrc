@@ -7,7 +7,8 @@ set ignorecase true
 # Custom Functions
 cmd open ${{
     case $(file --mime-type "$f" -bL) in
-        text/*|application/json) $EDITOR "$f";;
+        text/*|application/json) $EDITOR "$f"
+        ;;
         *) xdg-open "$f"& ;;
     esac
 }}
@@ -53,12 +54,21 @@ cmd fzf_jump ${{
   lf -remote "send $id $cmd \"$res\""
 }}
 
+
+cmd fasd_dir ${{
+   res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty | sed 's/\\/\\\\/g;s/"/\\"/g')"
+   if [ -d "$res" ]; then
+      cmd="cd"
+   else
+      cmd="select"
+   fi
+ lf -remote "send $id $cmd \"$res\""
+ }}
+
+
 cmd dragon %dragon-drag-and-drop -a -x $fx
 cmd dragon-stay %dragon-drag-and-drop -a $fx
 cmd dragon-individual %dragon-drag-and-drop $fx
-cmd cpdragon %cpdragon
-cmd mvdragon %mvdragon
-cmd dlfile %dlfile
 
 # Archive bindings
 cmd unarchive ${{
@@ -134,14 +144,12 @@ map tr restore_trash
 
 # Broot Mapping
 map f fzf_jump
+map go fast_dir
 
 # Dragon Mapping
 map dr dragon
 map ds dragon-stay
 map di dragon-individual
-map dm mvdragon
-map dc cpdragon
-map dl dlfile
 
 map ss stripspace
 
