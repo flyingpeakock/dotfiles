@@ -144,7 +144,7 @@ map tr restore_trash
 
 # Broot Mapping
 map f fzf_jump
-map go fast_dir
+map go fasd_dir
 
 # Dragon Mapping
 map dr dragon
