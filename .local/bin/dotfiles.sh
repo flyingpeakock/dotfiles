@@ -4,31 +4,31 @@
 
 repoDir=$HOME/.config/repo.git
 backupDir=$HOME/backup-config
-gitURL="git://philipj.ydns.eu/dotfiles.git"
+gitURL="https://github.com/flyingpeakock/dotfiles.git"
 
 gitdot() {
     git --git-dir=$repoDir --work-tree=$HOME $@
 }
 
 setup() {
-    printf "Cloning dotfiles into $repoDir\n"
+    printf "Cloning dotfiles bare repo into $repoDir\n"
     git clone --bare $gitURL $repoDir > /dev/null
-    printf "Done\n"
+    printf "Attempting to check out bare repo\n"
     gitdot checkout 2>&1 /dev/null
     if [ $? -ne 0 ]; then
         mkdir -p $backupDir
         printf "Conflicting config files found. Moving to $backupDir\n"
         gitdot checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $backupDir/{}
     fi;
-    gitdot checkout > /dev/null
+    gitdot checkout > /dev/null && printf "Checked out bare repo to home directory\n"
     gitdot config status.showUntrackedFiles no > /dev/null
 }
 
 changeShell() {
-    printf "Change to zsh?\n"
+    printf "Change default shell to zsh?\n"
     select yn in "Yes" "No"
     case $yn in
-        yes ) chsh -s /bin/zsh;;
+        Yes ) chsh -s /bin/zsh;;
     esac
 }
 
@@ -42,4 +42,4 @@ setkeyMap() {
 
 shell = `echo $SHELL | awk -F '/' '{print $(NF)}'`
 [ $shell = "zsh" ] || changeShell
-setkeyMap || printf "Error setting xkb map. Perhaps you don't have X installed?\n"
+[ -e $HOME/.config/xkb/se_cm ] && setkeyMap || printf "Error setting xkb map. Perhaps you don't have X installed?\n"
