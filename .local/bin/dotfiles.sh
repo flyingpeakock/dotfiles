@@ -3,6 +3,7 @@
 # outside of my home directory
 
 repoDir=$HOME/.config/repo.git
+backupDir=$HOME/backup-config
 gitURL="git://philipj.ydns.eu/dotfiles.git"
 
 gitdot() {
@@ -10,25 +11,35 @@ gitdot() {
 }
 
 setup() {
-    git clone --bare $gitURL $repoDir
-    mkdir -p .config-backup
-    gitdot checkout
-    if [ $? = 0 ]; then
-        echo "Checkout out config.";
-    else
-        echo "Backing up existing dotfiles"
-        gitdot checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+    printf "Cloning dotfiles into $repoDir\n"
+    git clone --bare $gitURL $repoDir > /dev/null
+    printf "Done\n"
+    gitdot checkout 2>&1 /dev/null
+    if [ $? -ne 0 ]; then
+        mkdir -p $backupDir
+        printf "Conflicting config files found. Moving to $backupDir\n"
+        gitdot checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} $backupDir/{}
     fi;
-    gitdot checkout
-    gitdot config status.showUntrackedFiles no
-
-    echo "Don't forget to change shell and set setxkbmap"
+    gitdot checkout > /dev/null
+    gitdot config status.showUntrackedFiles no > /dev/null
 }
+
+changeShell() {
+    printf "Change to zsh?\n"
+    select yn in "Yes" "No"
+    case $yn in
+        yes ) chsh -s /bin/zsh;;
+    esac
+}
+
+setkeyMap() {
+    sudo ln -sf ~/.config/xkb/se_cm /usr/share/X11/xkb/symbols/ 2>&1 /dev/null
+    setxkbmap se_cm 2>&1 /dev/null
+}
+
 
 [ ! -e $repoDir ] && setup
 
-sudo ln -sf ~/Documents/systemd/backup.timer /etc/systemd/system/ || echo "Could not link backup.timer"
-sudo ln -sf ~/Documents/systemd/backup.service /etc/systemd/system/ || echo "Could not link backup.service"
-sudo ln -sf ~/Documents/systemd/customlock@.service /etc/systemd/system/ || echo "Could not link custom lock"
-sudo ln -sf ~/.config/xkb/se_cm /usr/share/X11/xkb/symbols/ || echo "Could not link xkb map"
-
+shell = `echo $SHELL | awk -F '/' '{print $(NF)}'`
+[ $shell = "zsh" ] || changeShell
+setkeyMap || printf "Error setting xkb map. Perhaps you don't have X installed?\n"
