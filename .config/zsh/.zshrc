@@ -70,5 +70,25 @@ done
 
 source ~/.config/zsh/p10k.zsh
 
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P03B4252" #nord1
+    echo -en "\e]P84C566A" #nord3
+    echo -en "\e]P1BF616A" #nord11
+    echo -en "\e]P9BF616A" #nord11
+    echo -en "\e]P2A3BE8C" #nord14
+    echo -en "\e]PAA3BE8c" #nord14
+    echo -en "\e]P3EBCB8B" #nord13
+    echo -en "\e]PBEBCB8B" #nord13
+    echo -en "\e]P481A1C1" #nord9
+    echo -en "\e]PC81A1C1" #nord9
+    echo -en "\e]P5B48EAD" #nord15
+    echo -en "\e]PDB48EAD" #nord15
+    echo -en "\e]P688C0D0" #nord8
+    echo -en "\e]PE8FBCBB" #nord7
+    echo -en "\e]P7E5E9F0" #nord5
+    echo -en "\e]PFECEFF4" #nord6
+    clear #for background artifacting
+fi
+
 # Keep this at the end
 source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
