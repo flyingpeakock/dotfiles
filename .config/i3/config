@@ -218,6 +218,9 @@ bindsym $mod+r mode "resize"
 ##########################################
 exec --no-startup-id greenclip daemon
 exec --no-startup-id picom -b --experimental-backends
+exec --no-startup-id xset 600
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id setxkbmap se_cm
 
 # reload restart exit
 ##########################################
