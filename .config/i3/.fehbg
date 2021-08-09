@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale $HOME/Pictures/nightstars.jpg $HOME/Pictures/nordmountains.png 
+feh --no-fehbg --bg-scale $HOME/Pictures/nightstars.jpg $HOME/Pictures/norddessert.webp
