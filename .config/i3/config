@@ -224,6 +224,7 @@ exec --no-startup-id xset 600
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id pasystray
 exec --no-startup-id setxkbmap se_cm
+exec --no-startup-id xbanish
 
 # reload restart exit
 ##########################################
