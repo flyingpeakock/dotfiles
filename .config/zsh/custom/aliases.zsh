@@ -1,5 +1,5 @@
 alias open=xdg-open
-alias diskspace="du -S | sort -n -r |more"
+alias diskspace="du -S | sort -n -r | less"
 alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
 alias rm='echo "Are you sure you want to use this command? Did you mean trash-put?"; echo "If you meant to use rm type \\\\rm"; false'
 alias pc="ssh -X philipj@desktop.lan"
