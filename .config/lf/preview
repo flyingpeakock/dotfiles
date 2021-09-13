@@ -43,5 +43,7 @@ case "$1" in
 		ffmpegthumbnailer -i "$1" -o "$CACHE" -s 0
 		$HOME/.config/lf/image draw "$CACHE" $num 1 $numb $numc
 		;;
-	*) bat --theme Nord --decorations=never --paging=never "$1";;
+	*) 
+        bat --theme Nord --decorations=never --paging=never "$1"
+        ;;
 esac
