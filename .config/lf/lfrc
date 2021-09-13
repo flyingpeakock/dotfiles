@@ -1,4 +1,6 @@
 # Basic Settings
+set cleaner ~/.config/lf/cleaner
+set previewer ~/.config/lf/preview
 set preview true
 set drawbox true
 set icons true
