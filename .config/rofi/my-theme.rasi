@@ -42,6 +42,10 @@ configuration {
     location: northwest;
 	width: 23%;
 	height: 75%;
+    y-offset: 2.5%;
+    x-offset: 2%;
+    border: 1px;
+    border-color: @nord4;
 }
 
 #inputbar {
@@ -50,7 +54,6 @@ configuration {
 }
 
 #prompt {
-  margin: 5px;
   padding: 8px;
   border: 0 1px 0 0;
 }
