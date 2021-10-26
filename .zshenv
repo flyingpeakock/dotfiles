@@ -48,3 +48,9 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 
 # Location of bare dotfile repository if installed with script
 export DOTFILES="$XDG_CONFIG_HOME"/repo.git
+
+# Private stuff that should be kept out of git
+for PRIVATE in `find ~/.config/zsh/private`
+do
+    [ -f "$PRIVATE" ] && source "$PRIVATE"
+done
