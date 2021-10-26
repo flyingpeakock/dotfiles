@@ -52,5 +52,8 @@ export DOTFILES="$XDG_CONFIG_HOME"/repo.git
 # Private stuff that should be kept out of git
 for PRIVATE in `find ~/.config/zsh/private`
 do
-    [ -f "$PRIVATE" ] && source "$PRIVATE"
+    if [[ ! $PRIVATE =~ ".gitignore" ]];
+    then
+        [ -f "$PRIVATE" ] && source "$PRIVATE"
+    fi
 done
