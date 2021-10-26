@@ -68,6 +68,12 @@ do
     [ -f "$CUSTOM" ] && source "$CUSTOM"
 done
 
+# Private files
+for PRIVATE in `find ~/.config/zsh/private/rc`
+do
+    [ -f "$PRIVATE" ] && source "$PRIVATE"
+done
+
 source ~/.config/zsh/p10k.zsh
 
 # try to set xkbmap here for tty
