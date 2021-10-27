@@ -69,10 +69,14 @@ do
 done
 
 # Private files
-for PRIVATE in `find ~/.config/zsh/private/rc`
-do
-    [ -f "$PRIVATE" ] && source "$PRIVATE"
-done
+privateDir="~/.config/zsh/private/rc"
+if [[ -d "$privateDir" ]];
+then
+    for PRIVATE in `find $privateDir`
+    do
+        [ -f "$PRIVATE" ] && source "$PRIVATE"
+    done
+fi
 
 source ~/.config/zsh/p10k.zsh
 
