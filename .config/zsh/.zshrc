@@ -70,7 +70,7 @@ do
 done
 
 # Private files
-privateDir="~/.config/zsh/private/rc"
+privateDir="$HOME/.config/zsh/private/rc"
 if [[ -d "$privateDir" ]];
 then
     for PRIVATE in `find $privateDir`
