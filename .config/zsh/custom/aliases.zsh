@@ -1,9 +1,9 @@
 alias open=xdg-open
 alias diskspace="du -S | sort -n -r | less"
 alias folders="find . -maxdepth 1 -type d -print | xargs du -sk | sort -rn"
-alias pc="ssh -X philipj@loki.asgard"
-alias laptop="ssh -X philipj@balder.asgard"
-alias rasp="ssh -X pi@heimdall.asgard"
+alias loki="ssh -X philipj@loki.asgard"
+alias balder="ssh -X philipj@balder.asgard"
+alias heimdall="ssh -X pi@heimdall.asgard"
 alias phone="ssh localhost@phone.lan -p 8022"
 alias python="python3"
 alias pip="pip3"
