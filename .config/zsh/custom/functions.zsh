@@ -109,3 +109,17 @@ please ()
 parufind () {
      paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
+
+spotify() {
+    local started=""
+    pgrep spotifyd > /dev/null && $started=true
+    if [[ $started -eq "" ]];
+    then
+        spotifyd -U "bw get username spotify" -P "bw get password spotify"
+    fi
+    spt
+    if [[ $started -eq "" ]];
+    then
+        pkill spotifyd
+    fi
+}
