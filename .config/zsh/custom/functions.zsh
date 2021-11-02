@@ -125,5 +125,5 @@ spotify() {
 }
 
 ls () {
-    exa -l "$@" 2> /dev/null || ls
+    exa -l --header --git "$@" 2> /dev/null || ls
 }
