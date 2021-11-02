@@ -123,3 +123,7 @@ spotify() {
         pkill spotifyd
     fi
 }
+
+ls () {
+    exa -l "$@" 2> /dev/null || ls
+}
