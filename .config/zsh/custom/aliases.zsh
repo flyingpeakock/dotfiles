@@ -12,5 +12,5 @@ alias vimsu="sudo -e"
 alias -s pdf=zathura
 alias gpg2=gpg2 --homedir "$XDG_DATA_HOME"/gnupg
 alias dragon="dragon-drag-and-drop -a -x"
-alias lf="lfrun || lf"
-alias ls="exa -la || ls -lA"
+alias lf="lfrun 2> /dev/null || lf"
+alias ls="exa -la 2> /dev/null || ls -lA"
