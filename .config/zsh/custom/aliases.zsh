@@ -14,3 +14,4 @@ alias -s pdf=zathura
 alias gpg2=gpg2 --homedir "$XDG_DATA_HOME"/gnupg
 alias dragon="dragon-drag-and-drop -a -x"
 alias lf="lfrun || lf"
+alias ls="exa -la || ls -lA"
