@@ -127,3 +127,12 @@ spotify() {
 ls () {
     exa -l --git --icons "$@" 2> /dev/null || ls
 }
+
+lf () {
+    if command -v lfrun &> /dev/null
+    then
+        lfrun "$@"
+    else
+        lf "$@"
+    fi
+}
