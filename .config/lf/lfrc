@@ -58,7 +58,7 @@ cmd fzf_jump ${{
 
 
 cmd fasd_dir ${{
-   res="$(fasd -dl | grep -iv cache | fzf 2>/dev/tty | sed 's/\\/\\\\/g;s/"/\\"/g')"
+   res = "$(zoxide query -i | sed 's/\\/\\\\/g;s/"/\\"/g')"
    if [ -d "$res" ]; then
       cmd="cd"
    else
