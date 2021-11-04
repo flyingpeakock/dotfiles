@@ -50,7 +50,11 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 export DOTFILES="$XDG_CONFIG_HOME"/repo.git
 
 # Setting zoxide query preview
+<<<<<<< HEAD
 export _ZO_FZF_OPTS="--preview 'printf {} | xargs exa -T -L 1 2>/dev/null'"
+=======
+export _ZO_FZF_OPTS="--border=rounded --header=zoxide --preview 'printf {} | xargs exa -T -L 1 --icons 2>/dev/null'"
+>>>>>>> 291f5b07d99fff9e38d53f2144bfee2f97c852a5
 
 # Private stuff that should be kept out of git
 privateDir="$HOME/.config/zsh/private/env"
