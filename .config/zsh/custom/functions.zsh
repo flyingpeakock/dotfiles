@@ -1,5 +1,10 @@
 cheat() {
-    curl -s cheat.sh/$1 | less -fR
+    local p="bat"
+    if ! command -v $p &> /dev/null
+    then
+        p="less -fR"
+    fi
+    curl -s cheat.sh/$1 | $p
 }
 
 up(){
