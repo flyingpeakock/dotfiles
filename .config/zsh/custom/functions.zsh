@@ -149,7 +149,7 @@ j () {
 
 o () {
     file=$(fd -t f -H . $1 | fzf --preview 'preview.sh {}')
-    [[ -f $file ]] || exit 0
+    [[ -f $file ]] || return
     case $(file --mime-type "$file" -bL) in
         text/*|application/json) $EDITOR $file ;;
         *) xdg-open $file& ;;
