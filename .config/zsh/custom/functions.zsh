@@ -143,7 +143,7 @@ lf () {
 }
 
 j () {
-    d=$(fd -t d -H . $1 | fzf --height=25% --border=rounded --preview 'exa -T -L 1 --icons {}')
+    d=$(fd -t d -H . $1 | fzf --height=25% --border=rounded --preview 'exa -T -L 1 {}')
     [[ -d $d ]] && z $d
 }
 
