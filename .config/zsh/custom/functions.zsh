@@ -147,7 +147,7 @@ j () {
 }
 
 o () {
-    file=$(fd -t -f -H . $1 | fzf --preview 'preview.sh {}')
+    file=$(fd -t f -H . $1 | fzf --preview 'preview.sh {}')
     case $(file --mime-type "$file" -bL) in
         text/*|application/json) $EDITOR $file ;;
         *) xdg-open $file& ;;
