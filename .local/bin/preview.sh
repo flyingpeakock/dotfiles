@@ -1,12 +1,11 @@
 #!/bin/sh
 
 image() {
-	if [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
-		printf '{"action": "add", "identifier": "PREVIEW", "x": "%s", "y": "%s", "width": "%s", "height": "%s", "scaler": "contain", "path": "%s"}\n' "$4" "$5" "$(($2-1))" "$(($3-1))" "$1" > "$FIFO_UEBERZUG"
-		exit 1
-	else
-		chafa "$1" -s "$4x"
-	fi
+    < <(</dev/tty stty size) \
+        read TERMINAL_LINES TERMINAL_COLUMNS
+	X=$(expr $TERMINAL_COLUMNS - 1)
+    Y=$(expr $TERMINAL_LINES - 1)
+    chafa "$1" -s $Xx$Y
 }
 
 batorcat() {
@@ -14,13 +13,13 @@ batorcat() {
 	shift
 	if command -v bat > /dev/null 2>&1
 	then
-		bat --theme Nord --color=always --style=plain --pager=never "$file" "$@"
+		bat --color=always --style=plain --pager=never "$file" "$@"
 	else
 		cat "$file"
 	fi
 }
 
-CACHE="$HOME/.cache/lf/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
+CACHE="$HOME/.cache/preview/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 
 case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.tgz|*.tar.gz) tar tzf "$1" ;;
