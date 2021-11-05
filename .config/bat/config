@@ -24,4 +24,5 @@
 #--map-syntax "*.ino:C++"
 #--map-syntax ".ignore:Git Ignore"
 
---decorations=never
+--decorations=auto
+--style=grid,header,snip,changes
