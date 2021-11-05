@@ -143,12 +143,12 @@ lf () {
 }
 
 j () {
-    d=$(fd -t d -H . $1 | fzf --preview 'exa -T -L 1 --icons {}')
+    d=$(fd -t d -H . $1 | fzf --height=25% --border=rounded --preview 'exa -T -L 1 --icons {}')
     [[ -d $d ]] && z $d
 }
 
 o () {
-    file=$(fd -t f -H . $1 | fzf --preview 'preview.sh {}')
+    file=$(fd -t f -H . $1 | fzf --height=25% --border=rounded --preview 'preview.sh {}')
     [[ -f $file ]] || return
     case $(file --mime-type "$file" -bL) in
         text/*|application/json) $EDITOR $file ;;
