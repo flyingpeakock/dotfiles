@@ -1,10 +1,5 @@
 cheat() {
-    local p="bat --file-name 'Cheat: $1'"
-    if ! command -v $p &> /dev/null
-    then
-        p="less -fR"
-    fi
-    curl -s cheat.sh/$1 | $p
+    curl -s cheat.sh/$1 | bat --file-name "Cheat: $1"
 }
 
 up(){
