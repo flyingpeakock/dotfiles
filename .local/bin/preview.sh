@@ -1,7 +1,11 @@
 #!/bin/sh
 
 image() {
-    chafa "$1"
+    < <(</dev/tty stty size) \
+        read TERMINAL_LINES TERMINAL_COLUMNS
+	X=$(expr $TERMINAL_COLUMNS - 1)
+    Y=$(expr $TERMINAL_LINES - 1)
+    chafa "$1" -s $Xx$Y
 }
 
 batorcat() {
