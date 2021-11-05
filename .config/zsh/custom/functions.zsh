@@ -143,11 +143,13 @@ lf () {
 }
 
 j () {
-    z $(fd -t d -H . $1 | fzf --preview 'exa -T -L 1 --icons {}')
+    d=$(fd -t d -H . $1 | fzf --preview 'exa -T -L 1 --icons {}')
+    [[ -d $d ]] && z $d
 }
 
 o () {
     file=$(fd -t f -H . $1 | fzf --preview 'preview.sh {}')
+    [[ -f $file ]] || exit 0
     case $(file --mime-type "$file" -bL) in
         text/*|application/json) $EDITOR $file ;;
         *) xdg-open $file& ;;
