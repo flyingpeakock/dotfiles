@@ -1,5 +1,5 @@
 cheat() {
-    local p="bat"
+    local p="bat --file-name 'Cheat: $1'"
     if ! command -v $p &> /dev/null
     then
         p="less -fR"
