@@ -138,12 +138,12 @@ lf () {
 }
 
 j () {
-    d=$(fd -E /.snapshots -t d -H . $1 | fzf-tmux -p --preview 'exa -T -L 1 --icons {}')
+    d=$(fd -E /.snapshots -t d -H . $1 | fzf-tmux -p 75% --preview 'exa -T -L 1 --icons {}')
     [[ -d $d ]] && z $d
 }
 
 o () {
-    file=$(fd -E /.snapshots -t f -H . $1 | fzf-tmux -p --preview 'preview.sh {}')
+    file=$(fd -E /.snapshots -t f -H . $1 | fzf-tmux -p 75% --preview 'preview.sh {}')
     [[ -f $file ]] || return
     case $(file --mime-type "$file" -bL) in
         text/*|application/json) $EDITOR $file ;;
