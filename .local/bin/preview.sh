@@ -1,7 +1,7 @@
 #!/bin/sh
 
 image() {
-    chafa "$1" -s "$4x"
+    chafa "$1"
 }
 
 batorcat() {
