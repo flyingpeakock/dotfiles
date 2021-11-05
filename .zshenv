@@ -11,6 +11,7 @@ export EDITOR='vim'
 export VISUAL='vim'
 
 export PAGER='less'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Move all other zsh files out of home
 export ZDOTDIR=$HOME/.config/zsh
