@@ -125,7 +125,7 @@ spotify() {
 }
 
 ls () {
-    exa -l --git --icons "$@" 2> /dev/null || ls
+    exa -l --git "$@" 2> /dev/null || ls
 }
 
 lf () {
@@ -138,12 +138,12 @@ lf () {
 }
 
 j () {
-    d=$(fd -t d -H . $1 | fzf --border=rounded --preview 'exa -T -L 1 --icons {}')
+    d=$(fd -t d -H . $1 | fzf-tmux -p --border=rounded --preview 'exa -T -L 1 {}')
     [[ -d $d ]] && z $d
 }
 
 o () {
-    file=$(fd -t f -H . $1 | fzf --border=rounded --preview 'preview.sh {}')
+    file=$(fd -t f -H . $1 | fzf-tmux -p --border=rounded --preview 'preview.sh {}')
     [[ -f $file ]] || return
     case $(file --mime-type "$file" -bL) in
         text/*|application/json) $EDITOR $file ;;
