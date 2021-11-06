@@ -107,11 +107,11 @@ please ()
 }
 
 parufind () {
-     paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+     paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
 parurem () {
-    paru -Qqe | fzf-tmux -p 75% --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
+    paru -Qqe | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
 }
 
 spotify() {
@@ -142,12 +142,12 @@ lf () {
 }
 
 j () {
-    d=$(fd -E /.snapshots -t d -H . $1 | fzf-tmux -p 75% --preview 'exa -T -L 1 --icons {}')
+    d=$(fd -E /.snapshots -t d -H . $1 | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --preview 'exa -T -L 1 --icons {}')
     [[ -d $d ]] && z $d
 }
 
 o () {
-    file=$(fd -E /.snapshots -t f -H . $1 | fzf-tmux -p 75% --preview 'preview.sh {}')
+    file=$(fd -E /.snapshots -t f -H . $1 | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --preview 'preview.sh {}')
     [[ -f $file ]] || return
     case $(file --mime-type "$file" -bL) in
         text/*|application/json) $EDITOR $file ;;
