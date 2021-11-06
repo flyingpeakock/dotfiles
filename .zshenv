@@ -66,4 +66,3 @@ then
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
 fi
-. "/home/pi/.local/share/cargo/env"
