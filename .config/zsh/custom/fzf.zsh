@@ -1,6 +1,6 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶"'
+export FZF_DEFAULT_OPTS='--prompt="❯ "'
 export FZF_TMUX_OPTS='-p 75%'
 
 # Useful fzf functions
