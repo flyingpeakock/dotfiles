@@ -46,6 +46,7 @@ fpath=(~/.conifg/zsh/plugins/zsh-completions/src $fpath)
 source ~/.config/zsh/plugins/zsh-histdb/sqlite-history.zsh
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/plugins/command-not-found/command-not-found.zsh
+[[ -f /usr/share/fzf/completion.zsh ]] && source /usr/share/fzf/completion.zsh
 
 _zsh_autosuggest_strategy_histdb_top_here() {
     local query="select commands.argv from
