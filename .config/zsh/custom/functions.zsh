@@ -106,14 +106,6 @@ please ()
     fi
 }
 
-parufind () {
-     paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --multi --preview 'paru -Si {1}' | xargs -ro paru -S
-}
-
-parurem () {
-    paru -Qqe | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
-}
-
 spotify() {
     local started=""
     pgrep spotifyd > /dev/null && $started=true
@@ -139,29 +131,4 @@ lf () {
     else
         lf "$@"
     fi
-}
-
-j () {
-    d=$(fd -E /.snapshots -t d -H . $1 | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --preview 'exa -T -L 1 --icons {}')
-    [[ -d $d ]] && z $d
-}
-
-o () {
-    file=$(fd -E /.snapshots -t f -H . $1 | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --preview 'preview.sh {}')
-    [[ -f $file ]] || return
-    case $(file --mime-type "$file" -bL) in
-        text/*|application/json) $EDITOR $file ;;
-        *) xdg-open $file& ;;
-    esac
-}
-
-f () {
-    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-    local file
-    file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
-    [[ -f $file ]] || return
-    case $(file --mime-type "$file" -bL) in
-        (text/* | application/json) $EDITOR $file ;;
-        (*) xdg-open $file & ;;
-    esac
 }
