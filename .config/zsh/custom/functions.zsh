@@ -154,3 +154,14 @@ o () {
         *) xdg-open $file& ;;
     esac
 }
+
+f () {
+    if [ ! "$#" -gt o ]; then echo "Need a string to search for!"; return 1; fi
+    local file
+    file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | fzf-tmux -p 75% --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
+    [[ -f $file ]] || return
+    case $(file --mime-type "$file" -bL) in
+        (text/* | application/json) $EDITOR $file ;;
+        (*) xdg-open $file & ;;
+    esac
+}
