@@ -19,6 +19,17 @@ batorcat() {
 	fi
 }
 
+batorcatormd() {
+    file="$1"
+    shift
+    if command -v mdless > /dev/null 2>&1
+    then
+        mdless -c --no-pager "$file" "$@"
+    else
+        batorcat "$file"
+    fi
+}
+
 CACHE="$HOME/.cache/preview/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 
 case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
@@ -63,6 +74,9 @@ case "$(printf "%s\n" "$(readlink -f "$1")" | awk '{print tolower($0)}')" in
 	*.ino)
 		batorcat --language=cpp "$1"
 		;;
+    *.md)
+        batorcatormd "$1"
+        ;;
 	*)
 		batorcat "$1"
 		;;
