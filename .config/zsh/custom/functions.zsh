@@ -112,6 +112,7 @@ parufind () {
 
 parurem () {
     paru -Qqe | fzf-tmux -p 75% --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
+}
 
 spotify() {
     local started=""
