@@ -1,31 +1,31 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
 export FZF_DEFAULT_OPTS='--prompt="❯ "'
-export FZF_TMUX_OPTS='-p 75%'
+# export FZF_TMUX_OPTS='-p 75%' # Broken on raspbian, needs never fzf
 
 # Useful fzf functions
 
 # Install programs with paru
 pi () {
-	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf-tmux -p 75% --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf-tmux --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
 # Uninstall programs, lists only explicitly installed
 pu () {
-	paru -Qqe | fzf-tmux -p 75% --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
+	paru -Qqe | fzf-tmux --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
 }
 
 # Jump to a directory using fd
 j () {
 	local d
-	d=$(fd -E /.snapshots -t d -H . $* | fzf-tmux -p 75% --preview 'exa -T -L 1 {}')
+	d=$(fd -E /.snapshots -t d -H . $* | fzf-tmux --preview 'exa -T -L 1 {}')
 	[[ -d $d ]] && z $d
 }
 
 # Open a file found with fd
 o () {
 	local file
-	file=$(fd -E /.snapshots -t f -H . $* | fzf-tmux -p 75% --preview 'preview.sh {}')
+	file=$(fd -E /.snapshots -t f -H . $* | fzf-tmux --preview 'preview.sh {}')
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
