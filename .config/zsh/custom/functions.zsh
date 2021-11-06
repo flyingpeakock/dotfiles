@@ -156,7 +156,7 @@ o () {
 }
 
 f () {
-    if [ ! "$#" -gt o ]; then echo "Need a string to search for!"; return 1; fi
+    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
     local file
     file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | fzf-tmux -p 75% --prompt="❯ " --marker="▶" --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
     [[ -f $file ]] || return
