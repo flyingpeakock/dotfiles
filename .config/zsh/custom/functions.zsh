@@ -110,6 +110,9 @@ parufind () {
      paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
+parurem () {
+    paru -Qqe | fzf-tmux -p 75% --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
+
 spotify() {
     local started=""
     pgrep spotifyd > /dev/null && $started=true
