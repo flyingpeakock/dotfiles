@@ -13,7 +13,7 @@ up(){
     if [ -z "$d" ]; then
         d=..
     fi
-    cd $d
+    z $d
 }
                                         
 ex ()
