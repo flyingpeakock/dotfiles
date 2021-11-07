@@ -3,6 +3,9 @@ export FZF_DEFAULT_COMMAND='fd --type f .'
 export FZF_DEFAULT_OPTS='--prompt="❯ -1 -0'
 # export FZF_TMUX_OPTS='-p 75%'
 
+# Setting zoxide fzf options
+export _ZO_FZF_OPTS='--height=25% --layout=reverse --preview "printf {} | xargs exa -T -L 1 2>/dev/null"'
+
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
