@@ -1,31 +1,42 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶"'
+export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" -1 -0'
 export FZF_TMUX_OPTS='-p 75%'
+
+# Checking if tmux and setting correct fzf command
+_FZF_COMMAND () {
+    if [[ -v TMUX ]]; then
+        fzf-tmux -p 75% $*
+    else
+        fzf --height=25% --layout=reverse $*
+    fi
+}
+
+alias fzf=_FZF_COMMAND
 
 # Useful fzf functions
 
 # Install programs with paru
 pi () {
-	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf-tmux -p 75% --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | _FZF_COMMAND --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
 # Uninstall programs, lists only explicitly installed
 pu () {
-	paru -Qqe | fzf-tmux -p 75% --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
+	paru -Qqe | _FZF_COMMAND --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
 }
 
 # Jump to a directory using fd
 j () {
 	local d
-	d=$(fd -E /.snapshots -t d -H . $* | fzf-tmux -p 75% --preview 'exa -T -L 1 --icons {}')
+	d=$(fd -E /.snapshots -t d -H . $* | _FZF_COMMAND --preview 'exa -T -L 1 --icons {}')
 	[[ -d $d ]] && z $d
 }
 
 # Open a file found with fd
 o () {
 	local file
-	file=$(fd -E /.snapshots -t f -H . $* | fzf-tmux -p 75% --preview 'preview.sh {}')
+	file=$(fd -E /.snapshots -t f -H . $* | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
@@ -37,7 +48,7 @@ o () {
 f () {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 	local file
-	file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | fzf-tmux -p 75% --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
+	file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | _FZF_COMMAND --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
@@ -45,7 +56,12 @@ f () {
 	esac
 }
 
-# Start fzf setup taken from oh-my-zsh
+########################################
+# Start fzf setup taken from oh-my-zsh #
+########################################
+
+# Sources fzf completion and bindings
+
 function setup_using_base_dir() {
     local fzf_base fzf_shell fzfdirs dir
 
