@@ -1,6 +1,6 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ -1 -0'
+export FZF_DEFAULT_OPTS='--prompt="❯ " -1 -0 --pointer="➣"'
 # export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
