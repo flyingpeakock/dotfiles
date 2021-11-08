@@ -1,6 +1,6 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" -1 -0 --pointer="➣"'
+export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" --pointer="➣"'
 export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
@@ -45,6 +45,11 @@ o () {
 		text/*|application/json) $EDITOR $file ;;
 		*) xdg-open $file& ;;
 	esac
+}
+
+# Trash file
+tp () {
+    fd -H -t f . $* | _FZF_COMMAND --multi --preview 'preview.sh {}' | xargs -ro trash-put
 }
 
 # Open a file by searching inside of it
