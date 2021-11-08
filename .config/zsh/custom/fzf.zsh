@@ -1,6 +1,6 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " --pointer="➣"'
+export FZF_DEFAULT_OPTS='--prompt="❯ " --pointer="➤"'
 # export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
@@ -15,7 +15,10 @@ _FZF_COMMAND () {
     fi
 }
 
+# fzf aliases
+
 alias fzf=_FZF_COMMAND
+alias app="i3-dmenu-desktop --dmenu=fzf"
 
 # Useful fzf functions
 
@@ -62,6 +65,11 @@ f () {
 		text/*|application/json) $EDITOR $file ;;
 		*) xdg-open $file& ;;
 	esac
+}
+
+# Fuzzy search for man pages
+fman () {
+    man -k . | fzf | awk '{print $1}' | xargs -r man
 }
 
 ########################################
