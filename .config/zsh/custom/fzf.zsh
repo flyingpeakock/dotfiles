@@ -11,7 +11,14 @@ _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
         fzf-tmux -p 75% $*
     else
-        fzf --height=35% --layout=reverse --preview-window down $*
+        local height=40%
+        local pos=down
+        if [ $COLUMNS -gt 75 ]; then
+            height=27%
+            pos=right
+        fi
+
+        fzf --height=$height --layout=reverse --preview-window $pos $*
     fi
 }
 
