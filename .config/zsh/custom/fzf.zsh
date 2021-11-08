@@ -11,7 +11,7 @@ _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
         fzf-tmux -p 75% $*
     else
-        fzf --height=25% --layout=reverse $*
+        fzf --height=35% --layout=reverse --preview-window down $*
     fi
 }
 
