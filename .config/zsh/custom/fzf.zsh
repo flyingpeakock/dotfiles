@@ -79,6 +79,12 @@ fman () {
     man -k . | fzf | awk '{print $1}' | xargs -r man
 }
 
+# Some git commands
+
+is_in_git_repo() {
+  git rev-parse HEAD > /dev/null 2>&1
+}
+
 # Show git branches
 _gb () {
   is_in_git_repo || return
