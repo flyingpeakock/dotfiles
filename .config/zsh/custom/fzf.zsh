@@ -47,6 +47,11 @@ o () {
 	esac
 }
 
+# Trash file
+tp () {
+    fd -H -t f . $* | _FZF_COMMAND --multi --preview 'preview.sh {}' | xargs -ro trash-put
+}
+
 # Open a file by searching inside of it
 f () {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
