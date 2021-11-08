@@ -1,11 +1,7 @@
 #!/bin/sh
 
 image() {
-    < <(</dev/tty stty size) \
-        read TERMINAL_LINES TERMINAL_COLUMNS
-	X=$(expr $TERMINAL_COLUMNS - 1)
-    Y=$(expr $TERMINAL_LINES - 1)
-    chafa "$1" -s $Xx$Y
+    chafa "$1"
 }
 
 batorcat() {
@@ -29,6 +25,11 @@ batorcatormd() {
         batorcat "$file"
     fi
 }
+
+if [ -d "$1" ]; then
+    exa -T -L 2 "$1"
+    exit 0
+fi
 
 CACHE="$HOME/.cache/preview/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
 
