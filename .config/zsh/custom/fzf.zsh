@@ -1,6 +1,6 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " --pointer="➤"'
+export FZF_DEFAULT_OPTS='--prompt="❯ " --pointer="➤" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
 # export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
@@ -8,11 +8,7 @@ export _ZO_FZF_OPTS='--height=25% --layout=reverse --preview "printf {} | xargs 
 
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
-    if [[ -v TMUX ]]; then
-        fzf-tmux -p 75% $*
-    else
-        fzf --height=25% --layout=reverse $*
-    fi
+    fzf --height=25% --layout=reverse $*
 }
 
 # fzf aliases
