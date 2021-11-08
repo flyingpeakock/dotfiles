@@ -1,39 +1,48 @@
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" --pointer="➤" --height=25% --min-height=12 --layout=reverse --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
-export FZF_TMUX_OPTS='-p 75% --height=100% --layout=default'
+export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" --pointer="➤" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
+export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
 export _ZO_FZF_OPTS='--height=25% --layout=reverse --preview "printf {} | xargs exa -T -L 1 --icons 2>/dev/null"'
 
+# Checking if tmux and setting correct fzf command
+_FZF_COMMAND () {
+    if [[ -v TMUX ]]; then
+        fzf-tmux -p 75% $*
+    else
+        fzf --height=25% --layout=reverse $*
+    fi
+}
+
 # fzf aliases
 
-alias fzf=fzf-tmux
+alias fzf=_FZF_COMMAND
 alias app="i3-dmenu-desktop --dmenu=fzf"
 
 # Useful fzf functions
 
 # Install programs with paru
 pi () {
-	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | fzf-tmux --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | _FZF_COMMAND --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
 # Uninstall programs, lists only explicitly installed
 pu () {
-	paru -Qqe | fzf-tmux --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
+	paru -Qqe | _FZF_COMMAND --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
 }
 
 # Jump to a directory using fd
 j () {
 	local d
-	d=$(fd -E /.snapshots -t d -H . $* | fzf-tmux --preview 'preview.sh {}')
+	d=$(fd -E /.snapshots -t d -H . $* | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
 
 # Open a file found with fd
 o () {
 	local file
-	file=$(fd -E /.snapshots -t f -H . $* | fzf-tmux --preview 'preview.sh {}')
+	file=$(fd -E /.snapshots -t f -H . $* | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
@@ -43,14 +52,14 @@ o () {
 
 # Trash file
 tp () {
-    fd -H -t f . $* | fzf-tmux --multi --preview 'preview.sh {}' | xargs -ro trash-put
+    fd -H -t f . $* | _FZF_COMMAND --multi --preview 'preview.sh {}' | xargs -ro trash-put
 }
 
 # Open a file by searching inside of it
 f () {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 	local file
-	file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | fzf-tmux --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
+	file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | _FZF_COMMAND --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
