@@ -27,7 +27,7 @@ batorcatormd() {
 }
 
 if [ -d "$1" ]; then
-    exa -T -L 2 --icons $1
+    exa -T -L 2 --icons "$1"
     exit 0
 fi
 
