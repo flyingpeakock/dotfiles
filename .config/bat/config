@@ -25,4 +25,4 @@
 #--map-syntax ".ignore:Git Ignore"
 
 --decorations=auto
---style=header,snip,changes,numbrs
+--style=header,snip,changes,numbers
