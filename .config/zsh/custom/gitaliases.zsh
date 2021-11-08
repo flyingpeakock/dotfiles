@@ -13,5 +13,13 @@ gb () {
         git branch $*
         return 0
     fi
-    fgb
+    fgco
+}
+
+gco () {
+    if [ "$#" -gt 0 ]; then
+        git checkout $*
+        return 0
+    fi
+    fgco
 }
