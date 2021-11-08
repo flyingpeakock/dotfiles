@@ -9,7 +9,7 @@ export _ZO_FZF_OPTS='--height=25% --layout=reverse --preview "printf {} | xargs 
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
-        fzf-tmux -w 50% -h 75% $*
+        fzf-tmux -p 75% $*
     else
         fzf --height=35% --layout=reverse --preview-window down $*
     fi
