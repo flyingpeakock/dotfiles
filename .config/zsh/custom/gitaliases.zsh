@@ -1,6 +1,5 @@
 alias gi="git init"
 alias gs="git status -sbu"
-alias gco="git checkout"
 alias gp="git push"
 alias gm="git merge"
 alias ga="git add"
