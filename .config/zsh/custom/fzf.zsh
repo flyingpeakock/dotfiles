@@ -9,13 +9,13 @@ export _ZO_FZF_OPTS='--height=25% --layout=reverse --preview "printf {} | xargs 
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
-        fzf-tmux -p 75% $*
+        fzf-tmux -p 75% --preview-window right:60% $*
     else
         local height=50%
         local pos=down
         if [ $COLUMNS -gt 70 ]; then
             height=35%
-            pos=right
+            pos=right:60%
         fi
 
         fzf --height=$height --layout=reverse --preview-window $pos $*
@@ -77,6 +77,21 @@ f () {
 # Fuzzy search for man pages
 fman () {
     man -k . | fzf | awk '{print $1}' | xargs -r man
+}
+
+# Show git branches
+_gb () {
+  is_in_git_repo || return
+  git branch -a --color=always | grep -v '/HEAD\s' | sort |
+  _FZF_COMMAND --ansi --multi --tac \
+    --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' |
+  sed 's/^..//' | cut -d' ' -f1 |
+  sed 's#^remotes/##'
+}
+
+# Checkout branch fuzzily
+fgb () {
+	git checkout $(_gb)
 }
 
 ########################################
