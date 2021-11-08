@@ -11,10 +11,10 @@ _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
         fzf-tmux -p 75% $*
     else
-        local height=40%
+        local height=50%
         local pos=down
-        if [ $COLUMNS -gt 75 ]; then
-            height=27%
+        if [ $COLUMNS -gt 70 ]; then
+            height=35%
             pos=right
         fi
 
