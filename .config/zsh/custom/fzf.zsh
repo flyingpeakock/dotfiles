@@ -32,7 +32,7 @@ pu () {
 # Jump to a directory using fd
 j () {
 	local d
-	d=$(fd -E /.snapshots -t d -H . $* | _FZF_COMMAND --preview 'exa -T -L 1 --icons {}')
+	d=$(fd -E /.snapshots -t d -H . $* | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
 
