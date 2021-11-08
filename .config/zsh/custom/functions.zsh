@@ -1,5 +1,5 @@
 cheat() {
-    curl -s cheat.sh/$1 | bat --file-name "Cheat: $1"
+    curl -s cheat.sh/$1 | bat --file-name --plain "Cheat: $1"
 }
 
 up(){
