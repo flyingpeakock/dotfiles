@@ -31,25 +31,29 @@ alias app="i3-dmenu-desktop --dmenu=fzf"
 
 # Install programs with paru
 pi () {
-	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' | _FZF_COMMAND --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' \
+        | _FZF_COMMAND --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
 # Uninstall programs, lists only explicitly installed
 pu () {
-	paru -Qqe | _FZF_COMMAND --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rnsu
+	paru -Qqe | _FZF_COMMAND --multi --preview 'pacman -Qi {1}' \
+        | xargs -ro sudo pacman -Rnsu
 }
 
 # Jump to a directory using fd
 j () {
 	local d
-	d=$(fd -E /.snapshots -t d -H . $* | _FZF_COMMAND --preview 'preview.sh {}')
+	d=$(fd -E /.snapshots -t d -H . $* \
+        | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
 
 # Open a file found with fd
 o () {
 	local file
-	file=$(fd -E /.snapshots -t f -H . $* | _FZF_COMMAND --preview 'preview.sh {}')
+	file=$(fd -E /.snapshots -t f -H . $* \
+        | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
@@ -58,15 +62,26 @@ o () {
 }
 
 # Trash file
-tp () {
-    fd -H -t f . $* | _FZF_COMMAND --multi --preview 'preview.sh {}' | xargs -ro trash-put
+fzt () {
+    fd -H -t f . $* | _FZF_COMMAND --multi --preview 'preview.sh {}' \
+        | xargs -ro trash-put
+}
+
+fztr () {
+    printf '\n' | trash-restore | sed 's/ \[0..*Exiting$/:/g' \
+        | tac | _FZF_COMMAND --multi --nth 3 --with-nth -1 --keep-right \
+        --header-lines=1 \
+        --preview "cd ~/.local/share/Trash/files; basename {4} | xargs -ro preview.sh" \
+        --preview-window wrap | awk '{print $1}' | trash-restore &>/dev/null
 }
 
 # Open a file by searching inside of it
 f () {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 	local file
-	file=$(rg --max-count=1 --ignore-case --files-with-matches --no-messages "$*" | _FZF_COMMAND --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
+	file=$(rg --max-count=1 --ignore-case --files-with-matches \
+        --no-messages "$*" | _FZF_COMMAND \
+        --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
@@ -102,7 +117,9 @@ fgco () {
 
 fgh () {
   is_in_git_repo || return
-  git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
+  git log --date=short \
+      --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" \
+      --graph --color=always |
   _FZF_COMMAND --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
