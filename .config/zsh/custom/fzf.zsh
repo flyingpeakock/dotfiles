@@ -4,7 +4,7 @@ export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" --pointer="➤" --color=
 export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
-export _ZO_FZF_OPTS='--height=25% --layout=reverse --preview "printf {} | awk \"{print $2}\" | xargs preview.sh"'
+export _ZO_FZF_OPTS='--height=25% --layout=reverse -n 2 --preview "preview.sh {2}"'
 
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
