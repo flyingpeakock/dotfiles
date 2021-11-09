@@ -1,7 +1,7 @@
 #!/bin/sh
 
 image() {
-    chafa "$1"
+    chafa "$1" -s ${FZF_PREVIEW_COLUMNS:-$COLUMNS}x${$FZF_PREVIEW_LINES:-$LINES}
 }
 
 batorcat() {
