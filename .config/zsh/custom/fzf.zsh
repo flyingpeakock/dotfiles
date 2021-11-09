@@ -69,7 +69,7 @@ fzt () {
 
 fztr () {
     printf '\n' | trash-restore | sed 's/ \[0..*Exiting$/:/g' \
-        | tac | fzf --multi --nth 3 --with-nth -1 --keep-right \
+        | tac | _FZF_COMMAND --multi --nth 3 --with-nth -1 --keep-right \
         --header-lines=1 \
         --preview "cd ~/.local/share/Trash/files; basename {4} | xargs -ro preview.sh" \
         --preview-window wrap | awk '{print $1}' | trash-restore &>/dev/null
