@@ -44,7 +44,7 @@ pu () {
 # Jump to a directory using fd
 j () {
 	local d
-	d=$(fd --color=always -E /.snapshots -t d -H . $* \
+	d=$(fd -E /.snapshots -t d -H . $* \
         | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
@@ -52,7 +52,7 @@ j () {
 # Open a file found with fd
 o () {
 	local file
-	file=$(fd --color=always -E /.snapshots -t f -H . $* \
+	file=$(fd -E /.snapshots -t f -H . $* \
         | _FZF_COMMAND --preview 'preview.sh {}')
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
@@ -80,7 +80,7 @@ trash-fr () {
 f () {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 	local file
-	file=$(rg --color=always --max-count=1 --ignore-case --files-with-matches \
+	file=$(rg --max-count=1 --ignore-case --files-with-matches \
         --no-messages "$*" | _FZF_COMMAND \
         --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
 	[[ -f $file ]] || return
