@@ -62,12 +62,13 @@ o () {
 }
 
 # Trash file
-fzt () {
+trash-fzf () {
     fd -H -t f . $* | _FZF_COMMAND --multi --preview 'preview.sh {}' \
         | xargs -ro trash-put
 }
 
-fztr () {
+# Restore trashed file
+trash-fr () {
     printf '\n' | trash-restore | sed 's/ \[0..*Exiting$/:/g' \
         | tac | _FZF_COMMAND --multi --nth 3 --with-nth -1 --keep-right \
         --header-lines=1 \
@@ -110,12 +111,8 @@ _gb () {
   sed 's#^remotes/##'
 }
 
-# Checkout branch fuzzily
-fgco () {
-	git checkout $(_gb)
-}
-
-fgh () {
+# Show Git hashes
+_gh () {
   is_in_git_repo || return
   git log --date=short \
       --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" \
@@ -123,8 +120,44 @@ fgh () {
   _FZF_COMMAND --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
-  grep -o "[a-f0-9]\{7,\}"
+  rg -o "[a-f0-9]\{7,\}"
 }
+
+# Show files in git status
+_gf() {
+  is_in_git_repo || return
+  git -c color.status=always status --short |
+  _FZF_COMMAND -m --ansi --nth 2..,.. \
+    --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1})' |
+  cut -c4- | sed 's/.* -> //'
+}
+
+# Show git stash
+_gs() {
+  is_in_git_repo || return
+  git stash list | _FZF_COMMAND --reverse -d: --preview 'git show --color=always {1}' |
+  cut -d: -f1
+}
+
+
+# Mouse binding for git
+join-lines() {
+  local item
+  while read item; do
+    echo -n "${(q)item} "
+  done
+}
+
+bind-git-helper() {
+  local c
+  for c in $@; do
+    eval "fzf-g$c-widget() { local result=\$(_g$c | join-lines); zle reset-prompt; LBUFFER+=\$result }"
+    eval "zle -N fzf-g$c-widget"
+    eval "bindkey '^g^$c' fzf-g$c-widget"
+  done
+}
+bind-git-helper f b h s
+unset -f bind-git-helper
 
 
 ########################################
