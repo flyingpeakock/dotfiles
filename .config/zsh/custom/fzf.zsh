@@ -151,9 +151,9 @@ join-lines() {
 bind-git-helper() {
   local c
   for c in $@; do
-    eval "fzf-g$c-widget() { local result=\$(_g$c | join-lines); zle reset-prompt; LBUFFER+=' '\$result }"
+    eval "fzf-g$c-widget() { local result=\$(_g$c | join-lines); zle reset-prompt; LBUFFER+=\$result }"
     eval "zle -N fzf-g$c-widget"
-    eval "bindkey -M vicmd 'g$c' fzf-g$c-widget"
+    eval "bindkey '\e$c' fzf-g$c-widget"
   done
 }
 bind-git-helper f b h s
