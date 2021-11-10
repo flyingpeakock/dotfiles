@@ -48,7 +48,7 @@ fzfi () {
     "git add\t\tga" \
     )
     command=$(printf '%b\n' "${funcs[@]}" | \
-        _FZF_COMMAND --with-nth ..-2 | awk '{print $NF}')
+        _FZF_COMMAND --no-clear --with-nth ..-2 | awk '{print $NF}')
     $command
 }
 
