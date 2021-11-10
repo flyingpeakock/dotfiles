@@ -45,7 +45,7 @@ pu () {
 j () {
 	local d
 	d=$(fd -E /.snapshots -t d -H . $* \
-        | _FZF_COMMAND --preview 'preview.sh {}')
+        | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
 
@@ -53,7 +53,7 @@ j () {
 o () {
 	local file
 	file=$(fd -E /.snapshots -t f -H . $* \
-        | _FZF_COMMAND --preview 'preview.sh {}')
+        | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
@@ -81,7 +81,7 @@ f () {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 	local file
 	file=$(rg --max-count=1 --ignore-case --files-with-matches \
-        --no-messages "$*" | _FZF_COMMAND \
+        --no-messages "$*" | _FZF_COMMAND --keep-right \
         --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
