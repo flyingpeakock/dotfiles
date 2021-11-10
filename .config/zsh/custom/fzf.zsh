@@ -92,7 +92,7 @@ f () {
 
 # Fuzzy search for man pages
 fman () {
-    man -k . | fzf | awk '{print $1}' | xargs -r man
+    man -k . | fzf --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
 }
 
 # Some git commands
