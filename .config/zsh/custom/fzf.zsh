@@ -120,7 +120,7 @@ _gh () {
   _FZF_COMMAND --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
     --header 'Press CTRL-S to toggle sort' \
     --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' |
-  rg -o "[a-f0-9]\{7,\}"
+  grep -o "[a-f0-9]\{7,\}"
 }
 
 # Show files in git status
