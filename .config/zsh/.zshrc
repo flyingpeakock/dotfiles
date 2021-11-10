@@ -27,6 +27,22 @@ setopt pushdignoredups
 setopt sharehistory
 autoload -Uz add-zsh-hook
 
+# User files
+for CUSTOM in `find ~/.config/zsh/custom`
+do
+    [ -f "$CUSTOM" ] && source "$CUSTOM"
+done
+
+# Private files
+privateDir="$HOME/.config/zsh/private/rc"
+if [[ -d "$privateDir" ]];
+then
+    for PRIVATE in `find $privateDir`
+    do
+        [ -f "$PRIVATE" ] && source "$PRIVATE"
+    done
+fi
+
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -62,22 +78,6 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
-
-# User files
-for CUSTOM in `find ~/.config/zsh/custom`
-do
-    [ -f "$CUSTOM" ] && source "$CUSTOM"
-done
-
-# Private files
-privateDir="$HOME/.config/zsh/private/rc"
-if [[ -d "$privateDir" ]];
-then
-    for PRIVATE in `find $privateDir`
-    do
-        [ -f "$PRIVATE" ] && source "$PRIVATE"
-    done
-fi
 
 source ~/.config/zsh/p10k.zsh
 
