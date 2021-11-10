@@ -29,6 +29,29 @@ alias app="i3-dmenu-desktop --dmenu=fzf"
 
 # Useful fzf functions
 
+# Interactive fzf to run any of these function
+fzfi () {
+    funcs=( "launch application\tapp" \
+    "install application\tpi" \
+    "uninstall application\tpu" \
+    "change directory\tj" \
+    "open a file\t\to" \
+    "find in file and open\tf" \
+    "trash files\t\ttrash-fzf" \
+    "restore trash\t\ttrash-fr" \
+    "find man page\t\tfman" \
+    "git branches\t\t_gb" \
+    "git commit hashes\t_gh" \
+    "git file\t\t_gf" \
+    "git stash\t\t_gs" \
+    "git checkout\t\tgco" \
+    "git add\t\tga" \
+    )
+    command=$(printf '%b\n' "${funcs[@]}" | \
+        _FZF_COMMAND --with-nth ..-2 | awk '{print $NF}')
+    $command
+}
+
 # Install programs with paru
 pi () {
 	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' \
