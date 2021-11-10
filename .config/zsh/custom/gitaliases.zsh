@@ -1,24 +1,31 @@
 alias gi="git init"
 alias gs="git status -sbu"
 alias gp="git push"
-alias gm="git merge"
-alias ga="git add"
 alias gcm="git commit -m"
 alias gcr='git commit -m "$(curl -s http://whatthecommit.com/index.txt)"'
 alias gpl="git pull"
-
-gb () {
-    if [ "$#" -gt 0 ]; then
-        git branch $*
-        return 0
-    fi
-    fgco
-}
+alias gb="git branch"
 
 gco () {
     if [ "$#" -gt 0 ]; then
         git checkout $*
-        return 0
+        return $?
     fi
-    fgco
+    git checkout $(_gb)
+}
+
+ga () {
+    if [ "$#" -gt 0 ]; then
+        git add $*
+        return $?
+    fi
+    git add $(_gf)
+}
+
+gm () {
+    if [ "$#" -gt 0 ]; then
+        git merge $*
+        return $?
+    fi
+    git merge $(_gb)
 }
