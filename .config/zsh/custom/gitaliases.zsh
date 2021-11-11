@@ -14,13 +14,6 @@ gco () {
     git checkout $(_gb)
 }
 
-_gco() {
-    service=git CURRENT+=1
-    words=(git status)
-    _git
-}
-compdef gco=_gco
-
 ga () {
     if [ "$#" -gt 0 ]; then
         git add $@
@@ -29,12 +22,6 @@ ga () {
     git add $(_gf)
 }
 
-_ga() {
-    service=git CURRENT+=1
-    words=(git status)
-    _git
-}
-compdef ga=_ga
 
 gm () {
     if [ "$#" -gt 0 ]; then
@@ -44,9 +31,14 @@ gm () {
     git merge $(_gb)
 }
 
-_gm() {
-    service=git CURRENT+=1
-    words=(git status)
-    _git
+make_completion_wrapper() {
+  eval "_$1 () {
+    COMP_LINE=\${COMP_LINE/$1/$2}
+    COMP_POINT=\$((\$COMP_POINT + ${#2} - ${#1}))
+    _$(cut -d" " -f1 <<< $2)
+  }
+  complete -F _$1 $1
+  "
 }
-compdef gm=_gm
+
+make_completion_wrapper gco "git checkout"
