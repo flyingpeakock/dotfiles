@@ -123,7 +123,6 @@ spotify() {
 ls () {
     exa -l --git --icons "$@" 2> /dev/null || ls
 }
-compdef ls=exa
 
 lf () {
     if command -v lfrun &> /dev/null
