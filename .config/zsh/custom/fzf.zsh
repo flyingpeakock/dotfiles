@@ -9,7 +9,7 @@ export _ZO_FZF_OPTS='--height=25% --layout=reverse -n 2 --preview "preview.sh {2
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
-        fzf-tmux -p 75% --preview-window right:60% $*
+        fzf-tmux -p 75% --preview-window right:60% $@
     else
         local height=50%
         local pos=down
@@ -18,7 +18,7 @@ _FZF_COMMAND () {
             pos=right:60%
         fi
 
-        fzf --height=$height --layout=reverse --preview-window $pos $*
+        fzf --height=$height --layout=reverse --preview-window $pos $@
     fi
 }
 
@@ -48,7 +48,7 @@ fzfi () {
     "git add\t\tga" \
     )
     command=$(printf '%b\n' "${funcs[@]}" | \
-        _FZF_COMMAND --with-nth ..-2 | awk '{print $NF}')
+        _FZF_COMMAND --no-clear --with-nth ..-2 | awk '{print $NF}')
     $command
 }
 
@@ -67,7 +67,7 @@ pu () {
 # Jump to a directory using fd
 j () {
 	local d
-	d=$(fd -E /.snapshots -t d -H . $* \
+	d=$(fd -E /.snapshots -t d -H . $@ \
         | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
@@ -75,7 +75,7 @@ j () {
 # Open a file found with fd
 o () {
 	local file
-	file=$(fd -E /.snapshots -t f -H . $* \
+	file=$(fd -E /.snapshots -t f -H . $@ \
         | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
@@ -86,7 +86,7 @@ o () {
 
 # Trash file
 trash-fzf () {
-    fd -H -t f . $* | _FZF_COMMAND --multi --preview 'preview.sh {}' \
+    fd -H -t f . $@ | _FZF_COMMAND --multi --preview 'preview.sh {}' \
         | xargs -ro trash-put
 }
 
@@ -104,8 +104,8 @@ f () {
 	if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 	local file
 	file=$(rg --max-count=1 --ignore-case --files-with-matches \
-        --no-messages "$*" | _FZF_COMMAND --keep-right \
-        --preview="rg --ignore-case --pretty --context 10 '"$*"' {}")
+        --no-messages "$@" | _FZF_COMMAND --keep-right \
+        --preview="rg --ignore-case --pretty --context 10 '"$@"' {}")
 	[[ -f $file ]] || return
 	case $(file --mime-type "$file" -bL) in
 		text/*|application/json) $EDITOR $file ;;
