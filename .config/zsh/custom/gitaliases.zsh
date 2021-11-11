@@ -8,7 +8,7 @@ alias gb="git branch"
 
 gco () {
     if [ "$#" -gt 0 ]; then
-        git checkout $*
+        git checkout $@
         return $?
     fi
     git checkout $(_gb)
@@ -16,7 +16,7 @@ gco () {
 
 ga () {
     if [ "$#" -gt 0 ]; then
-        git add $*
+        git add $@
         return $?
     fi
     git add $(_gf)
@@ -24,7 +24,7 @@ ga () {
 
 gm () {
     if [ "$#" -gt 0 ]; then
-        git merge $*
+        git merge $@
         return $?
     fi
     git merge $(_gb)
