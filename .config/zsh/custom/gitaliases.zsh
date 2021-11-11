@@ -14,12 +14,12 @@ gco () {
     git checkout $(_gb)
 }
 
-compdef gco=_gco
 _gco() {
     service=git CURRENT+=1
     words=(git status)
     _git
 }
+compdef gco=_gco
 
 ga () {
     if [ "$#" -gt 0 ]; then
@@ -29,12 +29,12 @@ ga () {
     git add $(_gf)
 }
 
-compdef ga=_ga
 _ga() {
     service=git CURRENT+=1
     words=(git status)
     _git
 }
+compdef ga=_ga
 
 gm () {
     if [ "$#" -gt 0 ]; then
@@ -44,9 +44,9 @@ gm () {
     git merge $(_gb)
 }
 
-compdef gm=_gm
 _gm() {
     service=git CURRENT+=1
     words=(git status)
     _git
 }
+compdef gm=_gm
