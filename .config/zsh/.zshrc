@@ -27,6 +27,16 @@ setopt pushdignoredups
 setopt sharehistory
 autoload -Uz add-zsh-hook
 
+zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select=1
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
+autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+
 # User files
 for CUSTOM in `find ~/.config/zsh/custom`
 do
@@ -42,16 +52,6 @@ then
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
 fi
-
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
-zstyle ':completion:*' menu select=1
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
-autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 
 eval "$(zoxide init zsh)"
 

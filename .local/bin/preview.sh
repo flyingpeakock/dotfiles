@@ -28,7 +28,7 @@ batorcatormd() {
 
 if [ -d "$1" ]; then
     exa -T -L 2 --icons "$1"
-    exit 0
+    exit $?
 fi
 
 CACHE="$HOME/.cache/preview/thumbnail.$(stat --printf '%n\0%i\0%F\0%s\0%W\0%Y' -- "$(readlink -f "$1")" | sha256sum | awk '{print $1}'))"
