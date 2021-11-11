@@ -71,7 +71,6 @@ j () {
         | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
-compdef j=fd
 
 # Open a file found with fd
 o () {
@@ -84,7 +83,6 @@ o () {
 		*) xdg-open $file& ;;
 	esac
 }
-compdef o=fd
 
 # Trash file
 trash-fzf () {
@@ -114,7 +112,6 @@ f () {
 		*) xdg-open $file& ;;
 	esac
 }
-compdef f=rg
 
 # Fuzzy search for man pages
 fman () {

@@ -22,7 +22,6 @@ ga () {
     git add $(_gf)
 }
 
-
 gm () {
     if [ "$#" -gt 0 ]; then
         git merge $@
@@ -30,15 +29,3 @@ gm () {
     fi
     git merge $(_gb)
 }
-
-make_completion_wrapper() {
-  eval "_$1 () {
-    COMP_LINE=\${COMP_LINE/$1/$2}
-    COMP_POINT=\$((\$COMP_POINT + ${#2} - ${#1}))
-    _$(cut -d" " -f1 <<< $2)
-  }
-  complete -F _$1 $1
-  "
-}
-
-make_completion_wrapper gco "git checkout"
