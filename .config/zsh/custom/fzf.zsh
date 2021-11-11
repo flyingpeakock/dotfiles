@@ -4,21 +4,14 @@ export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" --pointer="➤" --color=
 export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
-export _ZO_FZF_OPTS='--height=25% --layout=reverse -n 2 --preview "preview.sh {2}"'
+export _ZO_FZF_OPTS='--height=60% -n 2 --preview "preview.sh {2}"'
 
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
-        fzf-tmux -p 75% --preview-window right:60% $@
+        fzf-tmux -p 100% --preview-window right:60% $@
     else
-        local height=50%
-        local pos=down
-        if [ $COLUMNS -gt 70 ]; then
-            height=35%
-            pos=right:60%
-        fi
-
-        fzf --height=$height --layout=reverse --preview-window $pos $@
+        fzf --height=60% --layout=reverse --preview-window down:60% $@
     fi
 }
 
