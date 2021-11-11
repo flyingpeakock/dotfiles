@@ -13,6 +13,7 @@ gco () {
     fi
     git checkout $(_gb)
 }
+compdef gco="git checkout"
 
 ga () {
     if [ "$#" -gt 0 ]; then
@@ -21,6 +22,7 @@ ga () {
     fi
     git add $(_gf)
 }
+compdef ga="git add"
 
 gm () {
     if [ "$#" -gt 0 ]; then
@@ -29,3 +31,4 @@ gm () {
     fi
     git merge $(_gb)
 }
+compdef gm="git merge"
