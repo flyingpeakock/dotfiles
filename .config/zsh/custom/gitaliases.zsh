@@ -13,7 +13,13 @@ gco () {
     fi
     git checkout $(_gb)
 }
-compdef gco="git checkout"
+
+compdef gco=_gco
+_gco() {
+    service=git CURRENT+=1
+    words=(git status)
+    _git
+}
 
 ga () {
     if [ "$#" -gt 0 ]; then
@@ -22,7 +28,13 @@ ga () {
     fi
     git add $(_gf)
 }
-compdef ga="git add"
+
+compdef ga=_ga
+_ga() {
+    service=git CURRENT+=1
+    words=(git status)
+    _git
+}
 
 gm () {
     if [ "$#" -gt 0 ]; then
@@ -31,4 +43,10 @@ gm () {
     fi
     git merge $(_gb)
 }
-compdef gm="git merge"
+
+compdef gm=_gm
+_gm() {
+    service=git CURRENT+=1
+    words=(git status)
+    _git
+}
