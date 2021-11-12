@@ -9,7 +9,7 @@ export _ZO_FZF_OPTS='--height=60% -n 2 --preview "preview.sh {2}"'
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
     if [[ -v TMUX ]]; then
-        fzf-tmux -p 100% --preview-window right:60% $@
+        fzf-tmux -p -w 95% -h 50% --preview-window right:60% $@
     else
         fzf --height=60% --layout=reverse --preview-window down:60% $@
     fi
