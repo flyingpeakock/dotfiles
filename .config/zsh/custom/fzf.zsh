@@ -64,6 +64,7 @@ j () {
         | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
+compdef d=fd
 
 # Open a file found with fd
 o () {
@@ -76,12 +77,14 @@ o () {
 		*) xdg-open $file& ;;
 	esac
 }
+compdef o=fd
 
 # Trash file
 trash-fzf () {
     fd -H -t f . $@ | _FZF_COMMAND --query=$1 --multi --preview 'preview.sh {}' \
         | xargs -ro trash-put
 }
+compdef trash-fzf=fd
 
 # Restore trashed file
 trash-fr () {
@@ -110,6 +113,7 @@ f () {
 fman () {
     man -k . | _FZF_COMMAND --query=$1 --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
 }
+compdef fman=man
 
 # Some git commands
 
