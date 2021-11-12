@@ -64,7 +64,7 @@ j () {
         | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
-compdef d=fd
+compdef j=fd
 
 # Open a file found with fd
 o () {
