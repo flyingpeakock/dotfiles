@@ -41,19 +41,19 @@ fzfi () {
     "git add\t\tga" \
     )
     command=$(printf '%b\n' "${funcs[@]}" | \
-        _FZF_COMMAND --no-clear --with-nth ..-2 | awk '{print $NF}')
+        _FZF_COMMAND --query=$1 --no-clear --with-nth ..-2 | awk '{print $NF}')
     $command
 }
 
 # Install programs with paru
 pi () {
 	paru -Sl | awk '{print $2($4=="" ? "" : " *")}' \
-        | _FZF_COMMAND --multi --preview 'paru -Si {1}' | xargs -ro paru -S
+        | _FZF_COMMAND --query=$1 --multi --preview 'paru -Si {1}' | xargs -ro paru -S
 }
 
 # Uninstall programs, lists only explicitly installed
 pu () {
-	paru -Qqe | _FZF_COMMAND --multi --preview 'pacman -Qi {1}' \
+	paru -Qqe | _FZF_COMMAND --query=$1 --multi --preview 'pacman -Qi {1}' \
         | xargs -ro sudo pacman -Rnsu
 }
 
@@ -64,6 +64,7 @@ j () {
         | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 	[[ -d $d ]] && z $d
 }
+compdef d=fd
 
 # Open a file found with fd
 o () {
@@ -76,17 +77,19 @@ o () {
 		*) xdg-open $file& ;;
 	esac
 }
+compdef o=fd
 
 # Trash file
 trash-fzf () {
-    fd -H -t f . $@ | _FZF_COMMAND --multi --preview 'preview.sh {}' \
+    fd -H -t f . $@ | _FZF_COMMAND --query=$1 --multi --preview 'preview.sh {}' \
         | xargs -ro trash-put
 }
+compdef trash-fzf=fd
 
 # Restore trashed file
 trash-fr () {
     printf '\n' | trash-restore | sed 's/ \[0..*Exiting$/:/g' \
-        | tac | _FZF_COMMAND --multi --nth 3 --with-nth -1 --keep-right \
+        | tac | _FZF_COMMAND ---query=$1 -multi --nth 3 --with-nth -1 --keep-right \
         --header-lines=1 \
         --preview "cd ~/.local/share/Trash/files; basename {4} | xargs -ro preview.sh" \
         --preview-window wrap | awk '{print $1}' | trash-restore &>/dev/null
@@ -108,8 +111,9 @@ f () {
 
 # Fuzzy search for man pages
 fman () {
-    man -k . | fzf --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
+    man -k . | _FZF_COMMAND --query=$1 --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
 }
+compdef fman=man
 
 # Some git commands
 
