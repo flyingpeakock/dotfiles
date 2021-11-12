@@ -4,7 +4,7 @@ cheat() {
 
 up(){
     local d=""
-    limit=$1
+    limit="$1"
     for ((i=1 ; i <= limit ; i++))
         do
            d=$d/..
@@ -99,8 +99,8 @@ ex ()
 
 please ()
 {
-    if [ $# -ne 0 ]; then
-        sudo $*
+    if [ "$#" -ne 0 ]; then
+        sudo "$@"
     else
         sudo $(fc -ln -1)
     fi

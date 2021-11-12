@@ -54,7 +54,7 @@ export DOTFILES="$XDG_CONFIG_HOME"/repo.git
 privateDir="$HOME/.config/zsh/private/env"
 if [[ -d "$privateDir" ]];
 then
-    for PRIVATE in `find $privateDir`
+    for PRIVATE in $(fd --type f .zsh $privateDir)
     do
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
