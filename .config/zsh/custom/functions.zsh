@@ -120,10 +120,6 @@ spotify() {
     fi
 }
 
-ls () {
-    exa -l --git "$@" 2> /dev/null || ls
-}
-
 lf () {
     if command -v lfrun &> /dev/null
     then
