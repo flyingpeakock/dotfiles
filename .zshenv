@@ -51,10 +51,10 @@ export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$X
 export DOTFILES="$XDG_CONFIG_HOME"/repo.git
 
 # Private stuff that should be kept out of git
-privateDir="$HOME/.config/zsh/private/env"
+privateDir="$ZDOTDIR/private/env"
 if [[ -d "$privateDir" ]];
 then
-    for PRIVATE in `find $privateDir`
+    for PRIVATE in $(fd --type f .zsh $privateDir)
     do
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
