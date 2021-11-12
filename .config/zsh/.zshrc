@@ -58,7 +58,7 @@ eval "$(zoxide init zsh)"
 # Plugins
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
-fpath=("$ZDOTDIR/plugins/zsh-completions/src" "$fpath")
+fpath=("$ZDOTDIR/plugins/zsh-completions/src" $fpath)
 source "$ZDOTDIR/plugins/zsh-histdb/sqlite-history.zsh"
 source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 source "$ZDOTDIR/plugins/command-not-found/command-not-found.zsh"
