@@ -33,21 +33,21 @@ zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character t
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' cache-path $XDG_CACHE_HOME/zsh/zcompcache
-autoload -U compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
-compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
+autoload -U compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 # User files
-for CUSTOM in `find ~/.config/zsh/custom`
+for CUSTOM in $(fd --type f .zsh "$ZDOTDIR/custom")
 do
     [ -f "$CUSTOM" ] && source "$CUSTOM"
 done
 
 # Private files
-privateDir="$HOME/.config/zsh/private/rc"
+privateDir="$ZDOTDIR/private/rc"
 if [[ -d "$privateDir" ]];
 then
-    for PRIVATE in `find $privateDir`
+    for PRIVATE in $(fd --type f .zsh $privateDir)
     do
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
@@ -56,13 +56,13 @@ fi
 eval "$(zoxide init zsh)"
 
 # Plugins
-source ~/.config/zsh/plugins/powerlevel10k/powerlevel10k.zsh-theme
-source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fpath=(~/.conifg/zsh/plugins/zsh-completions/src $fpath)
-source ~/.config/zsh/plugins/zsh-histdb/sqlite-history.zsh
-source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.config/zsh/plugins/command-not-found/command-not-found.zsh
-source ~/.config/zsh/plugins/fuzzy-sys/fuzzy-sys.plugin.zsh
+source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
+source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fpath=("$ZDOTDIR/plugins/zsh-completions/src" "$fpath")
+source "$ZDOTDIR/plugins/zsh-histdb/sqlite-history.zsh"
+source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "$ZDOTDIR/plugins/command-not-found/command-not-found.zsh"
+source "$ZDOTDIR/plugins/fuzzy-sys/fuzzy-sys.plugin.zsh"
 
 _zsh_autosuggest_strategy_histdb_top_here() {
     local query="select commands.argv from
@@ -80,7 +80,7 @@ bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
-source ~/.config/zsh/p10k.zsh
+source "$ZDOTDIR/p10k.zsh"
 
 # try to set xkbmap here for tty
 setxkbmap se_cm 2> /dev/null
@@ -106,4 +106,4 @@ if [ "$TERM" = "linux" ]; then
 fi
 
 # Keep this at the end
-source ~/.config/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source "$ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

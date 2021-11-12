@@ -5,20 +5,20 @@
 # colemak keyboard layout as well as enables it.
 # Author: Philip Johansson
 
-repoDir=$HOME/.config/repo.git
+repoDir="$HOME/.config/repo.git"
 gitURL="https://github.com/flyingpeakock/dotfiles.git"
-backupDir=$HOME/config.backup
+backupDir="$HOME/config.backup"
 
 
 gitdot() {
-    git --git-dir=$repoDir --work-tree=$HOME $@
+    git --git-dir=$repoDir --work-tree="$HOME" "$@"
 }
 
 backup() {
-    dir=$(dirname $2)
+    dir=$(dirname "$2")
     printf "\tBacking up file $1\n"
-    mkdir -p $dir
-    mv $1 $2
+    mkdir -p "$dir"
+    mv "$1" "$2"
 }
 export -f backup
 
@@ -27,7 +27,7 @@ setup() {
     git clone --bare --branch termux $gitURL $repoDir > /dev/null 2>&1
     printf "Attempting to check out bare repo\n"
     gitdot checkout > /dev/null 2>&1
-    if [ $? -ne 0 ]; then
+    if [ "$?" -ne 0 ]; then
         printf "Conflicting files found. Moving to $backupDir\n"
         gitdot checkout 2>&1 | egrep "^\s" | awk {'print $1'} | xargs -I{} -- sh -c 'backup "{}" '"$backupDir"'/"{}"'
     fi;
@@ -43,5 +43,5 @@ setkeyMap() {
 
 shell=$(echo $SHELL | awk -F '/' '{print $(NF)}')
 [ "$shell" != "zsh" ] && chsh -s zsh
-[ -e $HOME/.config/xkb/se_cm ] && setkeyMap
+[ -e "$HOME/.config/xkb/se_cm" ] && setkeyMap
 
