@@ -81,7 +81,7 @@ compdef o=fd
 
 # Trash file
 trash-fzf () {
-    fd -H -t f . $@ | _FZF_COMMAND --query=$1 --multi --preview 'preview.sh {}' \
+    fd -H -t f -t d . $@ | _FZF_COMMAND --query=$1 --multi --preview 'preview.sh {}' \
         | xargs -ro trash-put
 }
 compdef trash-fzf=fd
