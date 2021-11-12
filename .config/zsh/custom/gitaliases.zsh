@@ -32,8 +32,10 @@ gm () {
 
 gma () {
     local main="${1:-main}"
+    local current="$(git branch --show-current)"
     for branch in $(git branch -l); do
         git checkout $branch
         git merge $main
     done
+    git checkout $current
 }
