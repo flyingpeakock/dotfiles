@@ -113,7 +113,6 @@ f () {
 fman () {
     man -k . | _FZF_COMMAND --query=$1 --preview $'echo {} | tr -d \'()\' | awk \'{printf "%s ", $2} {print $1}\' | xargs -r man | col -bx | bat -l man -p --color always' | tr -d '()' | awk '{printf "%s ", $2} {print $1}' | xargs -r man
 }
-compdef fman=man
 
 # Some git commands
 
