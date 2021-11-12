@@ -29,3 +29,11 @@ gm () {
     fi
     git merge $(_gb)
 }
+
+gma () {
+    local main="$1:-main"
+    for branch in $(git branch -l); do
+        git checkout $branch
+        git merge $main
+    done
+}
