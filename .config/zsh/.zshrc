@@ -38,7 +38,7 @@ autoload -U compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 
 # User files
-for CUSTOM in $(fd --type f .zsh "$ZDOTDIR/custom")
+for CUSTOM in $ZDOTDIR/custom/*
 do
     [ -f "$CUSTOM" ] && source "$CUSTOM"
 done
@@ -47,7 +47,7 @@ done
 privateDir="$ZDOTDIR/private/rc"
 if [[ -d "$privateDir" ]];
 then
-    for PRIVATE in $(fd --type f .zsh $privateDir)
+    for PRIVATE in $privateDir/*
     do
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
