@@ -149,11 +149,11 @@ default_floating_border pixel 2
 
 # Color configuration
 ###############################################
-client.focused #88c0d0 #88c0d0 #88c0d0 #88c0d0
-client.focused_inactive #4c566a #4c566a #4c566a
-client.unfocused #2e3440 #2e3440 #2e3440 #2e3440
-client.placeholder #2e3440 #2e3440 #2e3440 #2e3440
-client.urgent #bf616a #bf616a #bf616a #bf616a
+client.focused #88c0d0 #88c0d0 #eceff4 #88c0d0
+client.focused_inactive #4c566a #4c566a #eceff4 #4c566a 
+client.unfocused #2e3440 #2e3440 #eceff4 #2e3440
+client.placeholder #2e3440 #2e3440 #eceff4 #2e3440
+client.urgent #bf616a #bf616a #eceff4 #bf616a
 client.background #2e3440
 
 # i3-gaps configuration
