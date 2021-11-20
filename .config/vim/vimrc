@@ -75,7 +75,6 @@ Plug 'lervag/vimtex'
 Plug 'arcticicestudio/nord-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'rust-lang/rust.vim'
-Plug 'ptzz/lf.vim'
 Plug 'voldikss/vim-floaterm'
 call plug#end()
 
