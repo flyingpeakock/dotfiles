@@ -58,9 +58,6 @@
 [submodule ".config/tmux/plugins/nord-tmux"]
 	path = .config/tmux/plugins/nord-tmux
 	url = https://github.com/arcticicestudio/nord-tmux
-[submodule ".config/vim/plugged/lf.vim"]
-	path = .config/vim/plugged/lf.vim
-	url = https://github.com/ptzz/lf.vim
 [submodule ".config/vim/plugged/vim-floaterm"]
 	path = .config/vim/plugged/vim-floaterm
 	url = https://github.com/voldikss/vim-floaterm

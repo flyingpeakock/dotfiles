@@ -119,12 +119,3 @@ spotify() {
         pkill spotifyd
     fi
 }
-
-lf () {
-    if command -v lfrun &> /dev/null
-    then
-        lfrun "$@"
-    else
-        lf "$@"
-    fi
-}
