@@ -43,6 +43,12 @@ do
     [ -f "$CUSTOM" ] && source "$CUSTOM"
 done
 
+fpath=("$ZDOTDIR/functions" $fpath)
+for func in $ZDOTDIR/functions/*
+do
+    autoload $(basename "$func")
+done
+
 # Private files
 privateDir="$ZDOTDIR/private/rc"
 if [[ -d "$privateDir" ]];
