@@ -1,0 +1,5 @@
+if [ "$#" -ne 0 ]; then
+    sudo "$@"
+else
+    sudo $(fc -ln -1)
+fi
