@@ -1,0 +1,11 @@
+# Open a file found with fd
+local file
+file=$(fd -E /.snapshots -t f -H . $@ \
+    | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
+[[ -f $file ]] || return
+case $(file --mime-type "$file" -bL) in
+	text/*|application/json) $EDITOR $file ;;
+	*) xdg-open $file& ;;
+esac
+compdef o=fd
+
