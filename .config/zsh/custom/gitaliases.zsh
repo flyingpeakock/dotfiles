@@ -35,7 +35,7 @@ gma () {
     local current="$(git branch --show-current)"
     for branch in $(git branch -l); do
         git checkout $branch
-        git merge --commit $main
+        git merge --no-edit $main
     done
     git checkout $current
 }
