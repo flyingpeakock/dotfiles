@@ -23,7 +23,7 @@ export FZF_TMUX_OPTS='-p 75%'
 export _ZO_FZF_OPTS='--height=60% -n 2 --preview "preview.sh {2}"'
 
 # Check if fzf-tmux supports -p
-fzf-tmux --help 2>&1 /dev/null | rg Popup
+fzf-tmux --help 2>&1 /dev/null | rg Popup &> /dev/null
 if [ "$?" -gt 0 ]; then
     export _FZF_POPOUT=
 else
