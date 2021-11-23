@@ -65,7 +65,7 @@ funcs=(
     spotify     # starts spotify daemon and spotify-tui
     tm          # fuzzy start tmux
     tp          # fuzzy select tmux pane
-    trash-fz    # trash fuzzy restore
+    trash-fr    # trash fuzzy restore
     trash-fzf   # fuzzy trash files
     up          # go up a directory
     )
