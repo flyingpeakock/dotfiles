@@ -39,28 +39,3 @@ gma () {
     done
     git checkout $current
 }
-
-# Used by fzf functions defined in fpath
-is_in_git_repo() {
-  git rev-parse HEAD > /dev/null 2>&1
-}
-
-# Keyboard binding for git difined in fpath
-join-lines() {
-  local item
-  while read item; do
-    echo -n "${(q)item} "
-  done
-}
-
-bind-git-helper() {
-  local c
-  for c in $@; do
-    eval "fzf-g$c-widget() { local result=\$(_g$c | join-lines); zle reset-prompt; LBUFFER+=\$result }"
-    eval "zle -N fzf-g$c-widget"
-    eval "bindkey '\e$c' fzf-g$c-widget"
-  done
-}
-bind-git-helper f b h s
-unset -f bind-git-helper
-

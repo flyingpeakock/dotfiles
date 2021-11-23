@@ -1,18 +1,6 @@
 # Jump to a directory using fd
-function j {
-    local d
-    d=$(fd -E /.snapshots -t d -H . $@ \
-        | _FZF_COMMAND "$_FZF_KEEP_RIGHT" --preview 'preview.sh {}')
-    z $d
-}
-
+local d
+d=$(fd -E /.snapshots -t d -H . $@ \
+    | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
+z $d
 compdef j=fd &> /dev/null
-if [ -z "$_FZF_KEEP_RIGHT" ]; then
-    echo '' | fzf --keep-right -1 &> /dev/null
-    if [ "$?" -gt 0 ]; then
-        export _FZF_KEEP_RIGHT=" "
-    else
-        export _FZF_KEEP_RIGHT="--keep-right"
-    fi
-fi
-j
