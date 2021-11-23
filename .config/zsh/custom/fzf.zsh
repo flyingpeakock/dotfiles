@@ -15,8 +15,15 @@ _FZF_COMMAND () {
     fi
 }
 
-# fzf aliases
+# Check if --keep-right is availible
+echo '' | fzf --keep-right -1 &> /dev/null
+if [ "$?" -gt 0 ]; then
+    export _FZF_KEEP_RIGHT=
+else
+    export _FZF_KEEP_RIGHT="--keep-right"
+fi
 
+# fzf aliases
 alias fzf=_FZF_COMMAND
 alias app="i3-dmenu-desktop --dmenu=fzf"
 
