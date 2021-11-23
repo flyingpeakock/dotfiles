@@ -2,7 +2,7 @@ function _FZF_COMMAND {
     if [ -v TMUX ] && [ ! -z "$_FZF_POPOUT"]; then
         fzf-tmux -p -w 95% -h 50% --preview-window right:60% $@
     else
-        fzf --height=60% --layout=reverse --preview-window down:60% $@
+        \fzf --height=60% --layout=reverse --preview-window down:60% $@
     fi
 }
 
