@@ -1,3 +1,5 @@
+# Interactively launch fuzzy script
+
 funcs=( "launch application\tapp" \
     "install application\tpi" \
     "uninstall application\tpu" \
