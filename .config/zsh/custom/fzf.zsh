@@ -3,11 +3,11 @@ echo '' | fzf --marker="▶" -1 &> /dev/null
 if [ "$?" -gt 0 ]; then
     _fzf_marker=
 else
-    _fzf_marker='--marker="▶" --pointer="➤"'
+    _fzf_marker="--marker=\"▶\""
 fi
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " "'"$_fzf_marker"'" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
+export FZF_DEFAULT_OPTS='--prompt="❯ " "'"$_fzf_marker"'" --pointer="➤" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
 export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
