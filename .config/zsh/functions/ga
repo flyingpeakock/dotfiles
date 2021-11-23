@@ -1,0 +1,6 @@
+# git add wrapper
+if [ "$#" -gt 0 ]; then
+    git add $@
+    return $?
+fi
+git add $(_gf)

@@ -1,3 +1,5 @@
+# extract a file.
+# Taken from oh-my-zsh plugins
 
 local remove_archive
 local success

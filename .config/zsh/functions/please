@@ -1,3 +1,4 @@
+# sudo wrapper. Runs last command if no args
 if [ "$#" -ne 0 ]; then
     sudo "$@"
 else
