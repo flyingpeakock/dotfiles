@@ -1,8 +1,20 @@
 # Restore trashed file
-printf '\n' | trash-restore | sed 's/ \[0..*Exiting$/:/g' \
-    | tac | _FZF_COMMAND --query=$1 -multi --nth 3 --with-nth -1 --keep-right \
-    --header-lines=1 \
-    --preview "cd ~/.local/share/Trash/files; basename {4} \
-    | xargs -ro preview.sh" \
-    --preview-window wrap | awk '{print $1}' \
-    | trash-restore &>/dev/null
+function trash-fr {
+    printf '\n' | trash-restore | sed 's/ \[0..*Exiting$/:/g' \
+        | tac | _FZF_COMMAND --query=$1 -multi --nth 3 --with-nth -1 "$_FZF_KEEP_RIGHT" \
+        --header-lines=1 \
+        --preview "cd ~/.local/share/Trash/files; basename {4} \
+        | xargs -ro preview.sh" \
+        --preview-window wrap | awk '{print $1}' \
+        | trash-restore &>/dev/null
+}
+
+if [ -z "$_FZF_KEEP_RIGHT" ]; then
+    echo '' | fzf --keep-right -1 &> /dev/null
+    if [ "$?" -gt 0 ]; then
+        export _FZF_KEEP_RIGHT=" "
+    else
+        export _FZF_KEEP_RIGHT="--keep-right"
+    fi
+fi
+trash-fr

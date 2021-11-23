@@ -6,44 +6,10 @@ export FZF_TMUX_OPTS='-p 75%'
 # Setting zoxide fzf options
 export _ZO_FZF_OPTS='--height=60% -n 2 --preview "preview.sh {2}"'
 
-# Checking if tmux and setting correct fzf command
-_FZF_COMMAND () {
-    if [[ -v TMUX ]]; then
-        fzf-tmux -p -w 95% -h 50% --preview-window right:60% $@
-    else
-        fzf --height=60% --layout=reverse --preview-window down:60% $@
-    fi
-}
-
 # fzf aliases
 
 alias fzf=_FZF_COMMAND
 alias app="i3-dmenu-desktop --dmenu=fzf"
-
-
-# Used by fzf functions defined in fpath
-is_in_git_repo() {
-  git rev-parse HEAD > /dev/null 2>&1
-}
-
-# Keyboard binding for git difined in fpath
-join-lines() {
-  local item
-  while read item; do
-    echo -n "${(q)item} "
-  done
-}
-
-bind-git-helper() {
-  local c
-  for c in $@; do
-    eval "fzf-g$c-widget() { local result=\$(_g$c | join-lines); zle reset-prompt; LBUFFER+=\$result }"
-    eval "zle -N fzf-g$c-widget"
-    eval "bindkey '\e$c' fzf-g$c-widget"
-  done
-}
-bind-git-helper f b h s
-unset -f bind-git-helper
 
 
 ########################################
