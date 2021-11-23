@@ -1,22 +1,10 @@
 # Open a file found with fd
-function o {
-    local file
-    file=$(fd -E /.snapshots -t f -H . $@ \
-        | _FZF_COMMAND "$_FZF_KEEP_RIGHT" --preview 'preview.sh {}')
-    [[ -f $file ]] || return
-    case $(file --mime-type "$file" -bL) in
-    	text/*|application/json) $EDITOR $file ;;
-    	*) xdg-open $file& ;;
-    esac
-}
-
+local file
+file=$(fd -E /.snapshots -t f -H . $@ \
+    | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
+[[ -f $file ]] || return
+case $(file --mime-type "$file" -bL) in
+	text/*|application/json) $EDITOR $file ;;
+	*) xdg-open $file& ;;
+esac
 compdef o=fd &> /dev/null
-if [ -z "$FZF_KEEP_RIGHT" ]; then
-    echo '' | fzf --keep-right -1 &> /dev/null
-    if ["$?" -gt 0 ]; then
-        export _FZF_KEEP_RIGHT=" "
-    else
-        export _FZF_KEEP_RIGHT="--keep-right"
-    fi
-fi
-o

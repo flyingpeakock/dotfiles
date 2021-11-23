@@ -1,23 +1,11 @@
 # Open a file by searching inside of it
-function f {
-    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
-    local file
-    file=$(rg --max-count=1 --ignore-case --files-with-matches \
-        --no-messages "$@" | _FZF_COMMAND "$_FZF_KEEP_RIGHT" \
-        --preview="rg --ignore-case --pretty --context 10 '"$@"' {}")
-    [[ -f $file ]] || return
-    case $(file --mime-type "$file" -bL) in
-    	text/*|application/json) $EDITOR $file ;;
-    	*) xdg-open $file& ;;
-    esac
-}
-
-if [ -z "$_FZF_KEEP_RIGHT" ]; then
-    echo '' | fzf --keep-right -1 &> /dev/null
-    if [ "$?" -gt 0 ]; then
-        export _FZF_KEEP_RIGHT=" "
-    else
-        export _FZF_KEEP_RIGHT="--keep-right"
-    fi
-fi
-f
+if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+local file
+file=$(rg --max-count=1 --ignore-case --files-with-matches \
+    --no-messages "$@" | _FZF_COMMAND --keep-right \
+    --preview="rg --ignore-case --pretty --context 10 '"$@"' {}")
+[[ -f $file ]] || return
+case $(file --mime-type "$file" -bL) in
+	text/*|application/json) $EDITOR $file ;;
+	*) xdg-open $file& ;;
+esac
