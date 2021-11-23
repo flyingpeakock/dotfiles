@@ -6,9 +6,17 @@ export FZF_TMUX_OPTS='-p 75%'
 # Setting zoxide fzf options
 export _ZO_FZF_OPTS='--height=60% -n 2 --preview "preview.sh {2}"'
 
+# Check if fzf-tmux supports -p
+echo '' | fzf-tmux -p -1 &> /dev/null
+if [ "$?" -gt 0 ]; then
+    export _FZF_POPOUT=
+else
+    export _FZF_POPOUT="-p"
+fi
+
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
-    if [[ -v TMUX ]]; then
+    if [ -v TMUX ] && [ ! -z "$_FZF_POPOUT" ]; then
         fzf-tmux -p -w 95% -h 50% --preview-window right:60% $@
     else
         fzf --height=60% --layout=reverse --preview-window down:60% $@
