@@ -3,7 +3,7 @@ echo '' | fzf --marker="▶" -1 &> /dev/null
 if [ "$?" -gt 0 ]; then
     _fzf_marker=
 else
-    _fzf_marker="--marker=\"▶\" --pointer=\"➤\""
+    _fzf_marker='--marker="▶" --pointer="➤"'
 fi
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
