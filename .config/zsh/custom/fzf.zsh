@@ -1,22 +1,44 @@
+# Checking if marker option is availible
+echo '' | fzf --marker="▶" -1 &> /dev/null
+if [ "$?" -gt 0 ]; then
+    _fzf_marker=
+else
+    _fzf_marker="--marker=\"▶\""
+fi
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " --marker="▶" --pointer="➤" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
+export FZF_DEFAULT_OPTS='--prompt="❯ " "'"$_fzf_marker"'" --pointer="➤" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
 export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
 export _ZO_FZF_OPTS='--height=60% -n 2 --preview "preview.sh {2}"'
 
+# Check if fzf-tmux supports -p
+echo '' | fzf-tmux -p -1 &> /dev/null
+if [ "$?" -gt 0 ]; then
+    export _FZF_POPOUT=
+else
+    export _FZF_POPOUT="-p"
+fi
+
 # Checking if tmux and setting correct fzf command
 _FZF_COMMAND () {
-    if [[ -v TMUX ]]; then
+    if [ -v TMUX ] && [ ! -z "$_FZF_POPOUT" ]; then
         fzf-tmux -p -w 95% -h 50% --preview-window right:60% $@
     else
         fzf --height=60% --layout=reverse --preview-window down:60% $@
     fi
 }
 
-# fzf aliases
+# Check if --keep-right is availible
+echo '' | fzf --keep-right -1 &> /dev/null
+if [ "$?" -gt 0 ]; then
+    export _FZF_KEEP_RIGHT=
+else
+    export _FZF_KEEP_RIGHT="--keep-right"
+fi
 
+# fzf aliases
 alias fzf=_FZF_COMMAND
 alias app="i3-dmenu-desktop --dmenu=fzf"
 
