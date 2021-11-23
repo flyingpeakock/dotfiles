@@ -1,0 +1,5 @@
+if [ "$#" -gt 0 ]; then
+    git checkout $@
+    return $?
+fi
+git checkout $(_gb)
