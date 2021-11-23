@@ -1,3 +1,5 @@
+# launch spotify daemon and spotify-tui
+
 local started=""
 pgrep spotifyd > /dev/null && $started=true
 if [[ $started -eq "" ]];

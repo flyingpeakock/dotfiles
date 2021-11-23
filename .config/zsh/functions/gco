@@ -1,3 +1,4 @@
+# git checkout wrapper
 if [ "$#" -gt 0 ]; then
     git checkout $@
     return $?
