@@ -9,7 +9,7 @@ function j {
 compdef j=fd &> /dev/null
 if [ -z "$_FZF_KEEP_RIGHT" ]; then
     echo '' | fzf --keep-right -1 &> /dev/null
-    fi [ "$?" -gt 0 ]; then
+    if [ "$?" -gt 0 ]; then
         export _FZF_KEEP_RIGHT=" "
     else
         export _FZF_KEEP_RIGHT="--keep-right"
