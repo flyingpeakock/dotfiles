@@ -3,4 +3,4 @@ local d
 d=$(fd -E /.snapshots -t d -H . $@ \
     | _FZF_COMMAND --keep-right --preview 'preview.sh {}')
 z $d
-compdef j=fd
+compdef j=fd &> /dev/null

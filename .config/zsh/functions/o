@@ -7,5 +7,4 @@ case $(file --mime-type "$file" -bL) in
 	text/*|application/json) $EDITOR $file ;;
 	*) xdg-open $file& ;;
 esac
-compdef o=fd
-
+compdef o=fd &> /dev/null
