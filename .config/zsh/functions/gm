@@ -1,0 +1,6 @@
+# Git merge wrapper
+if [ "$#" -gt 0 ]; then
+    git merge $@
+    return $?
+fi
+git merge $(_gb)
