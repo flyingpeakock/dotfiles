@@ -5,9 +5,18 @@ if [ "$?" -gt 0 ]; then
 else
     _fzf_marker="--marker=\"▶\""
 fi
+
+# Checking if pointer option is availible
+echo '' | fzf --pointer="➤" -1 &> /dev/null
+if [ "$?" -gt 0 ]; then
+    _fzf_pointer=
+else
+    _fzf_pointer="--pointer=\"➤\""
+fi
+
 # Setting fzf vars
 export FZF_DEFAULT_COMMAND='fd --type f .'
-export FZF_DEFAULT_OPTS='--prompt="❯ " "'"$_fzf_marker"'" --pointer="➤" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
+export FZF_DEFAULT_OPTS='--prompt="❯ " "'"$_fzf_marker"'" "'"$_fzf_pointer"'" --color=bg+:#3B4252,bg:#2E3440,spinner:#81A1C1,hl:#616E88,fg:#D8DEE9,header:#616E88,info:#81A1C1,pointer:#81A1C1,marker:#81A1C1,fg+:#D8DEE9,prompt:#81A1C1,hl+:#81A1C1'
 export FZF_TMUX_OPTS='-p 75%'
 
 # Setting zoxide fzf options
