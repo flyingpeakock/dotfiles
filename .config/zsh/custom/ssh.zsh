@@ -1,6 +1,6 @@
 # Slightly modified version of oh-my-zsh ssh-apent plugin
 # Get the filename to store/lookup the environment from
-ssh_env_cache="$HOME/.ssh/environment-$SHORT_HOST"
+ssh_env_cache="$HOME/.ssh/agent.env"
 
 function _start_agent() {
   # Check if ssh-agent is already running
