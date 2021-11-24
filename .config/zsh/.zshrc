@@ -44,33 +44,7 @@ do
 done
 
 fpath=("$ZDOTDIR/functions" $fpath)
-funcs=(
-    _gb         # fuzzy select git branch
-    _gf         # fuzzy select files by git status
-    _gh         # fuzzy select git hashes
-    _gs         # fuzzy select git stash
-    cheat       # tldr rtfm
-    ex          # extract files, taken from oh-my-zsh
-    f           # find a file containing string, requires arg
-    fman        # fuzzy search for man pages
-    fzfi        # Interactivly choose fzf command
-    ga          # fuzzy git add wrapper
-    gco         # fuzzy git checkout wrapper
-    gm          # fuzzy git merge wrapper
-    gma         # merge all branches
-    j           # fuzzy jump to a directory
-    o           # fuzzy open a file
-    pi          # furry install with paru
-    please      # sudo wrapper, runs last command
-    pu          # fuzzy uninstall with paru, only explicitly installed
-    spotify     # starts spotify daemon and spotify-tui
-    tm          # fuzzy start tmux
-    tp          # fuzzy select tmux pane
-    trash-fr    # trash fuzzy restore
-    trash-fzf   # fuzzy trash files
-    up          # go up a directory
-    )
-for func in $funcs
+for func in $ZDOTDIR/functions/*
 do
     autoload $func
 done
