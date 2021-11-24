@@ -42,6 +42,7 @@ zstyle ':completion:*' special-dirs false
 _comp_options+=(globdots)
 autoload -U compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+zmodload zsh/complist
 
 # User files
 for CUSTOM in $ZDOTDIR/custom/*
