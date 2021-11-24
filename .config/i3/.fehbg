@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --no-fehbg --bg-scale $HOME/Pictures/nightstars.jpg $HOME/Pictures/ign_herakles.png
+feh --no-fehbg --bg-scale $HOME/Pictures/nightstars.jpg $HOME/Pictures/minimal-22-nordified.jpg
