@@ -56,6 +56,7 @@ funcs=(
     fzfi        # Interactivly choose fzf command
     ga          # fuzzy git add wrapper
     gco         # fuzzy git checkout wrapper
+    gm          # fuzzy git merge wrapper
     gma         # merge all branches
     j           # fuzzy jump to a directory
     o           # fuzzy open a file
