@@ -15,7 +15,9 @@ alias gpg2=gpg2 --homedir "$XDG_DATA_HOME"/gnupg
 alias dragon="dragon-drag-and-drop -a -x"
 exa --icons &> /dev/null
 if [ "$?" -gt 0 ]; then
-    alias ls="exa -l --git"
+    alias ll="exa -l --git"
+    alias ls="exa --git"
 else
-    alias ls="exa -l --git --icons"
+    alias ll="exa -l --git --icons"
+    alias ls="exa --git --icons"
 fi
