@@ -16,7 +16,11 @@ exa --icons &> /dev/null
 if [ "$?" -gt 0 ]; then
     alias ll="exa -l --git"
     alias ls="exa --git"
+    alias la="exa --all --git"
+    alias lla="exa -l --all --git"
 else
     alias ll="exa -l --git --icons"
     alias ls="exa --git --icons"
+    alias la="exa --all --git --icons"
+    alias lla="exa --l --all --git --icons"
 fi
