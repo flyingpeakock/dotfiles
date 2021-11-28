@@ -2,7 +2,7 @@
 if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
 local file
 file=$(rg --max-count=1 --ignore-case --files-with-matches \
-    --no-messages "$@" | _FZF_COMMAND "$_FZF_KEEP_RIGHT" \
+    --no-messages $@ | _FZF_COMMAND "$_FZF_KEEP_RIGHT" \
     --preview="rg --ignore-case --pretty --context 10 '"$@"' {}")
 [[ -f $file ]] || return
 case $(file --mime-type "$file" -bL) in
