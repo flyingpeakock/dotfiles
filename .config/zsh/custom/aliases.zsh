@@ -23,5 +23,5 @@ else
     alias ll="exa -l --git --icons"
     alias ls="exa --git --icons"
     alias la="exa --all --git --icons"
-    alias lla="exa --l --all --git --icons"
+    alias lla="exa -l --all --git --icons"
 fi
