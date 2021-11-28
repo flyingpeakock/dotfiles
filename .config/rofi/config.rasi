@@ -1,7 +1,7 @@
 configuration {
     modi: "run,window,drun,ssh,combi,emoji,calc";
-    theme: "~/.config/rofi/my-theme.rasi";
     font: "hack 10";
     combi-modi: "ssh,run,window,emoji";
     show-icons: true;
 }
+@theme: "~/.config/rofi/my-theme.rasi";
