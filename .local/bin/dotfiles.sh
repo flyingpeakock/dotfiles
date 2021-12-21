@@ -33,6 +33,7 @@ setup() {
     fi;
     gitdot checkout > /dev/null && printf "Checked out bare repo to home directory\n"
     gitdot config status.showUntrackedFiles no > /dev/null
+}
 
 setkeyMap() {
     [ ! -e /usr/share/X11/xkb/symbols/se_cm ] && sudo ln -sf ~/.config/xkb/se_cm /usr/share/X11/xkb/symbols/ > /dev/null 2>&1
