@@ -164,7 +164,7 @@ workspace 10 gaps outer 20
 
 # Setting lock
 ################################################
-bindsym Ctrl+$mod+l exec --no-startup-id i3lock -u -c 000000
+bindsym Ctrl+$mod+l exec --no-startup-id i3lock -e -u -c 000000
 
 # Modes
 ################################################
