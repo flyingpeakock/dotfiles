@@ -173,7 +173,7 @@ bindsym Ctrl+$mod+l exec --no-startup-id i3lock -e -u -c 000000
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock -u -c 000000, mode "default"
+    bindsym l exec --no-startup-id i3lock -e -u -c 000000, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
     bindsym h exec --no-startup-id systemctl hibernate, mode "default"
@@ -221,7 +221,7 @@ bindsym $mod+r mode "resize"
 exec --no-startup-id greenclip daemon
 exec --no-startup-id picom -b --experimental-backends
 exec --no-startup-id xset 600
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e -u -c 000000 --nofork
 exec --no-startup-id setxkbmap se_cm
 exec --no-startup-id xbanish
 
