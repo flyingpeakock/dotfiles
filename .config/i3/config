@@ -166,10 +166,6 @@ hide_edge_borders smart_no_gaps
 workspace 10 gaps inner 0
 workspace 10 gaps outer 20
 
-# Setting lock
-################################################
-bindsym Ctrl+$mod+l exec --no-startup-id i3lock -e -u -c 000000
-
 # Modes
 ################################################
 
