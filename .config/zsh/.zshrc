@@ -153,9 +153,6 @@ autoload -U edit-command-line && zle -N edit-command-line && bindkey -M vicmd "^
 
 source "$ZDOTDIR/p10k.zsh"
 
-# try to set xkbmap here for tty
-setxkbmap se_cm 2> /dev/null
-
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P03B4252" #nord1
     echo -en "\e]P84C566A" #nord3
