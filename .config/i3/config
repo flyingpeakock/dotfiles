@@ -229,6 +229,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e -u -c 000000 --
 exec --no-startup-id pasystray
 exec --no-startup-id setxkbmap se_cm
 exec --no-startup-id xbanish
+exec --no-startup-id /usr/lib/kdeconnectd
 
 # reload restart exit
 ##########################################
