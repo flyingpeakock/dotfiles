@@ -12,6 +12,7 @@ alias vimsu="sudo -e"
 alias -s pdf=zathura
 alias gpg2=gpg2 --homedir "$XDG_DATA_HOME"/gnupg
 alias dragon="dragon-drag-and-drop -a -x"
+alias tmpd="cd $(mktemp -d)"
 exa --icons &> /dev/null
 if [ "$?" -gt 0 ]; then
     alias ll="exa -l --git"
