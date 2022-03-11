@@ -57,15 +57,12 @@ do
 done
 
 # Private files
-privateDir="$ZDOTDIR/private"
-if [[ -d "$privateDir" ]];
-then
-    for PRIVATE in $privateDir/*.rc.zsh
-    do
-        [ -f "$PRIVATE" ] && source "$PRIVATE"
-    done
-fi
-unset privateDir
+setopt NULL_GLOB
+for PRIVATE in $ZDOTDIR/private/*.rc.zsh
+do
+    [ -f "$PRIVATE" ] && source "$PRIVATE"
+done
+unsetopt NULL_GLOB
 
 eval "$(zoxide init zsh)"
 
