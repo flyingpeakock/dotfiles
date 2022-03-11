@@ -57,14 +57,15 @@ do
 done
 
 # Private files
-privateDir="$ZDOTDIR/private/rc"
+privateDir="$ZDOTDIR/private"
 if [[ -d "$privateDir" ]];
 then
-    for PRIVATE in $privateDir/*
+    for PRIVATE in $privateDir/*.rc.zsh
     do
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
 fi
+unset privateDir
 
 eval "$(zoxide init zsh)"
 
