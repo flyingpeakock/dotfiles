@@ -60,7 +60,8 @@ done
 privateDir="$ZDOTDIR/private"
 if [[ -d "$privateDir" ]];
 then
-    for PRIVATE in $privateDir/*.rc.zsh
+    PRIVATE=(*(N))
+    for PRIVATE in $privateDir/*(.N).rc.zsh
     do
         [ -f "$PRIVATE" ] && source "$PRIVATE"
     done
