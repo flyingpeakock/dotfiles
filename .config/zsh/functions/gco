@@ -1,5 +1,5 @@
 # git checkout wrapper
-if [ $# -gt 0 ] && [ ${1[0]} == "-" ]; then
+if [ $# -gt 0 ] && [ "$1[0]" == "-" ]; then
     git checkout $@
     return $?
 fi
