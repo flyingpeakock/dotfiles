@@ -1,5 +1,5 @@
 # git checkout wrapper
-if [ "$*" = "-*" ]; then
+if [ "$1" = "-*" ]; then
     echo here
     git checkout $@
     return $?
