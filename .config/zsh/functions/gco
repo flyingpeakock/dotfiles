@@ -1,6 +1,6 @@
 # git checkout wrapper
 first_arg=$1
-if [ $first_arg = "-*" ]; then
+if [ $first_arg =~ ^- ]; then
     echo here
     git checkout $@
     return $?
