@@ -5,5 +5,6 @@ if [ $first_arg = "-*" ]; then
     git checkout $@
     return $?
 fi
+echo arg is $first_arg
 echo not there
 git checkout $(_gb $@)
