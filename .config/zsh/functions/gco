@@ -1,6 +1,8 @@
 # git checkout wrapper
 if [ "$*[0]" = "-" ]; then
+    echo here
     git checkout $@
     return $?
 fi
-git checkout $(_gb)
+echo not there
+git checkout $(_gb $@)
