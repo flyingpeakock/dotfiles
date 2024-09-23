@@ -1,0 +1,30 @@
+# fuzzy select tmux session-remote
+
+[[ -n "$TMUX" ]] && detach="tmux detach -E"
+if [ $1 ]; then
+
+    if [[ -z $2 ]]; then
+        session=$(ssh -q -t $1 sh -c '"tmux -u list-sessions -F\"#D #S\" 2>/dev/null"' \
+        | _FZF_COMMAND --select-1 --exit-0 --with-nth 2.. --delimiter=" " \
+        | cut -f 1 -d " ")
+    fi
+
+    command="ssh -q -t $1 tmux -u attach-session -t $session 2>/dev/null"
+    if [[ -z "$session" ]]; then
+        if [ $2 ]; then
+            session="$2"
+        else
+            session="main"
+        fi
+        command="ssh -q -t $1 tmux -u attach-session -t $session 2>/dev/null || ssh -q -t $1 tmux -u new-session -d -s $session && ssh -q -t $1 tmux -u attach-session -t $session"
+    fi
+
+    if [[ -n "$detach" ]]; then
+        command="$detach \"$command\""
+    fi
+
+    unset detach
+    unset session
+
+    eval "$command"
+fi

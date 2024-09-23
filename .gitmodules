@@ -1,0 +1,24 @@
+[submodule ".config/zsh/plugins/bwf"]
+	path = .config/zsh/plugins/bwf
+	url = https://git.phlipphlop.me/phlipphlop/bwf.git
+[submodule ".config/zsh/plugins/fuzzy-sys"]
+	path = .config/zsh/plugins/fuzzy-sys
+	url = https://github.com/NullSense/fuzzy-sys.git
+[submodule ".config/zsh/plugins/powerlevel10k"]
+	path = .config/zsh/plugins/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k.git
+[submodule ".config/zsh/plugins/zsh-autosuggestions"]
+	path = .config/zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule ".config/zsh/plugins/zsh-completions"]
+	path = .config/zsh/plugins/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+[submodule ".config/zsh/plugins/zsh-histdb"]
+	path = .config/zsh/plugins/zsh-histdb
+	url = https://github.com/larkery/zsh-histdb.git
+[submodule ".config/zsh/plugins/zsh-history-substring-search"]
+	path = .config/zsh/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule ".config/zsh/plugins/zsh-syntax-highlighting"]
+	path = .config/zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git

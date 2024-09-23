@@ -1,0 +1,6 @@
+# git checkout wrapper
+if [[ $1 =~ ^- ]]; then
+    git checkout $@
+    return $?
+fi
+git checkout $(_gb $@)

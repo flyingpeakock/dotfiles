@@ -1,0 +1,21 @@
+# Interactively launch fuzzy script
+
+funcs=( "launch application\tapp" \
+    "install application\tpi" \
+    "uninstall application\tpu" \
+    "change directory\tj" \
+    "open a file\t\to" \
+    "find in file and open\tf" \
+    "trash files\t\ttrash-put" \
+    "restore trash\t\ttrash-restore" \
+    "find man page\t\tfman" \
+    "git branches\t\t_gb" \
+    "git commit hashes\t_gh" \
+    "git file\t\t_gf" \
+    "git stash\t\t_gs" \
+    "git checkout\t\tgco" \
+    "git add\t\tga" \
+)
+command=$(printf '%b\n' "${funcs[@]}" | \
+    _FZF_COMMAND --query=$1 --no-clear --with-nth ..-2 | awk '{print $NF}')
+$command

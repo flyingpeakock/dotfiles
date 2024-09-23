@@ -1,0 +1,6 @@
+# Show git stash
+is_in_git_repo || return
+
+git stash list |
+_FZF_COMMAND --reverse --preview 'git show --color=always -p {1}' |
+cut -d: -f1

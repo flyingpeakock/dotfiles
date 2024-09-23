@@ -1,0 +1,11 @@
+# Open a file by searching inside of it
+if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+local file
+file=$(rg --max-count=1 --ignore-case --files-with-matches \
+    --no-messages $@ | _FZF_COMMAND "$_FZF_KEEP_RIGHT" \
+    --preview="rg --ignore-case --pretty --context 10 '"$@[-1]"' {}")
+[[ -f $file ]] || return
+case $(file --mime-type "$file" -bL) in
+	text/*|application/json) $EDITOR $file ;;
+	*) xdg-open $file& ;;
+esac

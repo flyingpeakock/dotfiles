@@ -1,0 +1,4 @@
+# Install programs with paru
+paru -Sl --color never | awk '{print $2($4=="" ? "" : " *")}' \
+    | _FZF_COMMAND --query=$1 --multi --preview 'paru -Si {1}' \
+    | xargs -ro paru -S

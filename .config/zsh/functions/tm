@@ -1,0 +1,14 @@
+# fuzzy select tmux session
+
+tmux_new_session () {
+    tmux new-session -d -s $1 && tmux $2 -t "$1"
+}
+
+[[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
+if [ $1 ]; then
+  # tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+  tmux $change -t "$1" 2>/dev/null || tmux_new_session "$1" "$change"
+  return
+fi
+session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | _FZF_COMMAND --select-1 --exit-0) &&  tmux $change -t "$session" || tmux_new_session "main" "$change"
+unfunction tmux_new_session

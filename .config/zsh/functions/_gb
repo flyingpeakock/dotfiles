@@ -1,0 +1,7 @@
+# Show git branches
+is_in_git_repo || return
+git branch -a --color=always | grep -v '/HEAD\s' | sort |
+_FZF_COMMAND --ansi --multi --tac --query="$*" --exit-0 --select-1 \
+  --preview 'git log --oneline --graph --date=short --color=always --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1)' |
+sed 's/^..//' | cut -d' ' -f1 |
+sed 's#^remotes/##'

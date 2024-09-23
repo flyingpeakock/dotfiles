@@ -1,0 +1,13 @@
+# Go up 1 or a specified number of directories"
+
+local d=""
+limit="$1"
+for ((i=1 ; i <= limit ; i++))
+    do
+       d=$d/..
+    done
+d=$(echo $d | sed 's/^\///')
+if [ -z "$d" ]; then
+    d=..
+fi
+z $d

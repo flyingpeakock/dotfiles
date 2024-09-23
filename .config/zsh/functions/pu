@@ -1,0 +1,3 @@
+# Uninstall programs, lists only explicitly installed
+paru -Qqe | _FZF_COMMAND --query=$1 --multi --preview 'pacman -Qi {1}' \
+    | xargs -ro sudo pacman -Rnsu

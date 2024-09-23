@@ -1,0 +1,13 @@
+# launch spotify daemon and spotify-tui
+
+local started=""
+pgrep spotifyd > /dev/null && $started=true
+if [[ $started -eq "" ]];
+then
+    spotifyd -U "bw get username spotify" -P "bw get password spotify"
+fi
+spt
+if [[ $started -eq "" ]];
+then
+    pkill spotifyd
+fi

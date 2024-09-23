@@ -1,0 +1,10 @@
+# Trash file
+if [ $# -gt 0 ]; then
+    command trash-put $@
+else
+    fd -H -t f -t d . \
+        | _FZF_COMMAND --query=$1 --multi --preview 'preview.sh {}' \
+        | xargs -ro trash-put
+fi
+compdef trash-fzf=fd 2> /dev/null
+

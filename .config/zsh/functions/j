@@ -1,0 +1,8 @@
+# Jump to a directory using fd
+local d
+d=$(fd -E /.snapshots -t d -H . $@ \
+    | _FZF_COMMAND "$_FZF_KEEP_RIGHT" --preview 'preview.sh {}')
+if [ -n "$d" ]; then
+    z "$d"
+fi
+compdef j=fd &> /dev/null

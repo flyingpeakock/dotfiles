@@ -1,0 +1,2 @@
+# tldr manpages
+curl -s cheat.sh/$1 | bat --plain --file-name "Cheat: $1"

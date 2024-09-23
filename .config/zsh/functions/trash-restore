@@ -1,0 +1,8 @@
+# Restore trashed file
+printf '\n' | command trash-restore | sed 's/ \[0..*Exiting$/:/g' \
+    | tac | _FZF_COMMAND --query=$1 --multi --with-nth -1 "$_FZF_KEEP_RIGHT" \
+    --header-lines=1 \
+    --preview "cd ~/.local/share/Trash/files; basename {4} \
+    | xargs -ro preview.sh" \
+    --preview-window wrap | awk '{print $1}' \
+    | command trash-restore &>/dev/null
