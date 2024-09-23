@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script clones a bare reposity then checks it out
 # into the users home directory
@@ -18,6 +18,7 @@ backup() {
     mkdir -p "$dir"
     mv "$1" "$2"
 }
+export -f backup
 
 setup() {
     printf "Cloning dotfiles bare repo into $repoDir\n"
