@@ -1,14 +1,12 @@
 #!/bin/sh
 
 # This script clones a bare reposity then checks it out
-# into the users home directory. It also links a swedish
-# colemak keyboard layout as well as enables it.
+# into the users home directory
 # Author: Philip Johansson
 
 repoDir="$HOME/.config/repo.git"
 gitURL="https://git.phlipphlop.me/phlipphlop/dotfiles.git"
 backupDir="$HOME/config.backup"
-
 
 gitdot() {
     git --git-dir=$repoDir --work-tree="$HOME" "$@"
@@ -29,7 +27,7 @@ setup() {
     gitdot checkout > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
         printf "Conflicting files found. Moving to $backupDir\n"
-        gitdot checkout 2>&1 | egrep "^\s" | awk {'print $1'} | xargs -I{} -- sh -c 'backup "{}" '"$backupDir"'/"{}"'
+        gitdot checkout 2>&1 | grep -E "^\s" | awk {'print $1'} | xargs -I{} -- sh -c 'backup "{}" '"$backupDir"'/"{}"'
     fi;
     gitdot checkout > /dev/null && printf "Checked out bare repo to home directory\n"
     gitdot config status.showUntrackedFiles no > /dev/null
@@ -38,16 +36,8 @@ setup() {
     gitdot submodule init > /dev/null 2>&1
     printf "Updating plugins\n"
     gitdot submodule update > /dev/null 2>&1
-}
-
-setkeyMap() {
-    [ ! -e /usr/share/X11/xkb/symbols/se_cm ] && sudo ln -sf ~/.config/xkb/se_cm /usr/share/X11/xkb/symbols/ > /dev/null 2>&1
-    setxkbmap se_cm > /dev/null 2>&1
+    printf"Done installing dotfiles"
 }
 
 [ ! -e $repoDir ] && setup
-
-shell=$(echo $SHELL | awk -F '/' '{print $(NF)}')
-[ "$shell" != "zsh\n" ] && chsh -s /bin/zsh
-[ -e "$HOME/.config/xkb/se_cm" ] && setkeyMap
 
