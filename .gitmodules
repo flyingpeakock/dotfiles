@@ -22,3 +22,27 @@
 [submodule ".config/zsh/plugins/zsh-syntax-highlighting"]
 	path = .config/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".config/tmux/plugins/nord-tmux"]
+	path = .config/tmux/plugins/nord-tmux
+	url = https://github.com/arcticicestudio/nord-tmux
+[submodule ".config/tmux/plugins/tmux-open"]
+	path = .config/tmux/plugins/tmux-open
+	url = https://github.com/tmux-plugins/tmux-open.git
+[submodule ".config/tmux/plugins/tmux-sensible"]
+	path = .config/tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
+[submodule ".config/tmux/plugins/tmux-resurrect"]
+	path = .config/tmux/plugins/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
+[submodule ".config/tmux/plugins/tmux-continuum"]
+	path = .config/tmux/plugins/tmux-continuum
+	url = https://github.com/tmux-plugins/tmux-continuum.git
+[submodule ".config/tmux/plugins/tmux-pain-control"]
+	path = .config/tmux/plugins/tmux-pain-control
+	url = https://github.com/tmux-plugins/tmux-pain-control.git
+[submodule ".config/tmux/plugins/tmux-sessionist"]
+	path = .config/tmux/plugins/tmux-sessionist
+	url = https://github.com/tmux-plugins/tmux-sessionist.git
+[submodule ".config/tmux/plugins/tpm"]
+	path = .config/tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
