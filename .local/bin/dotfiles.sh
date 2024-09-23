@@ -18,6 +18,7 @@ backup() {
     mkdir -p "$dir"
     mv "$1" "$2"
 }
+export -f backup
 
 setup() {
     printf "Cloning dotfiles bare repo into $repoDir\n"
