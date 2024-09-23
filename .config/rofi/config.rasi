@@ -1,0 +1,12 @@
+configuration {
+    modi: "run,window,drun,ssh,combi";
+    font: "hack 10";
+    combi-modi: "ssh,run,window";
+    show-icons: true;
+    display-ssh:    "";
+    display-run:    "";
+    display-drun:   "";
+    display-window: "";
+    display-combi:  "";
+}
+@theme "~/.config/rofi/my-theme.rasi"
