@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # This script clones a bare reposity then checks it out
 # into the users home directory
@@ -12,13 +12,14 @@ gitdot() {
     git --git-dir=$repoDir --work-tree="$HOME" "$@"
 }
 
-backup() {
-    dir=$(dirname "$2")
-    printf "\tBacking up file $1\n"
-    mkdir -p "$dir"
-    mv "$1" "$2"
-}
-export -f backup
+backup_script=$(mktemp)
+cat <<EOF > $backup_script
+dir=\$(dirname "\$2")
+printf "\\tBacking up file \$1\\n"
+mkdir -p "\$dir"
+mv "\$1" "\$2"
+EOF
+chmod +x $backup_script
 
 setup() {
     printf "Cloning dotfiles bare repo into $repoDir\n"
@@ -27,7 +28,7 @@ setup() {
     gitdot checkout > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
         printf "Conflicting files found. Moving to $backupDir\n"
-        gitdot checkout 2>&1 | grep -E "^\s" | awk {'print $1'} | xargs -I{} -- sh -c 'backup "{}" '"$backupDir"'/"{}"'
+        gitdot checkout 2>&1 | grep -E "^\s" | awk {'print $1'} | xargs -I{} -- sh -c "$backup_script \"{}\" $backupDir/\"{}\""
     fi;
     gitdot checkout > /dev/null && printf "Checked out bare repo to home directory\n"
     gitdot config status.showUntrackedFiles no > /dev/null
