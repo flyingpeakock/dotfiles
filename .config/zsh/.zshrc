@@ -178,6 +178,9 @@ do
     [ -f "$PRIVATE" ] && source "$PRIVATE"
 done
 
+# Fix for gpg not prompting for password
+export GPG_TTY=$(tty)
+
 source "$ZDOTDIR/p10k.zsh"
 
 # Keep this at the end
