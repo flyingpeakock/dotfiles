@@ -46,3 +46,30 @@
 [submodule ".config/tmux/plugins/tpm"]
 	path = .config/tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+[submodule ".config/vim/plugged/animate.vim"]
+	path = .config/vim/plugged/animate.vim
+	url = https://github.com/camspiers/animate.vim
+[submodule ".config/vim/plugged/lens.vim"]
+	path = .config/vim/plugged/lens.vim
+	url = https://github.com/camspiers/lens.vim
+[submodule ".config/vim/plugged/nord-vim"]
+	path = .config/vim/plugged/nord-vim
+	url = https://github.com/arcticicestudio/nord-vim
+[submodule ".config/vim/plugged/vim-airline"]
+	path = .config/vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".config/vim/plugged/vim-fugitive"]
+	path = .config/vim/plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule ".config/vim/plugged/nerdtree"]
+	path = .config/vim/plugged/nerdtree
+	url = https://github.com/preservim/nerdtree.git
+[submodule ".config/vim/plugged/rust.vim"]
+	path = .config/vim/plugged/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
+[submodule ".config/vim/plugged/vim-floaterm"]
+	path = .config/vim/plugged/vim-floaterm
+	url = https://github.com/voldikss/vim-floaterm.git
+[submodule ".config/vim/plugged/vimtex"]
+	path = .config/vim/plugged/vimtex
+	url = https://github.com/lervag/vimtex.git

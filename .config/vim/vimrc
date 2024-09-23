@@ -1,0 +1,100 @@
+" Setting stuff to move things to xdg config home
+set runtimepath^=$XDG_CONFIG_HOME/vim
+set runtimepath+=$XDG_DATA_HOME/vim
+set runtimepath+=$XDG_CONFIG_HOME/vim/after
+
+set packpath^=$XDG_DATA_HOME/vim,$XDG_CONFIG_HOME/vim
+set packpath+=$XDG_CONFIG_HOME/vim/after,$XDG_DATA_HOME/vim/after
+
+let g:netrw_home = $XDG_DATA_HOME."/vim"
+call mkdir($XDG_DATA_HOME."/vim/spell", 'p')
+set viewdir=$XDG_DATA_HOME/vim/view | call mkdir(&viewdir, 'p')
+
+set backupdir=$XDG_CACHE_HOME/vim/backup | call mkdir(&backupdir, 'p')
+set directory=$XDG_CACHE_HOME/vim/swap   | call mkdir(&directory, 'p')
+set undodir=$XDG_CACHE_HOME/vim/undo     | call mkdir(&undodir,   'p')
+
+if !has('nvim') | set viminfofile=$XDG_CACHE_HOME/vim/viminfo | endif
+
+" Setting defaults
+filetype indent plugin on
+set background=dark
+set encoding=utf-8
+syntax on
+set hidden
+set wildmenu
+set showcmd
+set nohlsearch
+set incsearch
+set ignorecase
+set backspace=indent,eol,start
+set autoindent
+set mouse=a
+set cmdheight=1
+set number relativenumber
+set shiftwidth=4
+set softtabstop=4
+set tabstop=4
+set expandtab
+set autochdir
+set showmatch
+set autoread
+set scrolloff=3
+set updatecount=100
+set spl=en spell
+set nospell
+set conceallevel=1
+
+" Only spell check some files
+augroup SpellCheck
+    autocmd!
+    autocmd FileType text,txt,latex,tex,md,markdown setlocal spell
+augroup END
+
+function! Mosh_Tab_Or_Complete()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+        return "\<C-N>"
+    else
+        return "\<Tab>"
+endfunction
+inoremap <Tab> <C-R>=Mosh_Tab_Or_Complete()<CR>
+
+" Download vim-plug if not present
+if empty(glob('~/.config/vim/autoload/plug.vim'))
+   silent !curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs
+     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.config/vim/plugged')
+Plug 'tpope/vim-fugitive'
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
+Plug 'preservim/nerdtree'
+Plug 'lervag/vimtex'
+Plug 'arcticicestudio/nord-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'rust-lang/rust.vim'
+Plug 'voldikss/vim-floaterm'
+call plug#end()
+
+let g:airline_powerline_fonts = 1
+let g:bufferline_echo = 0
+
+let g:tex_flavor='latex'
+let g:vimtex_compiler_method='tectonic'
+let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+let g:tex_conceal='abdmg'
+
+let g:rustfmt_autosave = 1
+
+colorscheme nord
+
+" Setting cursor
+let &t_SI = "\<Esc>[6 q"
+let &t_SR = "\<Esc>[4 q"
+let &t_EI = "\<Esc>[2 q"
+
+autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
