@@ -37,7 +37,7 @@ setup() {
     gitdot submodule init > /dev/null 2>&1
     printf "Updating plugins\n"
     gitdot submodule update > /dev/null 2>&1
-    printf"Done installing dotfiles"
+    printf "✓ Done installing dotfiles\n"
 }
 
 [ ! -e $repoDir ] && setup
