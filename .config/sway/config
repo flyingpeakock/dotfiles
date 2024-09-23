@@ -1,0 +1,281 @@
+# Setting terminal
+set $term wezterm
+
+# setting mod key
+set $mod Mod4
+
+# Background
+exec --no-startup-id swaybg -i ~/Pictures/minimal-22-nordified.jpg
+
+# Hide cursor
+seat "*" hide_cursor when-typing enable
+
+# MOVEMENT KEYS
+#########################################
+
+set $up k
+set $down j
+set $left h
+set $right l
+
+floating_modifier $mod
+
+# change focus
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Don't follow mouse
+focus_follows_mouse no
+
+# WINDOW KEYS
+##########################################
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# split in horizontal orientation
+bindsym $mod+b split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym Ctrl+$mod+a focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
+
+# Configure gaps
+bindsym $mod+z gaps outer current plus 5
+bindsym $mod+Shift+z gaps outer current minus 5
+bindsym Ctrl+$mod+z gaps inner current plus 5
+bindsym Ctrl+$mod+Shift+z gaps inner current minus 5
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# wofi application launcher
+bindsym $mod+d exec --no-startup-id wofi --show drun
+bindsym $mod+Shift+d exec --no-startup-id wofi --show run,drun
+bindsym $mod+c exec --no-startup-id wofi-calc
+bindsym $mod+x exec --no-startup-id clipman pick -t wofi
+bindsym $mod+Shift+p exec --no-startup-id powersaver
+
+# start a terminal
+bindsym $mod+Return exec --no-startup-id $term
+
+# shortcuts
+bindsym $mod+Shift+f exec --no-startup-id firefox
+bindsym $mod+q exec --no-startup-id xset dpms force suspend
+
+# Workspace configuration
+###############################################
+
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10:"
+
+# switch to workspace
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+bindsym $mod+0 workspace number $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
+
+workspace_auto_back_and_forth yes
+
+# Border configuration
+###############################################
+default_border pixel 2
+default_floating_border pixel 2
+
+# Color configuration
+###############################################
+client.focused #88c0d0 #88c0d0 #eceff4 #88c0d0
+client.focused_inactive #4c566a #4c566a #eceff4 #4c566a 
+client.unfocused #2e3440 #2e3440 #eceff4 #2e3440
+client.placeholder #2e3440 #2e3440 #eceff4 #2e3440
+client.urgent #bf616a #bf616a #eceff4 #bf616a
+client.background #2e3440
+
+# gaps configuration
+###############################################
+
+gaps inner 8
+gaps outer 2
+smart_borders on
+hide_edge_borders smart_no_gaps
+workspace 10 gaps inner 0
+workspace 10 gaps outer 20
+
+# Setting lock
+################################################
+set $lock "swaylock \
+                --screenshots \
+                --effect-blur 7x5 \
+                --ignore-empty-password \
+                --daemonize \
+                --no-unlock-indicator"
+
+bindsym Ctrl+$mod+l exec --no-startup-id $lock
+exec --no-startup-id swayidle -w \
+                        timeout 300 $lock \
+                        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+                        before-sleep $lock \
+                        lock $lock
+
+# Modes
+################################################
+
+# shutdown / restart / suspend...
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Ctrl+s) shutdown
+
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $lock, mode "default"
+    bindsym e exec --no-startup-id swaymsg exit, mode "default"
+    bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Ctrl+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Shift+Escape mode "default"
+    bindsym Return mode "default"
+    bindsym $mod+Backspace mode "default"
+}
+
+bindsym $mod+BackSpace mode "$mode_system"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym $left       resize shrink width 10 px or 10 ppt
+    bindsym $down       resize shrink height 10 px or 10 ppt
+    bindsym $up         resize grow height 10 px or 10 ppt
+    bindsym $right      resize grow width 10 px or 10 ppt
+
+    # same bindings, but for the arrow keys
+    bindsym Left        resize shrink width 10 px or 10 ppt
+    bindsym Down        resize shrink height 10 px or 10 ppt
+    bindsym Up          resize grow height 10 px or 10 ppt
+    bindsym Right       resize grow width 10 px or 10 ppt
+
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Shift+Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+input * {
+    xkb_layout "se_cm"
+}
+
+# reload restart exit
+##########################################
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your X session.' -B 'Yes, exit sway' 'swaymsg exit'"
+
+# Bar
+##########################################
+font pango: Hack, DejaVu Sans Mono, fontAwesome 8
+bar {
+        strip_workspace_numbers yes
+        workspace_min_width 21
+		position bottom
+        status_command i3status 
+        font pango: Hack, DejaVu Sans Mono, fontAwesome 8
+	    colors {
+            background #00000000
+			# workspace        border,   background, text
+			focused_workspace  #2e344000 #2e3440     #FFFFFF
+			inactive_workspace #2e344000 #282C340F   #999999
+			urgent_workspace   #FFFFFF   #2e34407A   #999999
+    	}
+}
+
+# Application Settings
+##########################################
+for_window [window_role="About"] floating enable
+for_window [class="Yad"] floating enable
+
+# Use pactl to adjust volume in PulseAudio.
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+
+# Start application
+exec --no-startup-id dunst
+exec wl-paste -t text --watch clipman store
+exec wl-paste -p -t text --watch clipman store -P --histpath="~/.local/share/clipman-primary.json"
