@@ -1,0 +1,8 @@
+location=1
+height=75%
+width=23%
+xoffset=25
+yoffset=23
+allow_markup=true
+term=foot
+matching=fuzzy
