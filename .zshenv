@@ -44,6 +44,9 @@ export _FASD_VIMINFO="$XDG_CONFIG_HOME"/vim/viminfo
 # Moving vim
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
 
+# Atuin url
+export ATUIN_SYNC_ADDRESS=https://atuin.loki.asgard
+
 # Location of bare dotfile repository if installed with script
 export DOTFILES="$XDG_CONFIG_HOME"/repo.git
 
