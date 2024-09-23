@@ -171,6 +171,13 @@ bindkey '^v' edit-command-line
 # Enter vim buffer from normal mode
 autoload -U edit-command-line && zle -N edit-command-line && bindkey -M vicmd "^v" edit-command-line
 
+# Source any private files if they exist
+setopt NULL_GLOB
+for PRIVATE in $ZDOTDIR/private/*.rc.zsh
+do
+    [ -f "$PRIVATE" ] && source "$PRIVATE"
+done
+
 source "$ZDOTDIR/p10k.zsh"
 
 # Keep this at the end
