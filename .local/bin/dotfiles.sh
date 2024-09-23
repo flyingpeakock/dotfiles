@@ -24,7 +24,7 @@ export -f backup
 
 setup() {
     printf "Cloning dotfiles bare repo into $repoDir\n"
-    git clone --bare --branch laptop $gitURL $repoDir > /dev/null 2>&1
+    git clone --bare --branch wayland $gitURL $repoDir > /dev/null 2>&1
     printf "Attempting to check out bare repo\n"
     gitdot checkout > /dev/null 2>&1
     if [ "$?" -ne 0 ]; then
