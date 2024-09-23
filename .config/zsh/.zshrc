@@ -91,27 +91,10 @@ eval "$(zoxide init zsh)"
 source "$ZDOTDIR/plugins/powerlevel10k/powerlevel10k.zsh-theme"
 source "$ZDOTDIR/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"
 fpath=("$ZDOTDIR/plugins/zsh-completions/src" $fpath)
-source "$ZDOTDIR/plugins/zsh-histdb/sqlite-history.zsh"
-source "$ZDOTDIR/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh"
 source "$ZDOTDIR/plugins/command-not-found/command-not-found.zsh"
 source "$ZDOTDIR/plugins/fuzzy-sys/fuzzy-sys.plugin.zsh"
 source "$ZDOTDIR/plugins/bwf/bwf.plugin.zsh"
-
-_zsh_autosuggest_strategy_histdb_top_here() {
-    local query="select commands.argv from
-history left join commands on history.command_id = commands.rowid
-left join places on history.place_id = places.rowid
-where places.dir LIKE '$(sql_escape $PWD)%'
-and commands.argv LIKE '$(sql_escape $1)%'
-group by commands.argv order by count(*) desc limit 1"
-    suggestion=$(_histdb_query "$query")
-}
-ZSH_AUTOSUGGEST_STRATEGY=histdb_top_here
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+eval "$(atuin init zsh)"
 
 # vi mode
 bindkey -v
