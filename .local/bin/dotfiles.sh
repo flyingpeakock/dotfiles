@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # This script clones a bare reposity then checks it out
 # into the users home directory
