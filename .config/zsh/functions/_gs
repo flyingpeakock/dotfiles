@@ -2,5 +2,5 @@
 is_in_git_repo || return
 
 git stash list |
-_FZF_COMMAND --reverse --preview 'git show --color=always -p {1}' |
+_FZF_COMMAND --reverse --preview 'git stash show --color=always -p {n}' |
 cut -d: -f1
