@@ -45,6 +45,7 @@ export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
 export GOPATH="$XDG_DATA_HOME"/go
 export XCURSOR_PATH="${XCURSOR_PATH}":"$XDG_DATA_HOME"/icons
 export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export DOCKER_CONFIG="$XDG_CONFIG_HOME"/docker
 
 
 # Moving vim
