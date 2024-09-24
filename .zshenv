@@ -1,9 +1,7 @@
 # Set path
 typeset -U PATH path # No duplicates
 path+=("$HOME"/.local/bin)
-if [ -d "$HOME"/.atuin/bin ]; then
-    path+=("$HOME"/.atuin/bin)
-fi
+[[ -d "$HOME"/.atuin/bin ]] && path+=("$HOME"/.atuin/bin)
 
 # Vim mode
 export EDITOR='vim'
