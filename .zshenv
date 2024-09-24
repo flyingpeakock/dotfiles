@@ -7,12 +7,10 @@ path+=("$HOME"/.local/bin)
 export EDITOR='vim'
 export VISUAL='vim'
 
+# set bat as manpager
 export MANROFFOPT="-c"
 export PAGER='less'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# Move all other zsh files out of home
-export ZDOTDIR=$HOME/.config/zsh
 
 # XDG Dirs
 export XDG_CONFIG_HOME="$HOME"/.config
@@ -21,6 +19,9 @@ export XDG_DATA_HOME="$HOME"/.local/share
 export XDG_RUNTIME_DIR=/run/user/"$UID"
 export XDG_DATA_DIRS=/usr/local/share:/usr/share
 export XDG_CONFIG_DIRS=/etc/xdg
+
+# Move all other zsh files out of home
+export ZDOTDIR="$XDG_CONFIG_HOME"/zsh
 
 # Moving stuff out home home
 export LESSHISTFILE=-
