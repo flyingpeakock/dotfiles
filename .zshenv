@@ -42,6 +42,10 @@ export TS3_CONFIG_DIR="$XDG_CONFIG_HOME"/ts3client
 export _FASD_DATA="$XDG_DATA_HOME"/fasd
 export _FASD_VIMINFO="$XDG_CONFIG_HOME"/vim/viminfo
 export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
+export GOPATH="$XDG_DATA_HOME"/go
+export XCURSOR_PATH="${XCURSOR_PATH}":"$XDG_DATA_HOME"/icons
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+
 
 # Moving vim
 export VIMINIT='let $MYVIMRC = !has("nvim") ? "$XDG_CONFIG_HOME/vim/vimrc" : "$XDG_CONFIG_HOME/nvim/init.vim" | so $MYVIMRC'
